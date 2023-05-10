@@ -1,0 +1,24 @@
+{
+    "name": "capsweb/webcaps",
+    "description": "creacion de una tienda online",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alejandro Arenas Rodriguez",
+            "email": "sneykerz22@gmail.com"
+        },
+        {
+            "name": "juan",
+            "email": "juan@gmail.com"
+        }
+    ],
+    "require": {
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "capsweb\\":"src/"
+        }
+    }
+}
