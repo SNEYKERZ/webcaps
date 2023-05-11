@@ -29,7 +29,7 @@ class Categorias
 
         return false;
     }
-    
+
     public function mostrarporCategoria($seleccion)
     {
         $sql = "SELECT * FROM categorias where tipoDePrenda = :seleccion ";
