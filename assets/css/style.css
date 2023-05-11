@@ -50,6 +50,7 @@ img {
     height: auto;
 }
 
+/* STYLES SCROLL */
 body::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -74,7 +75,7 @@ body::-webkit-scrollbar-thumb:active {
 header {
     position: sticky;
     top: 0;
-    left: 0;    
+    left: 0;
     background: #fff;
     z-index: 1700;
     margin: 0 auto;
@@ -301,11 +302,11 @@ main {
 
 .gallery-image {
     width: 100%;
-    max-width: 950px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 50px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
     grid-auto-rows: 250px;
     grid-auto-flow: dense;
     grid-gap: 20px;
@@ -326,6 +327,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     transition: all 0.5s ease;
 }
 
@@ -524,7 +526,6 @@ main {
         margin: 0;
     }
 }
-
 
 /* STYLES BOTTOM WHATSAPP */
 .whatsapp {
@@ -746,7 +747,6 @@ main {
 }
 
 /* STYLES FOOTER */
-
 #pre-footer figure {
     padding-bottom: 20px;
     margin: 0;
@@ -794,10 +794,6 @@ main {
         flex-direction: column;
     }
 }
-
-
-
-
 
 .botones {
 

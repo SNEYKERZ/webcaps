@@ -76,9 +76,9 @@ class Productos
     /** selecciona y muestra los  items de la tabla productos*/
     public function mostrar()
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock`,`categoria` FROM `productos` 
 
-        INNER JOIN categorias
+        INNER JOIN `categorias`
         ON productos.categoria_id = categorias.id ORDER BY productos.id DESC ";
 
         $resultado = $this->cn->prepare($sql);
@@ -88,7 +88,7 @@ class Productos
 
         return false;
     }
-    
+
      /** con el ID dado busca en la base de datos la prenda con ese ID */
     public function mostrarPorId($id){
         

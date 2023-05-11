@@ -8,14 +8,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $info_categoria = $categoria->mostrar();*/
   $producto = new capsweb\Productos;
 
- //Datos que se muestran de la prenda con su categoria (datos limitados)
+  //Datos que se muestran de la prenda con su categoria (datos limitados)
   $prendaEscogida = $producto->mostrarPorIdCategoria($id);
 
   //Datos que se envian al carrito de compras de la prenda (todos los datos)
   $prenda_al_carrito = $producto->mostrarPorId($id);
 
- 
- 
 
   if (!$prendaEscogida)
     header('Location: index.php');

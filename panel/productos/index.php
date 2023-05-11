@@ -35,6 +35,7 @@ include('../cabecera.php');
             require '../../vendor/autoload.php';
             $producto = new capsweb\Productos;
             $info_producto = $producto->mostrar();
+          
             $lista_Productos = count($info_producto);
             if ($lista_Productos > 0) {
               $c = 0;

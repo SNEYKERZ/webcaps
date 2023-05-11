@@ -6,7 +6,7 @@ include('templates/cabecera.php');
     <div class="gallery-image">
         <!-- Contenedores de las imagenes -->
         <div class="image-box">
-            <video src="assets/images/VideoCaps.mp4" type="video/mp4" width="600" height="520" autoplay controls>
+            <video src="assets/images/esqueleto-bailando-esqueleto.gif" type="video/mp4" width="600" height="520" autoplay controls>
                 <a href="https://www.tiktok.com/@capsculture/video/7200222471419677958?q=caps%20palmira&t=1683763219929" target="_blank"></a>
             </video>
         </div>
