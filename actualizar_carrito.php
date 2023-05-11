@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require 'funciones.php';
+    require 'funcionesCarrito.php';
     $id = $_POST['id'];
     $cantidad = $_POST['cantidad'];
 

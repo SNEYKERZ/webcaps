@@ -10,7 +10,7 @@ class Productos
     private $cn = null;
     public function __construct()
     {
-        $this->config = parse_ini_file(__DIR__ .'/../config.ini');
+        $this->config = parse_ini_file(__DIR__ . '/../config.ini');
         $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
@@ -25,7 +25,7 @@ class Productos
         $_array = array(
             ":referencia" => $_params['referencia'],
             ":precio" => $_params['precio'],
-            ":categoria_id"=> $_params['categoria_id'],
+            ":categoria_id" => $_params['categoria_id'],
             ":foto" => $_params['foto'],
             /*":talla_id"=> $_params['talla_id'],*/
             ":stock" => $_params['stock'],
@@ -45,7 +45,7 @@ class Productos
         $_array = array(
             ":id" => $_params['id'],
             ":referencia" => $_params['referencia'],
-            ":categoria_id"=> $_params['categoria_id'],
+            ":categoria_id" => $_params['categoria_id'],
             ":foto" => $_params['foto'],
             /*":talla_id"=> $_params['talla_id'],*/
             ":precio" => $_params['precio'],
@@ -79,8 +79,7 @@ class Productos
         $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
 
         INNER JOIN categorias
-        ON productos.categoria_id = categorias.id ORDER BY productos.id DESC
-        ";
+        ON productos.categoria_id = categorias.id ORDER BY productos.id DESC ";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -89,11 +88,28 @@ class Productos
 
         return false;
     }
-    /** con el ID dado busca en la base de datos la prenda con ese ID */
-    public function mostrarPorId($id)
-    {
-
+    
+     /** con el ID dado busca en la base de datos la prenda con ese ID */
+    public function mostrarPorId($id){
+        
         $sql = "SELECT * FROM `productos` WHERE `id`=:id ";
+        
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(
+            ":id" =>  $id
+        );
+
+        if($resultado->execute($_array))
+            return $resultado->fetch();
+
+        return false;
+    }
+
+    /** con el ID dado busca en la base de datos la prenda con ese ID */
+    public function mostrarPorIdCategoria($id)
+    {
+        $sql = "SELECT * FROM `productos` INNER JOIN `categorias` 
+        on productos.categoria_id = categorias.id WHERE productos.id =:id ";
 
         $resultado = $this->cn->prepare($sql);
         $_array = array(
@@ -105,4 +121,5 @@ class Productos
 
         return false;
     }
+ 
 }

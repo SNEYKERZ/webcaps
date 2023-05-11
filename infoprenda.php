@@ -7,7 +7,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   /*$categoria = new capsweb\Categoria;
   $info_categoria = $categoria->mostrar();*/
   $producto = new capsweb\Productos;
-  $prendaEscogida = $producto->mostrarPorId($id);
+
+ //Datos que se muestran de la prenda con su categoria (datos limitados)
+  $prendaEscogida = $producto->mostrarPorIdCategoria($id);
+
+  //Datos que se envian al carrito de compras de la prenda (todos los datos)
+  $prenda_al_carrito = $producto->mostrarPorId($id);
+
+ 
+ 
 
   if (!$prendaEscogida)
     header('Location: index.php');
@@ -45,7 +53,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       <!-- PRODUCT DESCRIPTION CONTAINER  -->
       <div class="right">
         <h3 class="display-5"> <?php print $prendaEscogida['referencia'] ?> </h3>
-        <h4><?php print $prendaEscogida['categoria_id'] ?></h4>
+        <h4><?php print $prendaEscogida['categoria'] ?></h4>
         <h4><small>$ </small><?php print $prendaEscogida['precio'] ?></h4>
         <p></p>
 
@@ -68,7 +76,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
           </ul>
         </div>
         <!-- Agrega el producto al carrito de compra -->
-        <button onclick="window.location.href='carrito.php?id=<?php print $prendaEscogida['id'] ?>'">Agrega al carrito</button>
+        <button onclick="window.location.href='carrito.php?id=<?php print $prenda_al_carrito['id'] ?>'">Agrega al carrito</button>
       </div>
     </div>
   </section>
