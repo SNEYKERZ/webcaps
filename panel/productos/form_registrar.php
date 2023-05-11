@@ -15,29 +15,28 @@
             </div>
           </div>
           <div class="row">
-                  <div class="col-md-4">
-                      <div class="form-group">
-                          <label>Categorias</label>
-                          <select class="form-control" name="categoria_id" required>
-                            <option value="">--SELECCIONE--</option>
-                            <?php
-                             require '../../vendor/autoload.php';
-                              $categoria = new capsweb\Categoria;
-                              $info_categoria = $categoria->mostrar();
-                              $cantidad = count($info_categoria);
-                                for($x =0; $x< $cantidad;$x++){
-                                  $item = $info_categoria[$x];
-                              ?>
-                                <option value="<?php print $item['id'] ?>"><?php print $item['tipoDePrenda'] ?></option>
-                              <?php
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Categorias</label>
+                <select class="form-control" name="categoria_id" required>
+                  <option value="">-SELECCIONE-</option>
+                  <?php
+                  require '../../vendor/autoload.php';
+                  $categoria = new capsweb\Categorias;
+                  $info_categoria = $categoria->mostrar();
+                  $cantidad = count($info_categoria);
+                  for ($x = 0; $x < $cantidad; $x++) {
+                    $item = $info_categoria[$x];
+                  ?>
+                    <option value="<?php print $item['id'] ?>"><?php print $item['categoria'] ?></option>
+                  <?php
+                  }
+                  ?>
 
-                                }
-                              ?>
-                            
-                          </select>
-                      </div>
-                  </div>
+                </select>
               </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -69,12 +68,12 @@
                 <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="talla_id">
                 <label class="btn btn-outline-dark" for="btncheck3">L</label>
 
-                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="talla_id" >
+                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="talla_id">
                 <label class="btn btn-outline-dark" for="btncheck4">XL</label>
               </div>
             </div>
           </div>
-          <!--CHECKBOX DE TALLAS-->
+          <!-- fin CHECKBOX DE TALLAS-->
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">

@@ -4,7 +4,8 @@ require 'vendor/autoload.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $id = $_GET['id'];
-
+  /*$categoria = new capsweb\Categoria;
+  $info_categoria = $categoria->mostrar();*/
   $producto = new capsweb\Productos;
   $prendaEscogida = $producto->mostrarPorId($id);
 
@@ -44,6 +45,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       <!-- PRODUCT DESCRIPTION CONTAINER  -->
       <div class="right">
         <h3 class="display-5"> <?php print $prendaEscogida['referencia'] ?> </h3>
+        <h4><?php print $prendaEscogida['categoria_id'] ?></h4>
         <h4><small>$ </small><?php print $prendaEscogida['precio'] ?></h4>
         <p></p>
 
@@ -59,7 +61,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <div class="size">
           <h5>Tallas disponibles</h5>
           <ul>
-          <!-- <li> <? /** php print $prendaEscogida['talla_id'] **/?></li>-->
+            <!-- <li> <? /** php print $prendaEscogida['talla_id'] **/ ?></li>-->
             <li>M</li>
             <li>L</li>
             <li>XL</li>

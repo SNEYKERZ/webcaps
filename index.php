@@ -2,13 +2,106 @@
 include('templates/cabecera.php');
 ?>
 
+<style>
+  /* STYLE CARRUSEL */
+.carousel-item {
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fff;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fff;
+}
+</style>
+
+
+<Script>
+  /* Carrusel */
+  $(document).ready(function() {
+    // Inicializar el carrusel
+    $('#carouselExample').carousel({
+      interval: 6000
+    });
+
+    // Manejar el evento click de los indicadores
+    $('.carousel-indicators li').click(function() {
+      var slideTo = $(this).attr('data-slide-to');
+      $('#carouselExample').carousel(parseInt(slideTo));
+    });
+  });
+
+  // Manejar el evento de inicio de transición
+  $('#carouselExample').on('slide.bs.carousel', function(event) {
+    var $currentSlide = $(event.relatedTarget);
+    $currentSlide.css('opacity', 0);
+    $currentSlide.addClass('animate__animated animate__fadeIn');
+  });
+
+  // Manejar el evento de fin de transición
+  $('#carouselExample').on('slid.bs.carousel', function(event) {
+    var $currentSlide = $(event.relatedTarget);
+    $currentSlide.removeClass('animate__animated animate__fadeIn');
+    $currentSlide.css('opacity', 1);
+  });
+
+  // Manejar el evento click del botón de "Anterior"
+  $('.carousel-control-prev').click(function() {
+    $('#carouselExample').carousel('prev');
+  });
+
+  // Manejar el evento click del botón de "Siguiente"
+  $('.carousel-control-next').click(function() {
+    $('#carouselExample').carousel('next');
+  });
+</Script>
+
 <!-- CARUSEL -->
 <section>
   <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExample" data-slide-to="1"></li>
-      <li data-target="#carouselExample" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -37,8 +130,6 @@ include('templates/cabecera.php');
   <br>
   <div class="titulo_index ">
     <h3> NUESTROS PRODUCTOS</h3>
-    <br>
-
   </div>
   <div class="products-container p-2">
     <div class="row gap-10">
@@ -83,7 +174,7 @@ include('templates/cabecera.php');
           </div>
         <?php }
       } else { ?>
-        <h4>NO HAY REGISTROS</h4>
+        <h4>NO HAY PRODUCTOS DISPONIBLES ACTUALMENTE :c <br><br> Estate pendiente de nuestras proximas colecciones!</h4>
       <?php } ?>
     </div>
   </div>

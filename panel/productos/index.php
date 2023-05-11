@@ -22,6 +22,7 @@ include('../cabecera.php');
             <tr>
               <th>#</th>
               <th>Referencia</th>
+              <th>Categoria</th>
               <th>Precio</th>
               <th>Stock</th>
               <th class="text-center">Foto</th>
@@ -44,6 +45,7 @@ include('../cabecera.php');
                 <tr>
                   <td><?php print $item['id'] ?></td>
                   <td><?php print $item['referencia'] ?></td>
+                  <td><?php print $item['categoria'] ?></td>
                   <td><?php print $item['precio'] ?></td>
                   <td><?php print $item['stock'] ?></td>
                   <td class="text-center">
@@ -56,7 +58,7 @@ include('../cabecera.php');
                       SIN FOTO
                     <?php } ?>
                   </td>
-                  <td class="text-center"> 
+                  <td class="text-center">
                     <a href="form_actualizar.php?id=<?php print $item['id']  ?>" class="btn  btn-outline-success btn-sm"><img src="../../assets/images/metaforas/edit_icon.png" width="30px" height="30px"></span></a>
                     <a href="../acciones.php?id=<?php print $item['id'] ?>" class="btn btn-outline-danger btn-sm"><img src="../../assets/images/metaforas/trash_icon.png" width="30px" height="30px"></span></a>
                   </td>

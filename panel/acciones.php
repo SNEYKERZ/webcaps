@@ -12,17 +12,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($_POST['precio']))
             exit('Completar precio');
-        
-       /** if(empty($_POST['talla_id']))
-            exit('Seleccionar una talla'); */
+
+        if (empty($_POST['categoria_id']))
+            exit('Seleccionar una Categoria');
+
+         /**if (!is_numeric($_POST['categoria_id']))
+            exit('Seleccionar una Categoria válida');
+
+        /** if(empty($_POST['talla_id'])) exit('Seleccionar una talla'); */
 
         if (empty($_POST['stock']))
             exit('digita una cantidad en stock válida');
 
         $_params = array(
             'referencia' => $_POST['referencia'],
-            'precio' => $_POST['precio'],
+            'categoria_id' => $_POST['categoria_id'],
             'foto' => subirFoto(),
+            'precio' => $_POST['precio'],
             /*'talla_id'=>$_POST['talla_id'],*/
             'stock' => $_POST['stock'],
             'fecha' => date('y-m-d')
@@ -41,6 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($_POST['referencia']))
             exit('Completar referencia');
 
+        if (empty($_POST['categoria_id']))
+            exit('Seleccionar una Categoria');
+
+        /**if (!is_numeric($_POST['categoria_id']))
+            exit('Seleccionar una Categoria válida');*/
+
         if (empty($_POST['precio']))
             exit('Completar precio');
 
@@ -55,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_params = array(
             'id' => $_POST['id'],
             'referencia' => $_POST['referencia'],
+            'categoria_id' => $_POST['categoria_id'],
             'precio' => $_POST['precio'],
             /*'talla_id'=>$_POST['talla_id'],*/
             'stock' => $_POST['stock'],

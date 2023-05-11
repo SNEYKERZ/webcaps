@@ -2,7 +2,7 @@
 session_start();
 include('templates/cabecera.php');
 //ACTIVAR LAS SESSIONES EN PHP
-require 'funciones.php';
+require 'funcionesCarrito.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];

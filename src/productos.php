@@ -18,14 +18,14 @@ class Productos
     /**añade un producto en la base de datos */
     public function registrar($_params)
     {
-        $sql = "INSERT INTO `productos`(`referencia`,`precio`,`foto`/**,`talla_id` */,`stock`,`fecha`) 
-        VALUES (:referencia,:precio,:foto/**:talla_id*/,:stock,:fecha)";
+        $sql = "INSERT INTO `productos`(`referencia`,`precio`,`foto`,`categoria_id`,`stock`,`fecha`) 
+        VALUES (:referencia,:precio,:foto,:categoria_id,:stock,:fecha)";
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
             ":referencia" => $_params['referencia'],
             ":precio" => $_params['precio'],
-            /* ":categoria_id"=> $_params['categoria_id'],*/
+            ":categoria_id"=> $_params['categoria_id'],
             ":foto" => $_params['foto'],
             /*":talla_id"=> $_params['talla_id'],*/
             ":stock" => $_params['stock'],
@@ -39,13 +39,13 @@ class Productos
     /** Actualiza el producto en la basi de datos */
     public function actualizar($_params)
     {
-        $sql = "UPDATE `productos` SET `referencia`=:referencia,`foto`=:foto,`precio`=:precio,`fecha`=:fecha,`stock`=:stock
+        $sql = "UPDATE `productos` SET `referencia`=:referencia,`categoria_id` =:categoria_id,`foto`=:foto,`precio`=:precio,`fecha`=:fecha,`stock`=:stock
          WHERE `id`=:id";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":id" => $_params['id'],
             ":referencia" => $_params['referencia'],
-            /* ":categoria_id"=> $_params['categoria_id'],*/
+            ":categoria_id"=> $_params['categoria_id'],
             ":foto" => $_params['foto'],
             /*":talla_id"=> $_params['talla_id'],*/
             ":precio" => $_params['precio'],
@@ -76,7 +76,11 @@ class Productos
     /** selecciona y muestra los  items de la tabla productos*/
     public function mostrar()
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`/**,`talla_id` */,`precio`,`stock` FROM `productos` ";
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
+
+        INNER JOIN categorias
+        ON productos.categoria_id = categorias.id ORDER BY productos.id DESC
+        ";
 
         $resultado = $this->cn->prepare($sql);
 

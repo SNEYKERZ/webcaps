@@ -2,71 +2,79 @@
 include('templates/cabecera.php');
 ?>
 <main>
-    <div class="parent">
-        <div class="div1">
-            <img src="assets/images/sinfoto.jpg" alt="">
+    <!-- Contenedor de la galleria de imagenes -->
+    <div class="gallery-image">
+        <!-- Contenedores de las imagenes -->
+        <div class="image-box">
+            <video src="assets/images/VideoCaps.mp4" type="video/mp4" width="600" height="520" autoplay controls>
+                <a href="https://www.tiktok.com/@capsculture/video/7200222471419677958?q=caps%20palmira&t=1683763219929" target="_blank"></a>
+            </video>
         </div>
 
-        <div class="div2">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
 
-        <div class="div3">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
 
-        <div class="div4">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
 
-        <div class="div5">
-            <img src="assets/images/sinfoto.jpg" alt="">
+
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
 
-        <div class="div6">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
-
-        <div class="div7">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
-
-        <div class="div8">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.tiktok.com/@capsculture/video/7200222471419677958?q=caps%20palmira&t=1683763219929" target="_blank">
+                <video width="600" height="520" controls>
+                    <source src="assets/images/BB4798669DFF8A56A4F901F53122FFA7_video_dashinit.mp4" type="video/mp4">
+                </video>
+            </a>
         </div>
-
-        <div class="div9">
-            <img src="assets/images/sinfoto.jpg" alt="">
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
         </div>
-
-        <div class="div10">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
-        <div class="div11">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
-        <div class="div12">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
-        <div class="div13">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
-        <div class="div14">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
-        <div class="div15">
-            <img src="assets/images/sinfoto.jpg" alt="">
-        </div
-        >
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="https://www.instagram.com/reel/CpoEMcCJPKa/" target="_blank">
+                <img src="assets/images/sinfoto.jpg" alt="">
+            </a>
+        </div>
     </div>
 </main>
-
-
 
 <?php
 include('templates/whatsAppBottom.php');

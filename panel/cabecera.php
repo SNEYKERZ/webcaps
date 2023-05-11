@@ -9,16 +9,24 @@
 
   <!-- Fuentes -->
   <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+
   <!-- Estilos -->
   <link rel="stylesheet" href="../../assets/css/style.css">
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
   <!-- Fontawesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
   <!-- JS de jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   <!-- JS de Bootstrap -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
@@ -26,6 +34,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../../assets/js/scripts.js"></script>
+
 </head>
 
 <body>
@@ -49,8 +58,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!--  contenido que estara en la barra de navegacion y la forma en que aparecera con responsive  -->
-
+          <!--  Contenido que estara en la barra de navegacion y la forma en que aparecera con responsive  -->
           <div class="collapse navbar-collapse justify-content-end fw-bold" id="navbarSupportedContent">
             <ul class="navbar-nav text-uppercase d-flex align-items-center">
               <li class="nav-item">
