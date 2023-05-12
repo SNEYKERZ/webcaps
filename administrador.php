@@ -1,8 +1,7 @@
 <?php
 include('templates/cabecera.php');
-?>
 
-<?php
+/** login  */
 if (!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['password'])) {
   $sql = "INSERT INTO user (email, user, password) VALUES (:email, :user, :password)";
   $stmt = $conn->prepare($sql);
@@ -39,7 +38,7 @@ if (!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['password
         <div class="row caps-content p-0">
           <div class="col-lg-12">
             <h2>Registrate o inicia sesion</h2>
-            <!--<span>¿Ya estas registrado? <a href="#">Loguearse</a></span>-->
+
           </div>
         </div>
         <div class="row">
@@ -67,8 +66,4 @@ if (!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['password
 
 <br><br>
 
-
-
-<?php
-include('templates/footer.php');
-?>
+<?php include('templates/footer.php'); ?>

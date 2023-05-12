@@ -138,6 +138,3 @@ include('../cabecera.php');
 
   })
 </script>
-<?php
-include('../footer.php');
-?>

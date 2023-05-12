@@ -23,8 +23,6 @@ include('../cabecera.php');
             require '../../vendor/autoload.php';
             $pedido = new capsweb\Productos;
             $info_pedido = $pedido->mostrar();
-
-
             $cantidad = count($info_pedido);
             if ($cantidad > 0) {
               $c = 0;
@@ -32,8 +30,6 @@ include('../cabecera.php');
                 $c++;
                 $item = $info_pedido[$x];
             ?>
-
-
                 <tr>
                   <td><?php print $c ?></td>
                   <td><?php print $item['nombre'] . ' ' . $item['apellidos'] ?></td>
@@ -58,18 +54,9 @@ include('../cabecera.php');
               </tr>
 
             <?php } ?>
-
-
           </tbody>
-
         </table>
       </fieldset>
     </div>
   </div>
-
-
 </div> <!-- /container -->
-
-<?php
-include('../footer.php');
-?>
