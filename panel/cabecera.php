@@ -68,7 +68,7 @@
                 <a class="nav-link" href="../pedidos/index.php"><i class="fa-solid fa-people-group"></i> Pedidos</a>
               </li>
               <li class="nav-item btn btn-success">
-                <a class="nav-link text-light" href="../../administrador.php"> ADMIN </a>
+                <a class="nav-link text-light" href="../../login.php"> ADMIN </a>
               </li>
             </ul>
           </div>
