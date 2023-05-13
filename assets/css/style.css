@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
 /* RESET STYLES & HELPER CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
@@ -76,17 +78,138 @@ header {
     position: sticky;
     top: 0;
     left: 0;
-    background: #fff;
-    z-index: 1700;
+    z-index: 9999;
     margin: 0 auto;
     width: 100%;
     overflow: hidden;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.navbar {
+    background-color: #fefefd;
+    height: auto;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    align-items: center;
+}
+
+.navbar-collapse {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-collapse .btn {
+    background-color: rgb(18, 56, 100);
+    border-radius: 10px;
+    padding: auto;
 }
 
 .collapse .btn:hover {
-    background-color: rgb(0, 50, 143) !important;
-    transition: .3s;
+    background-color: rgb(8, 37, 70) !important;
+    transition: all .2s ease;
 }
+
+.navbar-collapse .btn a {
+    color: #fff;
+}
+
+.navbar-collapse .navbar-nav {
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav .nav-item {
+    padding: 0px 5px 0px 5px;
+}
+
+.navbar-nav .nav-item+.nav-item {
+    margin-left: 10px;
+}
+
+.navbar-nav .nav-item:hover:not(:last-child) {
+    background-color: #414141 !important;
+    transition: all .3s linear;
+    border-radius: 4px;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    color: #fff;
+}
+
+@media screen and (max-width:990px) {
+    .navbar-nav .nav-item {
+        margin-top: 10px;
+        padding: 0px 50px 0px 50px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .navbar-nav .nav-item {
+        margin-top: 10px;
+    }
+}
+
+/* STYLE CARRUSEL */
+#carouselExample .carousel-item {
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+#carouselExample .carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fff;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fff;
+}
+
 
 /* PROMOTION BAR */
 .slider_shirt {
@@ -100,6 +223,7 @@ header {
     padding: .50rem;
     letter-spacing: 5px;
     font-family: 'Roboto';
+    overflow: hidden;
 }
 
 .slider_shirt span {
@@ -146,12 +270,14 @@ header {
     text-align: end;
     padding: 0 !important;
     border: none !important;
+
 }
 
 .card img {
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
+    
 }
 
 .card-title {
@@ -206,12 +332,19 @@ header {
 
 .products-container .card:hover {
     transition: all .3s;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.2);
 }
 
 .products-container .card-price {
     font-size: 14px;
 }
+
+@media screen and (max-width:800px) {
+}
+
+
+
+
 
 /* STYLE INFO PRODUCTS */
 .container-product {
@@ -243,6 +376,11 @@ header {
     height: 100px;
     padding: 10px;
     border-radius: 15px;
+    cursor: pointer;
+}
+
+.option img + img {
+    margin-left: 10px;
 }
 
 .option img:hover {

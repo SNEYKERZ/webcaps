@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require 'funciones.php';
+    require 'funcionesCarrito.php';
     require 'vendor/autoload.php';
 
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {

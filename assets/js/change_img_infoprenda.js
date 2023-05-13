@@ -1,6 +1,3 @@
-
-
-
 /* Cambio de imagenes del info prenda */
 function img(anything) {
   document.querySelector('.slide').src = anything;
