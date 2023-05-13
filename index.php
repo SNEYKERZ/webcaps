@@ -86,7 +86,7 @@ include('templates/cabecera.php');
                   <?php print $item['referencia'] ?>
                 </h5>
                 <span class="card-text card-price font-weight-bold">$ <?php print $item['precio'] ?><b> COP</b></span>
-                <a href="carrito.php?id=<?php print $item['id'] ?>" class="bottom-shop mt-4 d-flex"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="carrito.php?id=<?php print $item['id'] ?>" class="bottom-shop d-flex"><i class="fa-solid fa-cart-shopping"></i></a>
               </div>
             </div>
           </div>

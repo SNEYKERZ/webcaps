@@ -270,14 +270,14 @@ header {
     text-align: end;
     padding: 0 !important;
     border: none !important;
-
+    /* border: 1px solid #000; */
+    height: 500px !important;
 }
 
 .card img {
     width: 100%;
-    height: 350px;
+    height: 300px;
     object-fit: cover;
-    
 }
 
 .card-title {
@@ -305,6 +305,11 @@ header {
     transition: .5s;
 }
 
+.card-text b {
+    color: #8f8f8f;
+    font-weight: bold;
+}
+
 .bottom-shop {
     display: flex;
     padding: 10px;
@@ -313,8 +318,9 @@ header {
     width: 100%;
     height: 50px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #ffffff;
     text-decoration: none;
+    margin-top: 50px !important;
 }
 
 .bottom-shop i {
@@ -339,12 +345,20 @@ header {
     font-size: 14px;
 }
 
+/* Falta hacer el responsive de las cards */
 @media screen and (max-width:800px) {
+    /* .products-container {} */
 }
 
+@media screen and (max-width:560px) {
+    /* .products-container {} */
 
-
-
+    .card {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+}
 
 /* STYLE INFO PRODUCTS */
 .container-product {
@@ -379,7 +393,7 @@ header {
     cursor: pointer;
 }
 
-.option img + img {
+.option img+img {
     margin-left: 10px;
 }
 
