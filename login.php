@@ -1,22 +1,21 @@
 <?php
 include('templates/cabecera.php');
-include('src/login.php');
 require 'vendor/autoload.php';
 
 /** login  **/
 //if (!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['password'])) {
-  //$sql = "INSERT INTO user (email, user, password) VALUES (:email, :user, :password)";
-  //$stmt = $conn->prepare($sql);
-  //$stmt->bindParam(':user', $_POST['user']);
- // $stmt->bindParam(':email', $_POST['email']);
-  //$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-  //$stmt->bindParam(':password', $_POST['$password']);
+//$sql = "INSERT INTO user (email, user, password) VALUES (:email, :user, :password)";
+//$stmt = $conn->prepare($sql);
+//$stmt->bindParam(':user', $_POST['user']);
+// $stmt->bindParam(':email', $_POST['email']);
+//$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//$stmt->bindParam(':password', $_POST['$password']);
 
-  //if ($stmt->execute()) {
- //   $message = 'Successflully';
- // } else {
- //   $message = 'Error';
- // }
+//if ($stmt->execute()) {
+//   $message = 'Successflully';
+// } else {
+//   $message = 'Error';
+// }
 //}
 
 ?>

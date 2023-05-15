@@ -36,7 +36,6 @@
   <script src="../../assets/js/scripts.js"></script>
 
 </head>
-
 <body>
   <div class="wrapper">
     <header style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);">
@@ -68,7 +67,7 @@
                 <a class="nav-link" href="../pedidos/index.php"><i class="fa-solid fa-people-group"></i> Pedidos</a>
               </li>
               <li class="nav-item btn btn-success">
-                <a class="nav-link text-light" href="../../login.php"> ADMIN </a>
+                <a class="nav-link text-light" href="cerrar_seccion.php"> SALIR </a>
               </li>
             </ul>
           </div>

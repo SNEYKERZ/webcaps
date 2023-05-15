@@ -1,11 +1,14 @@
 <?php
-include('../cabecera.php');
 
+session_start();
+if(empty($_SESSION["id"])){
+header("location: ../../acceso.php");
+}
+include('../cabecera.php');
 require '../../vendor/autoload.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $id = $_GET['id'];
-
   $producto = new capsweb\Productos;
   $resultado = $producto->mostrarPorId($id);
 

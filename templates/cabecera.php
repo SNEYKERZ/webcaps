@@ -58,7 +58,7 @@
             <a class="nav-link" href="carrito.php"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
           </li>
           <li class="nav-item btn">
-            <a class="nav-link" href="login.php"> <b> Perfil</b> </a>
+            <a class="nav-link" href="acceso.php"> <b> Perfil</b> </a>
           </li>
         </ul>
       </div>

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(empty($_SESSION["id"])){
+header("location: ../../acceso.php");
+}
 include('../cabecera.php');
 ?>
 <div class="container" id="main">
