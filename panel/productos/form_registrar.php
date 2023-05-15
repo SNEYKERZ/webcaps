@@ -3,7 +3,7 @@ session_start();
 if(empty($_SESSION["id"])){
 header("location: ../../acceso.php");
 }
-include('../cabecera.php');
+include('../../templates/cabeceraAdmin.php');
 ?>
 <div class="row">
   <div class="col-md-12">
@@ -98,5 +98,5 @@ include('../cabecera.php');
 <br><br>
 
 <?php
-include('../footer.php');
+include('../../templates/footerAdmin.php');
 ?>

@@ -4,7 +4,7 @@ session_start();
 if(empty($_SESSION["id"])){
 header("location: ../../acceso.php");
 }
-include('../cabecera.php');
+include('../../templates/cabeceraAdmin.php');
 require '../../vendor/autoload.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -110,5 +110,5 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <br><br>
 <?php
-include('../footer.php');
+include('../../templates/footerAdmin.php');
 ?>

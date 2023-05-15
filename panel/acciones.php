@@ -116,7 +116,7 @@ function subirFoto()
 
 
 if ($_POST['accion'] === 'INICIAR') {
-    session_start();
+
     if (empty($_POST["btn_ingreso"])) {
 
         $config = parse_ini_file(__DIR__ . '/../config/config.ini');
@@ -127,16 +127,13 @@ if ($_POST['accion'] === 'INICIAR') {
             $usuario = $_POST["usuario"];
             $contraseña = $_POST["contraseña"];
             $sql = $cn->query("SELECT * from administradores where usuario = '$usuario' and contraseña ='$contraseña' ");
-
+            session_start();
             if ($datos = $sql->fetchObject()) {
                 $_SESSION["id"] = $datos->id;
                 $_SESSION["nombre"] = $datos->nombre;
                 $_SESSION["email"] = $datos->email;
                 $_SESSION["numero"] = $datos->numero;
-
                 header("location: productos/index.php");
-
-
                 # code...
             } else {
                 echo "<div class='alert alert-danger' > ACCESO DENEGADO </div>";

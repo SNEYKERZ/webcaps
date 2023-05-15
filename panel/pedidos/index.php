@@ -3,7 +3,7 @@ session_start();
 if(empty($_SESSION["id"])){
 header("location: ../../acceso.php");
 }
-include('../cabecera.php');
+include('../../templates/cabeceraAdmin.php');
 ?>
 
 <div class="container" id="main">
@@ -64,3 +64,4 @@ include('../cabecera.php');
     </div>
   </div>
 </div> <!-- /container -->
+

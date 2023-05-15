@@ -13,8 +13,8 @@
                     </a>
                 </figure>
             </div>
-            <div class="col-lg-3 ">
-                <div class="about-us text-light d-sm-flex flex-sm-column">
+            <div class="col-lg-3">
+                <div class="about-us text-light">
                     <h2 class="text-uppercase fw-bold">Contacto</h2>
                     <p><i class="fa-solid fa-house" style="color: #ffffff;"></i> Palmira, Valle del Cauca, Colombia</p>
                     <p><i class="fa-solid fa-map-pin" style="color: #ffffff;"></i> Cra. 27 #30-63</p>
