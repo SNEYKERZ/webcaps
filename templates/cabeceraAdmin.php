@@ -41,7 +41,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../fabrica.php"><i class="fa-solid fa-shirt"></i> Fabrica <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../../panel/fabrica/fabrica.php"><i class="fa-solid fa-shirt"></i> Fabrica <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../panel/pedidos/index.php"><i class="fa-solid fa-people-group"></i> Pedidos</a>
@@ -50,7 +50,7 @@
             <a class="nav-link" href="../../panel/productos/index.php"><i class="fa-solid fa-shirt"></i> Productos</a>
           </li>
           <li class="nav-item btn">
-            <a class="nav-link" href="../../acceso.php"> <b> Perfil</b> </a>
+            <a class="nav-link" href="../../cerrarSeccion.php"> <b> salir</b> </a>
           </li>
         </ul>
       </div>

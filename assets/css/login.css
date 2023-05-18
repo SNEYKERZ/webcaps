@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+/* STYLES LOGIN */
+section {
+    height: 88.5vh;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-image: url(https://p4.wallpaperbetter.com/wallpaper/34/132/833/gangsta-hip-hop-rap-wallpaper-preview.jpg);
+    /* background-image: linear-gradient(to left, #4b4b4b, #0a0a0a); */
+    background-color: #171a22;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    justify-content: start;
+}
+
+section .nav-link.active {
+    background-color: #32364a !important;
+    width: 100% !important;
+}
+
+.nav-pills .nav-link {
+    border-radius: 4px;
+}
+
+section .nav-link,
+form a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.tab-content {
+    color: #fff;
+}
+
+.container-login {
+    width: 35rem;
+    height: 100%;
+    border-radius: 4px;
+    padding: 30px 20px 50px 20px;
+    background-color: #232734;
+    box-shadow: 25px 5px 20px 3px rgba(0, 0, 0, .2)
+}
+
+.container-login .nav-pills {
+    padding-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #066403 !important;
+    border: none !important;
+    height: 40px;
+}
+
+.form-outline {
+    position: relative;
+    width: 100%;
+}
+
+.form-control .form-label {
+    margin-left: 0px;
+}
+
+.container-login .form-outline input {
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #00000027;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.container-login .form-outline .form-control~.form-label {
+    position: absolute;
+    top: 3px;
+    left: 3%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.form-outline .form-control:focus~.form-label{
+    top: -65%;
+    left: 0%;
+    color: #242525;
+    font-size: 12px;
+}
+
+.form-control-valid:valid~.form-label {
+    top: -65% !important;
+    left: 0% !important;
+    font-size: 12px !important;
+  }
+
+.form-control {
+    color: #fff !important;
+}
+
+.form-control:focus {
+    background-color: rgba(0, 0, 0, .2) !important;
+    color: #fff !important;
+}
+
+.form-control:focus+.form-label {
+    display: block !important;
+    color: #ffffff;
+    top: -15px;
+    font-size: 14px;
+}
+
+.form-label {
+    color: #fff !important;
+}
+
+.text-center {
+    font-size: 17px;
+}
+
+.text-center p {
+    font-size: 14px;
+}
+
+.text-center button {
+    color: #fff;
+}
+
+.form-check {
+    align-items: center;
+}
+
+.btn-primary {
+    border-radius: 4px;
+    width: 100%;
+}

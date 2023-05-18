@@ -115,7 +115,8 @@ function subirFoto()
 }
 
 
-if ($_POST['accion'] === 'INICIAR') {
+if ($_POST['accion'] === 'Iniciar') {
+    session_start();
 
     if (empty($_POST["btn_ingreso"])) {
 
@@ -124,19 +125,23 @@ if ($_POST['accion'] === 'INICIAR') {
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
         if (!empty($_POST["usuario"]) && (!empty($_POST["contraseña"]))) {
+
             $usuario = $_POST["usuario"];
             $contraseña = $_POST["contraseña"];
             $sql = $cn->query("SELECT * from administradores where usuario = '$usuario' and contraseña ='$contraseña' ");
-            session_start();
+
+            $_SESSION['logged_in'] = true;
+
             if ($datos = $sql->fetchObject()) {
                 $_SESSION["id"] = $datos->id;
                 $_SESSION["nombre"] = $datos->nombre;
                 $_SESSION["email"] = $datos->email;
                 $_SESSION["numero"] = $datos->numero;
+
                 header("location: productos/index.php");
                 # code...
             } else {
-                echo "<div class='alert alert-danger' > ACCESO DENEGADO </div>";
+                echo  "ACCESO DENEGADO ";
                 # code...
             }
         } else {

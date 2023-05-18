@@ -291,6 +291,11 @@ header {
     color: #727272;
 }
 
+.bottom-shop:hover .card-text, 
+.bottom-shop:hover .card-text b {
+    color: #fff;
+}
+
 .card .fa-heart {
     position: absolute;
     top: 10px;
@@ -1019,6 +1024,5 @@ main {
 .botones {
 
     justify-content: space-between;
-
 
 }
