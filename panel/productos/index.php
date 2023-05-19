@@ -78,7 +78,7 @@ include('../../templates/cabeceraAdmin.php');
     }
 
     tbody th td {
-      padding: 10px;
+      padding: 10px; 
       text-align: center;
       border-bottom: 1px solid #dfdfdf;
     }
