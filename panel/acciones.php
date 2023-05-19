@@ -90,27 +90,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
     $id = $_GET['id'];
-
     $rpt = $producto->eliminar($id);
-
     if ($rpt)
         header('Location: productos/index.php');
     else
         print 'Error al eliminar el producto';
 }
 
-
 function subirFoto()
 {
-
     $carpeta = __DIR__ . '/../upload/';
-
     $archivo = $carpeta . $_FILES['foto']['name'];
-
     move_uploaded_file($_FILES['foto']['tmp_name'], $archivo);
-
     return $_FILES['foto']['name'];
 }
 

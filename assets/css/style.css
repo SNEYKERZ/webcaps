@@ -212,42 +212,70 @@ header {
 
 
 /* PROMOTION BAR */
-.slider_shirt {
-    background-color: #1b1d1e;
-    color: white;
-    transition: all .2s;
-    size: 5vw;
-    line-height: 3;
-    height: auto;
-    width: auto;
-    padding: .50rem;
-    letter-spacing: 5px;
-    font-family: 'Roboto';
+.slider-shirt {
+    width: 100%;
+    height: 50px;
+    margin: auto;
     overflow: hidden;
+    position: relative;
+    letter-spacing: 2px; 
+    font-family: 'Roboto';
+    color: white;
+    background-color: #1b1d1e;
 }
 
-.slider_shirt span {
+.slider-shirt span {
     padding: 0.2vw;
     white-space: nowrap;
     display: inline-block;
 }
 
-.slider_shirt .sliders {
+.slider-shirt .sliders {
     display: flex;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0%;
+    left: 0%;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.slider_shirt .sliders span {
+.slider-shirt .sliders span {
     width: auto;
-    animation: promo 40s linear infinite;
 }
 
-@keyframes promo {
+.block-1 {
+    animation: block-1 30s linear infinite;
+    -webkit-animation: block-1 30s linear infinite;
+}
+
+.block-2 {
+    animation: block-2 30s linear infinite;
+    -webkit-animation: block-2 30s linear infinite;
+}
+
+@keyframes block-1 {
     from {
+        -webkit-animation: translateX(0);
         transform: translateX(0);
     }
 
     to {
+        -webkit-animation: translateX(-100%);
         transform: translateX(-100%);
+    }
+}
+
+@keyframes block-2 {
+    from {
+        -webkit-animation: translateX(100%);
+        transform: translateX(100%);        
+    }
+
+    to {
+        -webkit-animation: translateX(0);
+        transform: translateX(0);
     }
 }
 
@@ -291,7 +319,7 @@ header {
     color: #727272;
 }
 
-.bottom-shop:hover .card-text, 
+.bottom-shop:hover .card-text,
 .bottom-shop:hover .card-text b {
     color: #fff;
 }
@@ -362,6 +390,90 @@ header {
         width: 100%;
         height: 150px;
         object-fit: cover;
+    }
+}
+
+/* STYLES PAYMENT METHODS */
+.slider-payment {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #fafafa;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+}
+
+.slider-payment::before,
+.slider-payment::after {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+    content: "";
+    background: linear-gradient(to right, rgba(250, 250, 250, 1) 0%, rgba(250, 250, 250, 0) 100%);
+}
+
+.slider-payment::before {
+    left: 0;
+    top: 0;
+}
+
+.slider-payment::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slider-payment .slide-track {
+    display: flex;
+    position: absolute;
+    width: inherit;
+    height: auto;
+    top: 0%;
+    left: 0%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.primary {
+    animation: primary 20s linear infinite;
+    -webkit-animation: primary 20s linear infinite;
+}
+
+.secondary {
+    animation: secondary 20s linear infinite;
+    -webkit-animation: secondary 20s linear infinite;
+}
+
+.slider-payment .slide-content {
+    width: 200px;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-payment .slide-content img {
+    width: 100%;
+}
+
+@keyframes primary {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes secondary {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: 0%;
     }
 }
 
@@ -610,10 +722,6 @@ main {
     height: 100%;
     object-fit: cover;
     transition: all 0.5s ease;
-}
-
-.container-content img:hover {
-    transform: scale(1.1);
 }
 
 .row-container-1 {
@@ -1022,7 +1130,5 @@ main {
 }
 
 .botones {
-
     justify-content: space-between;
-
 }

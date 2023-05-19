@@ -8,19 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'vendor/autoload.php';
 
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-        $cliente = new capsweb\Productos;
+        $cliente = new capsweb\clientes;
 
         $_params = array(
             'nombre' => $_POST['nombre'],
             'apellidos' => $_POST['apellidos'],
             'email' => $_POST['email'],
             'telefono' => $_POST['telefono'],
-            'comentario' => $_POST['comentario']
+            'direccion' => $_POST['direccion']
         );
 
         $cliente_id = $cliente->registrar($_params);
 
-        $pedido = new capsweb\Productos;
+        $pedido = new capsweb\pedidos;
 
         $_params = array(
             'cliente_id' => $cliente_id,
@@ -37,12 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "precio" => $value['precio'],
                 "cantidad" => $value['cantidad'],
             );
-
-            /*  $pedido->registrarDetalle($_params);*/
+            $pedido->registrarDetalle($_params);
         }
-
         $_SESSION['carrito'] = array();
-
         header('Location: gracias.php');
     }
 }

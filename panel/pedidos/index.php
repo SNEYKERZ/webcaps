@@ -25,7 +25,7 @@ include('../../templates/cabeceraAdmin.php');
           <tbody>
             <?php
             require '../../vendor/autoload.php';
-            $pedido = new capsweb\Productos;
+            $pedido = new capsweb\pedidos;
             $info_pedido = $pedido->mostrar();
             $cantidad = count($info_pedido);
             if ($cantidad > 0) {
@@ -38,25 +38,19 @@ include('../../templates/cabeceraAdmin.php');
                   <td><?php print $c ?></td>
                   <td><?php print $item['nombre'] . ' ' . $item['apellidos'] ?></td>
                   <td><?php print $item['id'] ?></td>
-                  <td><?php print $item['total'] ?> PEN</td>
+                  <td><?php print $item['total'] ?> COP</td>
                   <td><?php print $item['fecha'] ?></td>
-
                   <td class="text-center">
-                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-eye-open"></span></a>
-
+                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span></a>
                   </td>
-
                 </tr>
-
               <?php
               }
             } else {
-
               ?>
               <tr>
                 <td colspan="6">NO HAY REGISTROS</td>
               </tr>
-
             <?php } ?>
           </tbody>
         </table>

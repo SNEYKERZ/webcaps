@@ -2,6 +2,7 @@
 session_start();
 include('templates/cabecera.php');
 require 'funcionesCarrito.php';
+require 'vendor/autoload.php';
 ?>
 <br>
 
@@ -29,8 +30,8 @@ require 'funcionesCarrito.php';
               <input type="text" class="form-control" name="telefono" required>
             </div>
             <div class="form-group">
-              <label>Comentario</label>
-              <textarea name="comentario" class="form-control" rows="4"></textarea>
+              <label>Direccion</label>
+              <textarea name="direccion" placeholder="INGRESE SU DIRECCION LO MAS CLARA POSIBLE" class="form-control" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
           </form>
@@ -39,8 +40,6 @@ require 'funcionesCarrito.php';
     </div>
   </div>
 </div> <!-- /container -->
-
-
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

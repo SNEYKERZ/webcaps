@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(empty($_SESSION["id"])){
-header("location: ../../acceso.php");
+if (empty($_SESSION["id"])) {
+  header("location: ../../acceso.php");
 }
 include('../../templates/cabeceraAdmin.php');
 ?>
@@ -12,15 +12,10 @@ include('../../templates/cabeceraAdmin.php');
         <?php
         require '../../vendor/autoload.php';
         $id = $_GET['id'];
-        $pedido = new capsweb\Productos;
-
+        $pedido = new capsweb\pedidos;
         $info_pedido = $pedido->mostrarPorId($id);
-
-        //  $info_detalle_pedido = $pedido->mostrarDetallePorIdPedido($id);
-
+        $info_detalle_pedido = $pedido->mostrarDetallePorIdPedido($id);
         ?>
-
-
         <legend>Información de la Compra</legend>
         <div class="form-group">
           <label>Nombre</label>
@@ -38,9 +33,6 @@ include('../../templates/cabeceraAdmin.php');
           <label>Fecha</label>
           <input value="<?php print $info_pedido['fecha'] ?>" type="text" class="form-control" readonly>
         </div>
-
-
-
         <hr>
         Productos Comprados
         <hr>
@@ -59,8 +51,6 @@ include('../../templates/cabeceraAdmin.php');
           </thead>
           <tbody>
             <?php
-
-
             $cantidad = count($info_detalle_pedido);
             if ($cantidad > 0) {
               $c = 0;
@@ -69,11 +59,9 @@ include('../../templates/cabeceraAdmin.php');
                 $item = $info_detalle_pedido[$x];
                 $total = $item['precio'] * $item['cantidad'];
             ?>
-
-
                 <tr>
                   <td><?php print $c ?></td>
-                  <td><?php print $item['titulo'] ?></td>
+                  <td><?php print $item['referencia'] ?></td>
                   <td>
                     <?php
                     $foto = '../../upload/' . $item['foto'];
@@ -84,7 +72,7 @@ include('../../templates/cabeceraAdmin.php');
                       SIN FOTO
                     <?php } ?>
                   </td>
-                  <td><?php print $item['precio'] ?> PEN</td>
+                  <td><?php print $item['precio'] ?> COP</td>
                   <td><?php print $item['cantidad'] ?></td>
                   <td>
                     <?php print $total ?>
@@ -94,17 +82,13 @@ include('../../templates/cabeceraAdmin.php');
               <?php
               }
             } else {
-
               ?>
               <tr>
                 <td colspan="6">NO HAY REGISTROS</td>
               </tr>
 
             <?php } ?>
-
-
           </tbody>
-
         </table>
         <div class="col-md-3">
           <div class="form-group">
@@ -112,21 +96,15 @@ include('../../templates/cabeceraAdmin.php');
             <input value="<?php print $info_pedido['total'] ?>" type="text" class="form-control" readonly>
           </div>
         </div>
-
       </fieldset>
       <div class="pull-left">
-        <a href="index.php" class="btn btn-default hidden-print">Cancelar</a>
+        <a href="index.php" class="btn btn-info hidden-print">VOLVER</a>
       </div>
-
       <div class="pull-right">
         <a href="javascript:;" id="btnImprimir" class="btn btn-danger hidden-print">Imprimir</a>
       </div>
-
-
-
     </div>
   </div>
-
 
 </div> <!-- /container -->
 

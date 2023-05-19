@@ -11,8 +11,8 @@ class Productos
     public function __construct()
     {
         $this->config = parse_ini_file(__DIR__ . '/../config/config.ini');
-        $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
-            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+        $this->cn = new PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
     }
     /**añade un producto en la base de datos */
@@ -76,30 +76,31 @@ class Productos
     /** selecciona y muestra los  items de la tabla productos*/
     public function mostrar()
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock`,`categoria` FROM `productos` 
-
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`categoria` FROM `productos` 
         INNER JOIN `categorias`
         ON productos.categoria_id = categorias.id ORDER BY productos.id DESC ";
 
         $resultado = $this->cn->prepare($sql);
 
         if ($resultado->execute())
+
             return $resultado->fetchAll();
 
         return false;
     }
 
-     /** con el ID dado busca en la base de datos la prenda con ese ID */
-    public function mostrarPorId($id){
-        
+    /** con el ID dado busca en la base de datos la prenda con ese ID */
+    public function mostrarPorId($id)
+    {
+
         $sql = "SELECT * FROM `productos` WHERE `id`=:id ";
-        
+
         $resultado = $this->cn->prepare($sql);
         $_array = array(
             ":id" =>  $id
         );
 
-        if($resultado->execute($_array))
+        if ($resultado->execute($_array))
             return $resultado->fetch();
 
         return false;
@@ -121,5 +122,18 @@ class Productos
 
         return false;
     }
- 
+    public function mostrarPrueba()
+    { {
+            $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
+        WHERE productos.stock >= '5' ";
+
+            $resultado = $this->cn->prepare($sql);
+
+            if ($resultado->execute())
+
+                return $resultado->fetchAll();
+
+            return false;
+        }
+    }
 }

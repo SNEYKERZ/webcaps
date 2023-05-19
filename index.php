@@ -33,8 +33,17 @@ include('templates/cabecera.php');
 </section>
 
 <!-- PROMOTION BAR -->
-<div class="slider_shirt clonar-span">
-  <div class="sliders">
+<div class="slider-shirt">
+  <div class="sliders block-1">
+    <span class="mx-3"> 1 CAMISETAS EN $30.000 </span>
+    <span class="mx-3"> 2 CAMISETAS EN $55.000 </span>
+    <span class="mx-3"> 3 CAMISETAS EN $75.000 </span>
+    <span class="mx-3"> 4 CAMISETAS EN $95.000 </span>
+    <span class="mx-3"> 5 CAMISETAS EN $110.000 </span>
+    <span class="mx-3"> 6 CAMISETAS EN $120.000 </span>
+  </div>
+
+  <div class="sliders block-2">
     <span class="mx-3"> 1 CAMISETAS EN $30.000 </span>
     <span class="mx-3"> 2 CAMISETAS EN $55.000 </span>
     <span class="mx-3"> 3 CAMISETAS EN $75.000 </span>
@@ -45,7 +54,7 @@ include('templates/cabecera.php');
 </div>
 
 <!-- MAIN SECTION -->
-<main>
+<main class="pb-4">
   <div class="titulo_index ">
     <h3>NUESTROS PRODUCTOS</h3>
   </div>
@@ -55,7 +64,7 @@ include('templates/cabecera.php');
       <?php
       require 'vendor/autoload.php';
       $productos = new capsweb\Productos;
-      $info_productos = $productos->mostrar();
+      $info_productos = $productos->mostrarPrueba();
       $cantidad = count($info_productos);
 
       if ($cantidad > 0) {
@@ -101,6 +110,37 @@ include('templates/cabecera.php');
   </div>
   </div>
 </main>
+
+<!-- PAYMENT METHODS -->
+<div class="slider-payment">
+  <div class="slide-track primary">
+    <div class="slide-content"><img src="https://logotipoz.com/wp-content/uploads/2021/10/bancolombia-logo-png-transparente.png" alt="Bancolombia"></div>
+    <div class="slide-content"><img src="https://mercantilcolpatria.com/wp-content/uploads/2022/09/mercantilColpatria.png" alt="Colpatria"></div>
+    <div class="slide-content"><img src="https://www.operadorjuegos.com.co/images/Logo-Baloto-Big.png" alt="Baloto"></div>
+    <div class="slide-content"><img src="https://www.tuya.com.co/sites/default/files/landings/paso-a-paso-exitocom/logoexito-pasoapaso-exitocom.png" alt="Exito"></div>
+    <div class="slide-content"><img src="https://static.ofertia.com.co/comercios/Carulla/profile-15696.v11.png" alt="Carulla"></div>
+    <div class="slide-content"><img src="https://www.america-retail.com/static//2019/03/Surtimax.png" alt="SurtiMax"></div>
+    <div class="slide-content"><img src="https://www.superinter.com.co/sites/default/files/logo-super-inter-.png" alt="SuperInter"></div>
+    <div class="slide-content"><img src="https://magv1-prod.s3.amazonaws.com/image_assets/files/14832/medium-logo-.png?1648817626" alt="Olimpica"></div>
+    <div class="slide-content"><img src="https://www.efecty.com.co/WebApi//uploads/logo-efecty_nuevo-01-2.png" alt="Efecty"></div>
+    <div class="slide-content"><img src="https://laherradura.com.co/wp-content/uploads/2020/08/gane.png" alt="Gane"></div>
+    <div class="slide-content"><img src="https://www.americadecali.co/wp-content/uploads/2021/09/LOGO-SUPER-GIROS.png" alt="Super Giros"></div>
+  </div>
+
+  <div class="slide-track secondary">
+    <div class="slide-content"><img src="https://logotipoz.com/wp-content/uploads/2021/10/bancolombia-logo-png-transparente.png" alt="Bancolombia"></div>
+    <div class="slide-content"><img src="https://mercantilcolpatria.com/wp-content/uploads/2022/09/mercantilColpatria.png" alt="Colpatria"></div>
+    <div class="slide-content"><img src="https://www.operadorjuegos.com.co/images/Logo-Baloto-Big.png" alt="Baloto"></div>
+    <div class="slide-content"><img src="https://www.tuya.com.co/sites/default/files/landings/paso-a-paso-exitocom/logoexito-pasoapaso-exitocom.png" alt="Exito"></div>
+    <div class="slide-content"><img src="https://static.ofertia.com.co/comercios/Carulla/profile-15696.v11.png" alt="Carulla"></div>
+    <div class="slide-content"><img src="https://www.america-retail.com/static//2019/03/Surtimax.png" alt="SurtiMax"></div>
+    <div class="slide-content"><img src="https://www.superinter.com.co/sites/default/files/logo-super-inter-.png" alt="SuperInter"></div>
+    <div class="slide-content"><img src="https://magv1-prod.s3.amazonaws.com/image_assets/files/14832/medium-logo-.png?1648817626" alt="Olimpica"></div>
+    <div class="slide-content"><img src="https://www.efecty.com.co/WebApi//uploads/logo-efecty_nuevo-01-2.png" alt="Efecty"></div>
+    <div class="slide-content"><img src="https://laherradura.com.co/wp-content/uploads/2020/08/gane.png" alt="Gane"></div>
+    <div class="slide-content"><img src="https://www.americadecali.co/wp-content/uploads/2021/09/LOGO-SUPER-GIROS.png" alt="Super Giros"></div>
+  </div>
+</div>
 
 <?php include('templates/whatsAppBottom.php'); ?>
 <?php include('templates/footer.php'); ?>
