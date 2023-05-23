@@ -41,7 +41,7 @@ include('../../templates/cabeceraAdmin.php');
                   <td><?php print $item['total'] ?> COP</td>
                   <td><?php print $item['fecha'] ?></td>
                   <td class="text-center">
-                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-outline-info btn-sm"> <img src="../../assets/images/metaforas/lupa.png" width="25px" height="25px"></a>
                   </td>
                 </tr>
               <?php

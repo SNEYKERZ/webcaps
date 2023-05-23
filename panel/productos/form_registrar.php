@@ -93,10 +93,3 @@ include('../../templates/cabeceraAdmin.php');
 
   </div>
 </div>
-
-
-<br><br>
-
-<?php
-include('../../templates/footerAdmin.php');
-?>

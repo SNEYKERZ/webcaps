@@ -1,9 +1,11 @@
-<?php
 
+<?php
 session_start();
+require 'funcionesCarrito.php';
+require 'vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require 'funcionesCarrito.php';
+
     $id = $_POST['id'];
     $cantidad = $_POST['cantidad'];
 

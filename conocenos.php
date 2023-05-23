@@ -9,7 +9,7 @@ include('templates/cabecera.php');
   <div class="container-about-content position-relative">
     <div class="row row-col-1">
 
-      <div class="row row-container-1">
+      <div class="row row-container">
         <div class="container-content col-md-4">
           <img src="https://lh3.googleusercontent.com/p/AF1QipO6A1Tm5GVp_ih06-8K_Zf18BrPDZgkg8zgbbbl=s680-w680-h510" alt="">
         </div>
@@ -21,7 +21,7 @@ include('templates/cabecera.php');
         </div>
       </div>
 
-      <div class="row row-container-2">
+      <div class="row row-container">
         <div class=" content-text col-md-6">
           <h2 class="text-uppercase">Misión</h2>
           <p>
@@ -33,7 +33,7 @@ include('templates/cabecera.php');
         </div>
       </div>
 
-      <div class="row row-container-3">
+      <div class="row row-container">
         <div class="container-content col-md-4">
           <img src="https://lh3.googleusercontent.com/p/AF1QipO6A1Tm5GVp_ih06-8K_Zf18BrPDZgkg8zgbbbl=s680-w680-h510" alt="">
         </div>

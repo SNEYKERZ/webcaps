@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('templates/cabecera.php');
 //ACTIVAR LAS SESSIONES EN PHP
 require 'funcionesCarrito.php';

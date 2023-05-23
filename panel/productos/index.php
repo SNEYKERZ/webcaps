@@ -7,6 +7,8 @@ include('../../templates/cabeceraAdmin.php');
 ?>
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../../assets/js/alerts-stock.js"></script>
 
@@ -78,38 +80,36 @@ include('../../templates/cabeceraAdmin.php');
     }
 
     tbody th td {
-      padding: 10px; 
+      padding: 10px;
       text-align: center;
       border-bottom: 1px solid #dfdfdf;
     }
 
-    .icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .icons .btn-outline-success {
+      background-color: #178f53;
     }
 
-    .icons a {  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 5vw;
-      height: 5vw;
-    }
-
-    /* .icons .btn-outline-success {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+    .icons .btn-outline-success:hover {
       background-color: #006332;
+      transition: all .2s;
+    }
+
+    .icons .btn-outline-success i {
+      color: #fff !important;
     }
 
     .icons .btn-outline-danger {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
       background-color: #dc3545;
-    } */ */
+    }
+
+    .icons .btn-outline-danger:hover {
+      background-color: #e32828;
+      transition: all .2s;
+    }
+
+    .icons .btn-outline-danger i {
+      color: #fff !important;
+    }
   </style>
 </head>
 
@@ -120,12 +120,6 @@ include('../../templates/cabeceraAdmin.php');
       <a href="form_registrar.php" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">Registrar nuevo producto</span>
       </a>
-
-      <select name="" id="">
-        <option value="" selected>Gorras</option>
-        <option value="" selected>Camiseta</option>
-        <option value="" selected>etc</option>
-      </select>
     </div>
     <table class="table table-bordered table-hover">
       <thead>
@@ -139,6 +133,7 @@ include('../../templates/cabeceraAdmin.php');
           <th>Acciones</th>
         </tr>
       </thead>
+
       <tbody>
         <?php
         require '../../vendor/autoload.php';
@@ -168,11 +163,14 @@ include('../../templates/cabeceraAdmin.php');
                   SIN FOTO
                 <?php } ?>
               </td>
-              <td class="icons text-center">
-                <a href="form_actualizar.php?id=<?php print $item['id']  ?>" class="btn  btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
+              <td class="icons d-flex justify-content-center align-items-center gap-2">
+
+                <!-- Button trigger modal -->
+                <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
                 <a href="../acciones.php?id=<?php print $item['id'] ?>" class="btn btn-outline-danger btn-sm" onclick="deleteProduct(<?php $item['id'] ?>)"><i class="fa-solid fa-trash"></i></span></a>
               </td>
             </tr>
+            <?php include('../../panel/productos/modalEdit.php'); ?>
           <?php
           }
         } else {
@@ -185,7 +183,3 @@ include('../../templates/cabeceraAdmin.php');
     </table>
   </div>
 </div>
-
-<?php
-include('../../templates/footerAdmin.php');
-?>

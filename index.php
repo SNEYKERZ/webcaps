@@ -5,7 +5,7 @@ include('templates/cabecera.php');
 <!-- CARUSEL -->
 <section>
   <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="6000" style="padding-bottom: 15px;">
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators gap-3 py-3">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -58,7 +58,7 @@ include('templates/cabecera.php');
   <div class="titulo_index ">
     <h3>NUESTROS PRODUCTOS</h3>
   </div>
-  <div class="products-container d-flex justify-content-center mt-50 mb-50">
+  <div class="products-container justify-content-center mt-50 mb-50">
     <div class="row gap-10">
 
       <?php

@@ -39,7 +39,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- NAVIGATION BUTTONS -->
+      <!-- Navigation buttons -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -56,6 +56,8 @@
           </li>
         </ul>
       </div>
+      <!-- END Navigation buttons -->
+
     </nav>
   </header>
 </body>
