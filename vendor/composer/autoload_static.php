@@ -14,15 +14,22 @@ class ComposerStaticInitd3b68789598aa580ceb8a44e49fbbc23
         'S' => 
         array (
             'Svg\\' => 4,
+            'StellaMaris\\Clock\\' => 18,
             'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
+            'Psr\\Clock\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
             'Masterminds\\' => 12,
+        ),
+        'L' => 
+        array (
+            'Lcobucci\\JWT\\' => 13,
+            'Lcobucci\\Clock\\' => 15,
         ),
         'F' => 
         array (
@@ -43,9 +50,17 @@ class ComposerStaticInitd3b68789598aa580ceb8a44e49fbbc23
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
         ),
+        'StellaMaris\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stella-maris/clock/src',
+        ),
         'Sabberworm\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -54,6 +69,14 @@ class ComposerStaticInitd3b68789598aa580ceb8a44e49fbbc23
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Lcobucci\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/clock/src',
         ),
         'FontLib\\' => 
         array (

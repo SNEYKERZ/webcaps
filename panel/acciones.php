@@ -144,8 +144,8 @@ function subirFoto()
   return $_FILES['foto']['name'];
 }
 
-
-if ($_POST['accion'] === 'Iniciar') {
+//INICIO DE SECCION
+if ($_POST['accion'] === 'Conectar') {
   session_start();
 
   if (empty($_POST["btn_ingreso"])) {

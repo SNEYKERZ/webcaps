@@ -1,0 +1,54 @@
+.container-car-shopping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.container-car-shopping-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 6px 5px 10px 2px #bdbdbdbf;
+    width: 90%;
+    background-color: #fff;
+}
+
+.container-car-shopping .table {
+    width: 90%;
+    margin: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+.container-car-shopping-content h2 {
+    padding-top: 20px;
+    padding-bottom: 2px;
+}
+
+.container-car-shopping-content td img {
+    width: 50px;
+    height: auto;
+    overflow: hidden;
+}
+
+.container-car-shopping-content .botones {
+    display: initial;
+    width: 100%;
+    margin-left: 11%;
+    padding-bottom: 10px;
+}
+
+.container-car-shopping-content .botones a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-reload:hover {
+    background-color: #212529;
+}
+
+.btn-reload:hover i {
+    color: #fff !important;
+}

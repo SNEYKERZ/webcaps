@@ -7,6 +7,8 @@ include('../../templates/cabeceraAdmin.php');
 ?>
 
 <head>
+    <link rel="stylesheet" href="../../assets/css/fabrica.css">
+
     <script>
         $(document).ready(function() {
             var rowIndex = 0; // contador para el índice de fila
@@ -71,59 +73,49 @@ include('../../templates/cabeceraAdmin.php');
         });
     </script>
 </head>
+
 <body>
-    <h2>Calculadora de fabrica</h2>
+    <h2 class="text-center pb-5 text-uppercase">Calculadora de fabrica</h2>
 
-    <table class="table table-striped-columns table-bordered table-hover" id="data-table">
-        <thead>
-            <tr>
-                <th>Rollo</th>
-                <th>Cantidad</th>
-                <th>Camisetas</th>
-                <th>Precio de camisas</th>
-                <th>Precio de rollos</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Filas agregadas dinámicamente se mostrarán aquí -->
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="1"></td>
-                <td>Total Camisetas:</td>
-                <td id="total-camisetas"></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td colspan="2"></td>
-                <td>Total Precio Camisas:</td>
-                <td id="total-precio-camisas"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="3"></td>
-                <td>Total Precio rollos:</td>
-                <td id="total-precio-rollos"></td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-    <button type="button" class="btn btn-primary" id="add-row">Agregar </button>
-    <br> <br>
-    <div class="btn">
-        <a href="javascript:;" id="btnImprimir" class="btn btn-danger hidden-print">Imprimir</a>
+    <div class="container-table">
+        <table class="table table-striped table-bordered table-hover" id="data-table">
+            <thead>
+                <tr>
+                    <th>Rollo</th>
+                    <th>Cantidad</th>
+                    <th>Camisetas</th>
+                    <th>Precio de camisas</th>
+                    <th>Precio de rollos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas agregadas dinámicamente se mostrarán aquí -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td colspan="1"></td>
+                    <td id="total-camisetas"></td>
+                    <td id="total-precio-camisas"></td>
+                    <td id="total-precio-rollos"></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="buttons d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-success" id="add-row">Agregar </button>
+        <div class="btn">
+            <a href="javascript:;" id="btnImprimir" class="btn btn-danger hidden-print">Imprimir</a>
+        </div>
     </div>
     </main>
-    <script>//imprimir
+    <script>
+        //imprimir
         $('#btnImprimir').on('click', function() {
-
             window.print();
-
             return false;
-
         })
     </script>
-
 </body>

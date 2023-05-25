@@ -8,9 +8,13 @@ $baseDir = dirname($vendorDir);
 return array(
     'capsweb\\' => array($baseDir . '/src'),
     'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src/Svg'),
+    'StellaMaris\\Clock\\' => array($vendorDir . '/stella-maris/clock/src'),
     'Sabberworm\\CSS\\' => array($vendorDir . '/sabberworm/php-css-parser/src'),
+    'Psr\\Clock\\' => array($vendorDir . '/psr/clock/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src'),
+    'Lcobucci\\Clock\\' => array($vendorDir . '/lcobucci/clock/src'),
     'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src/FontLib'),
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
 );

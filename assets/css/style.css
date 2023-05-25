@@ -293,10 +293,9 @@ header {
 .card {
   position: relative;
   display: inline-block;
-  text-align: end;
+  text-align: inherit;
   padding: 0 !important;
   border: none !important;
-  /* border: 1px solid #000; */
   height: 500px !important;
 }
 
@@ -801,7 +800,7 @@ main {
   opacity: 0;
   max-width: 100%;
   transition: opacity .3s ease-out;
-  inset: auto auto 30px 30px;
+  inset: auto 10px 30px 10px;
 }
 
 .container-card .card:hover img {
