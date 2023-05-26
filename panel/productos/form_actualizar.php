@@ -99,9 +99,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="form-group">
                   <label>Precio</label>
                   <!-- Necesario hacer el llamado al item para que se efectue el cambio-->
-
                   <input value="<?php print $resultado['precio'] ?>" type="number" class="form-control" name="precio" placeholder="0.000" required>
-
                 </div>
               </div>
             </div>
@@ -110,11 +108,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="form-group">
                   <label>Foto</label>
                   <!-- Necesario hacer el llamado al item para que se efectue el cambio-->
-
                   <input type="file" class="form-control" name="foto">
-
                   <input type="hidden" name="foto_temp" value="<?php print $resultado['foto'] ?>">
-
                 </div>
               </div>
             </div>

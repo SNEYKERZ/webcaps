@@ -92,49 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-// if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-//   $id = $_GET['id'];
-//   $rpt = $producto->eliminar($id);
-//   if ($rpt)
-//     header('Location: productos/index.php');
-//   else
-//     print 'Error al eliminar el producto';
-// }
-// 
-?>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'GET') { ?>
-
-  <script>
-    function deleteProduct(<?php $item['id'] ?>) { brooo, andate a fabrica a ver si te funciona el ajax intenta hacer algo en esa tabla
-      event.preventDefault();
-      swal({
-          title: "¿Desea eliminar este producto?",
-          text: "",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then((willDelete) => {
-          if (willDelete.isConfirmed) {
-            swal("El producto se eliminara", {
-              icon: "success",             
-            });
-            <?php $id = $_GET['id'];
-            echo $id;
-            // $rpt = $producto->eliminar($id);
-            header('Location: productos/index.php'); ?>
-          } else {
-            swal("Acción cancelada");
-            // <?php
-            print 'Error al eliminar el producto'; ?>
-          }
-        });
-    }
-  </script>
-<?php
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['accion']) && $_GET['accion'] === 'Eliminar') {
+  $id = $_GET['id'];
+  $rpt = $producto->eliminar($id);
+  if ($rpt)
+    header('Location: productos/index.php');
+  else
+    echo 'Error al eliminar el producto';
 }
+
 
 function subirFoto()
 {
@@ -179,4 +145,3 @@ if ($_POST['accion'] === 'Conectar') {
     }
   }
 }
-?>

@@ -90,6 +90,5 @@ include('../../templates/cabeceraAdmin.php');
         <a href="index.php" class="btn btn-danger">Cancelar</a>
       </form>
     </fieldset>
-
   </div>
 </div>

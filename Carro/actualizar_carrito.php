@@ -1,8 +1,7 @@
-
 <?php
 session_start();
 require 'funcionesCarrito.php';
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -15,5 +14,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             actualizarProducto($id, $cantidad);
     }
 
-    header('Location: carrito.php');
+    header('Location: index.php');
 }

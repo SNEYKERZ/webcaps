@@ -94,7 +94,7 @@ include('templates/cabecera.php');
                 <h5 class="card-title text-uppercase">
                   <?php print $item['referencia'] ?>
                 </h5>
-                <a href="carrito.php?id=<?php print $item['id'] ?>" class="bottom-shop d-flex">
+                <a href="carro/index.php?id=<?php print $item['id'] ?>" class="bottom-shop d-flex">
                   <span class="card-text card-price">$ <?php print $item['precio'] ?>
                     <b> COP</b> <i class="fa-solid fa-cart-shopping"></i>
                   </span>

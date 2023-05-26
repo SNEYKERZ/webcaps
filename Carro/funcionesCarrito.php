@@ -4,16 +4,18 @@ function agregarProducto($resultado, $id, $cantidad = 1)
     $_SESSION['carrito'][$id] = array(
         'id' => $resultado['id'],
         'referencia' => $resultado['referencia'],
+        'categoria_id' => $resultado['categoria_id'],
+        'categoria' => $resultado['categoria'],
         'foto' => $resultado['foto'],
         'precio' => $resultado['precio'],
-       /* 'talla_id' => $resultado['talla_id'],*/
+        /* 'talla_id' => $resultado['talla_id'],*/
         'cantidad' => $cantidad
     );
 }
 
 function actualizarProducto($id, $cantidad = FALSE)
 {
-    if ($cantidad)
+    if ($cantidad >= 0)
         $_SESSION['carrito'][$id]['cantidad'] = $cantidad;
     else
         $_SESSION['carrito'][$id]['cantidad'] += 1;
