@@ -24,6 +24,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../assets/js/change_img_infoprenda.js"></script>
   <script src="../assets/js/carrusel.js"></script>
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>
 </head>
 
 <body>
