@@ -24,6 +24,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="assets/js/change_img_infoprenda.js"></script>
   <script src="assets/js/carrusel.js"></script>
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>
 </head>
 
 <body>
@@ -52,7 +53,7 @@
             <a class="nav-link" href="carro/index.php"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
           </li>
           <li class="nav-item btn">
-            <a class="nav-link" href="acceso.php"> <b> Perfil</b> </a>
+            <a class="nav-link" href="acceso.php"> <b> ADMIN</b> </a>
           </li>
         </ul>
       </div>

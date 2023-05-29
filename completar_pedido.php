@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require 'funcionesCarrito.php';
+    require 'carro/funcionesCarrito.php';
     require 'vendor/autoload.php';
 
     if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
@@ -40,6 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pedido->registrarDetalle($_params);
         }
         $_SESSION['carrito'] = array();
-        header('Location: gracias.php');
+        header('Location: index.php');
     }
 }

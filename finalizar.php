@@ -1,13 +1,32 @@
 <?php
 session_start();
 include('templates/cabecera.php');
-require 'funcionesCarrito.php';
+require 'carro/funcionesCarrito.php';
 require 'vendor/autoload.php';
 ?>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<div class="container" id="main">
+<head>
+  <style>
+    .container-form-complet-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+    .container-form-complet-info .main-form {
+      width: 100%;
+      height: auto;
+
+    }
+
+
+  </style>
+</head>
+
+<div class="container-form-complet-info" id="main">
   <div class="main-form">
     <div class="row">
       <div class="col-md-6">

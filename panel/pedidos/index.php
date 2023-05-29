@@ -41,7 +41,7 @@ include('../../templates/cabeceraAdmin.php');
                   <td><?php print $item['total'] ?> COP</td>
                   <td><?php print $item['fecha'] ?></td>
                   <td class="text-center">
-                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-outline-info btn-sm"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="ver.php?id=<?php print $item['id'] ?>" class="btn btn-dark btn-sm"><i class="fa-solid fa-magnifying-glass"></i></a>
                   </td>
                 </tr>
               <?php

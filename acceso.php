@@ -1,7 +1,8 @@
   <?php
 include('templates/cabecera.php');
 require 'vendor/autoload.php';
-//tokens
+//tokens session_start();
+ 
 // CONFIGURACIÓN EN TIEMPO DE EJECUCIÓN //
 
   // Especifica si el módulo sólo usará cookies para almacenar el id de sesión en la parte del cliente. 
@@ -35,8 +36,6 @@ require 'vendor/autoload.php';
   header('X-Frame-Options: SAMEORIGIN');
   // La cabecera X-XSS-Protection Se trata de una capa de seguridad adicional que bloquea ataques XSS
   header('X-XSS-Protection: 1;mode=block');
-
-
 ?>
 
 <head>
@@ -75,8 +74,9 @@ require 'vendor/autoload.php';
     <div class="tab-content">
       <!-- Pestaña Login -->
       <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-        <form method="post" action="panel/acciones.php">
-
+         <p>EXCLUSIVO DEL ADMINISTRADOR</p>
+         <form method="post" action="panel/acciones.php">
+         
           <!-- Username -->
           <div class="form-outline mb-4">
             <input type="text" id="loginName" class="form-control" name="usuario" required>

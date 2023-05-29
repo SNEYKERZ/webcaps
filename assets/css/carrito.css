@@ -15,11 +15,16 @@
     background-color: #fff;
 }
 
-.container-car-shopping .table {
+.container-car-shopping-content .table {
     width: 90%;
     margin: 50px;
     text-align: center;
     align-items: center;
+}
+
+.table-hover>tbody>tr:hover>* {
+    background-color: #fff !important;
+    transition: all .2s ease-out;
 }
 
 .container-car-shopping-content h2 {
@@ -28,7 +33,7 @@
 }
 
 .container-car-shopping-content td img {
-    width: 50px;
+    width: 100px;
     height: auto;
     overflow: hidden;
 }
@@ -43,12 +48,4 @@
 .container-car-shopping-content .botones a {
     text-decoration: none;
     color: #fff;
-}
-
-.btn-reload:hover {
-    background-color: #212529;
-}
-
-.btn-reload:hover i {
-    color: #fff !important;
 }

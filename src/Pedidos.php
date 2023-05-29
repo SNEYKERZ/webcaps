@@ -37,6 +37,7 @@ class pedidos
         return false;
     }
 
+//aqui se enviara a la base de datos todos los detalles del pedidio hecho por un cliente
     public function registrarDetalle($_params)
     {
         $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`) 
@@ -57,6 +58,7 @@ class pedidos
         return false;
     }
 
+    //esta funcion muestra los datos del cliente y el producto
     public function mostrar()
     {
         $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 
@@ -69,6 +71,8 @@ class pedidos
 
         return false;
     }
+
+    //esta funcion muestra los ultimos pedidos realizados con un limite de 10
     public function mostrarUltimos()
     {
         $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 
@@ -82,6 +86,7 @@ class pedidos
         return false;
     }
 
+    //muestra los datos del pedido y del respectivo cliente segun el id del pedido
     public function mostrarPorId($id)
     {
         $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 

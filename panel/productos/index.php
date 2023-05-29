@@ -15,7 +15,6 @@ include('../../templates/cabeceraAdmin.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../../assets/js/alerts-stock.js"></script>
-
 </head>
 
 <div class="container-product-table">
@@ -57,18 +56,23 @@ include('../../templates/cabeceraAdmin.php');
               <td>
                 <?php print $item['id'] ?>
               </td>
+              
               <td>
                 <?php print $item['referencia'] ?>
               </td>
+              
               <td>
                 <?php print $item['categoria'] ?>
               </td>
+
               <td>
                 <?php print $item['precio'] ?>
               </td>
+
               <td>
                 <?php print $item['stock'] ?>
               </td>
+              
               <td class="text-center">
                 <?php
                 $foto = '../../upload/' . $item['foto'];
@@ -79,12 +83,13 @@ include('../../templates/cabeceraAdmin.php');
                   SIN FOTO
                 <?php } ?>
               </td>
+
               <td class="icons d-flex justify-content-center align-items-center gap-2">
                 <!-- Button trigger modal -->
                 <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
                 <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></span></a>
-                <!-- <a href="../acciones.php?id=<?php print $item['id'] ?>" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></span></a> -->
               </td>
+
             </tr>
           <?php
           }
@@ -102,9 +107,9 @@ include('../../templates/cabeceraAdmin.php');
 <!-- MODAL EDITION (Ventana Emergente) -->
 <?php
 for ($i = 0; $i < $lista_Productos; $i++) {
-  $item = $info_producto[$i];
+  $info = $info_producto[$i];
 ?>
-  <div class="modal fade" id="editModal-<?php echo $item['id']; ?>" tabindex="-1" aria-labelledby="editModal-<?php echo $item['id']; ?>" aria-hidden="true">
+  <div class="modal fade" id="editModal-<?php echo $info['id']; ?>" tabindex="-1" aria-labelledby="editModal-<?php echo $info['id']; ?>" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -120,21 +125,21 @@ for ($i = 0; $i < $lista_Productos; $i++) {
             <div class="row">
               <div class="col-md-12">
                 <form method="POST" action="../acciones.php" enctype="multipart/form-data">
-                  <input type="hidden" name="id" value="<?php print $item['id'] ?>">
+                  <input type="hidden" name="id" value="<?php print $info['id'] ?>">
 
                   <!-- SECTIONS MODAL -->
                   <div class="row pt-2">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Referencia</label>
-                        <input value="<?php print $item['referencia'] ?>" type="text" class="form-control" name="referencia" required>
+                        <input value="<?php print $info['referencia'] ?>" type="text" class="form-control" name="referencia" required>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Cantidad</label>
-                        <input type="text" class="form-control" name="stock" value="" placeholder="0" required>
+                        <input value="<?php print $info['stock'] ?>" class="form-control" name="stock" placeholder="0" required>
                       </div>
                     </div>
                   </div>
@@ -143,10 +148,9 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Precio</label>
-                        <input value="" class="form-control" name="precio" placeholder="$0" required>
+                        <input value="<?php print $info['precio'] ?>" class="form-control" name="precio" placeholder="$0" required>
                       </div>
                     </div>
-
 
                     <div class="col-md-6">
                       <div class="form-group">
@@ -161,7 +165,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                           for ($x = 0; $x < $cantidad; $x++) {
                             $item = $info_categoria[$x];
                           ?>
-                            <option value="<?php print $item['id'] ?>" <?php print $item['categoria'] == $item['id'] ? 'SELECTED' : '' ?>>
+                            <option value="<?php print $item['id'] ?>" <?php print $info['categoria'] == $item['id'] ? 'selected' : '' ?>>
                               <?php print $item['categoria'] ?>
                             </option>
                           <?php
@@ -178,7 +182,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                         <label>Foto</label>
                         <!-- Necesario hacer el llamado al item para que se efectue el cambio-->
                         <input type="file" class="form-control" name="foto">
-                        <input type="hidden" name="foto_temp" value="<?php print $resultado['foto'] ?>">
+                        <input type="hidden" name="foto_temp" value="<?php print $info['foto'] ?>">
                       </div>
                     </div>
                   </div>
