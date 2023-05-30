@@ -46,3 +46,4 @@
 
 <script src="assets/js/scripts.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>

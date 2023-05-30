@@ -80,7 +80,7 @@ include('templates/cabecera.php');
               ?>
                 <i class="fa-solid fa-heart"></i>
                 <!-- Fotografia de la imagen -->
-                <a href="/webcaps/infoprenda.php?id=<?php print $item['id']  ?>">
+                <a href="infoPrenda.php?id=<?php print $item['id']  ?>">
                   <img src="<?php print $foto; ?>" class="card-img product-img" style="border-bottom-right-radius: unset;   border-bottom-left-radius: unset;">
                 </a>
               <?php } else { ?>
