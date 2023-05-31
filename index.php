@@ -104,7 +104,10 @@ include('templates/cabecera.php');
           </div>
         <?php }
       } else { ?>
-        <h4>NO HAY PRODUCTOS DISPONIBLES ACTUALMENTE :c Estate pendiente de nuestras proximas colecciones!</h4>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <h4> ACTUALMENTE NO HAY PRODUCTOS DISPONIBLES </h4>
+          <h6>Estate pendiente de nuestras proximas colecciones!</h6>
+        </div>
       <?php } ?>
     </div>
   </div>

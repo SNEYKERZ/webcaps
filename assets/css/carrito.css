@@ -1,51 +1,118 @@
-.container-car-shopping {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+.text-center {
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 8px 0px;
 }
 
 .container-car-shopping-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 6px 5px 10px 2px #bdbdbdbf;
-    width: 90%;
-    background-color: #fff;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .container-car-shopping-content .table {
-    width: 90%;
-    margin: 50px;
-    text-align: center;
-    align-items: center;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
+
+.table> :not(caption)>*>* {
+  border: none;
+}
+
+.container-car-shopping-content .table tr {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.container-car-shopping-content .table th,
+.container-car-shopping-content .table td {
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+}
+
+.container-car-shopping-content .table thead th {
+  text-transform: uppercase;
+  background-color: #ddd;
+}
+
+.container-car-shopping-content .table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.container-car-shopping-content .table tbody td:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .table-hover>tbody>tr:hover>* {
-    background-color: #fff !important;
-    transition: all .2s ease-out;
-}
-
-.container-car-shopping-content h2 {
-    padding-top: 20px;
-    padding-bottom: 2px;
+  background-color: #fff !important;
+  transition: all 0.2s ease-out;
 }
 
 .container-car-shopping-content td img {
-    width: 100px;
-    height: auto;
-    overflow: hidden;
+  width: 100px;
+  height: auto;
+  overflow: hidden;
 }
 
 .container-car-shopping-content .botones {
-    display: initial;
-    width: 100%;
-    margin-left: 11%;
-    padding-bottom: 10px;
+  display: initial;
+  width: 100%;
+  padding-bottom: 10px;
 }
 
 .container-car-shopping-content .botones a {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .text-center {
+    font-size: 22px;
+  }
+
+  .table {
+    border: 0px;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+
+  .table td {
+    display: block;
+    text-align: right !important;
+  }
+
+  .table td:last-child {
+    border-bottom: 0px;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+  }
+
+  .botones {
+    display: flex !important;
+    justify-content: center;
+    gap: 10px;
+  }
 }
