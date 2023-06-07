@@ -84,7 +84,7 @@ require 'vendor/autoload.php';
                 rows="1"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-            <input type="hidden" name="confirmacion" id="confirmacion" value="">
+            <input type="hidden" name="confirmacion" id="confirmacion" value="RESTAR">
             <script>
               function gracias(event) {
                 event.preventDefault();

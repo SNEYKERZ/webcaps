@@ -30,12 +30,27 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 ?>
 
 <link rel="stylesheet" href="../assets/css/carrito.css">
-<script>
-  $(document).ready(function() {})
-</script>
+
 <h2 class="text-center text-uppercase pt-5">Carrito de compras</h2>
 <div class="container-car-shopping-content" id="main">
-  <table class="table "> <!--- table-bordered table-hover -->
+  <div class="table-header">
+    <div class="botones">
+      <button type="button" class="btn btn-dark"> <a href="../index.php">
+          <i class="fa-solid fa-arrow-left"></i>
+          Seguir Comprando
+      </button>
+    </div>
+    <form method="POST" action="eliminar_carrito.php" enctype="multipart/form-data">
+      <!-- <a href="form_registrar.php" class="btn btn-primary"> -->
+      <button type="submit" class="btn btn-outline-danger btn-xs" name="accion" id="btn_limpiar" value="eliminartodo" style="width: 150px;">
+        Eliminar Carrito
+        <i class="fa-solid fa-trash"></i>
+      </button>
+      <!-- <input type="submit" name="accion" class="btn btn-danger" id="btn_limpiar" value="eliminartodo"> -->
+
+    </form>
+  </div>
+  <table class="table"> <!--- table-bordered table-hover -->
     <thead>
       <tr>
         <th>Foto</th>
@@ -118,10 +133,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
   ?>
     <div class="botones">
-      <button type="button" class="btn btn-dark"> <a href="../index.php">
-          <i class="fa-solid fa-arrow-left"></i>
-          Seguir Comprando
-      </button>
       <button type="button" class="btn btn-success"> <a href="../finalizar.php">
           Finalizar Compra
           <i class="fa-solid fa-dollar-sign"></i>

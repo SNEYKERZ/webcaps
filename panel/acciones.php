@@ -5,7 +5,8 @@ use FontLib\Table\Type\head;
 require '../vendor/autoload.php';
 
 $producto = new capsweb\Productos;
-
+$categoria = new capsweb\Categorias;
+$noticia = new capsweb\noticias;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -101,7 +102,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['accion']) && $_GET['acc
     echo 'Error al eliminar el producto';
 }
 
+//REGISTRAR / AÑADIR UNA CATEGORIA
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+  if ($_POST['accion'] === 'Añadir') {
+
+    if (empty($_POST['categoria']))
+      exit('Completar categoria');
+
+      $_params = array(
+        'categoria' => $_POST['categoria'] );
+
+        $rpt = $categoria->registrar($_params);
+
+        if ($rpt)
+          header('Location: productos/index.php');
+        else
+          print 'Error al añadir la categoria';
+  }
+}
+
+//CAMBIAR LAS NOTICIAS
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  if ($_POST['accion'] === 'Cambiar') {
+
+    if (empty($_POST['lema']))
+      exit('Completar la noticia');
+
+      $_params = array(
+        'lema' => $_POST['lema'] );
+
+        $rpt = $noticia->actualizarNoticias($_params);
+
+        if ($rpt)
+          header('Location: productos/index.php');
+        else
+          print 'Error al cambiar la noticia';
+  }
+}
+
+
+//SUBIR UNA FOTO
 function subirFoto()
 {
   $carpeta = __DIR__ . '/../upload/';

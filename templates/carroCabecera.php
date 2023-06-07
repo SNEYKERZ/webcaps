@@ -49,12 +49,6 @@
           <li class="nav-item">
             <a class="nav-link" href="../conocenos.php"><i class="fa-solid fa-people-group"></i> Conocenos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-          </li>
-          <li class="nav-item btn">
-            <a class="nav-link" href="../acceso.php"> <b> Perfil</b> </a>
-          </li>
         </ul>
       </div>
       <!-- END Navigation buttons -->

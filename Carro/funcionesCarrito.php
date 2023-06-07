@@ -1,6 +1,8 @@
 <?php
+//AGREGA UN PRODUCTO AL CARRITO DE COMPRAS
 function agregarProducto($resultado, $id, $cantidad = 1)
 {
+  
     $_SESSION['carrito'][$id] = array(
         'id' => $resultado['id'],
         'referencia' => $resultado['referencia'],
@@ -13,15 +15,16 @@ function agregarProducto($resultado, $id, $cantidad = 1)
     );
 }
 
-function actualizarProducto($id, $cantidad = FALSE)
+//RECALCULA LA CANTIDAD Y SU VALOR
+function actualizarProducto($id, $cantidad = false)
 {
-    if ($cantidad >= 0)
-        $_SESSION['carrito'][$id]['cantidad'] = $cantidad;
-    else
-        $_SESSION['carrito'][$id]['cantidad'] += 1;
+    if ($cantidad >= 1 ){
+        $_SESSION['carrito'][$id]['cantidad'] = $cantidad;}
+    elseif($cantidad == 0) {
+        $_SESSION['carrito'][$id]['cantidad'] += 1;}
 }
 
-
+//HARA EL CALCULO DEL TOTAL DE LOS PRODUCTOS EN EL CARRO
 function calcularTotal()
 {
 
@@ -34,7 +37,7 @@ function calcularTotal()
     return $total;
 }
 
-
+//DEVUELVE LA CANTIDAD DE PRODUCTOS
 function cantidadProductos()
 {
     $cantidad = 0;
@@ -43,6 +46,5 @@ function cantidadProductos()
             $cantidad +=  $value['cantidad'];
         }
     }
-
     return $cantidad;
 }

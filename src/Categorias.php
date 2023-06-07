@@ -11,7 +11,7 @@ class Categorias
     public function __construct()
     {
 
-        $this->config = parse_ini_file(__DIR__ . '/../config/config.ini' );
+        $this->config = parse_ini_file(__DIR__ . '/../config/config.ini');
 
         $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
@@ -39,6 +39,20 @@ class Categorias
         if ($resultado->execute())
             return $resultado->fetchAll();
 
+        return false;
+    }
+
+    public function registrar($_params)
+    {
+        $sql = "INSERT INTO  `categorias` (`categoria`) VALUES (:categoria)";
+
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(
+            'categoria' => $_params['categoria']
+        );
+
+        if ($resultado->execute($_array))
+            return true;
         return false;
     }
 }

@@ -8,23 +8,79 @@ include('../../templates/cabeceraAdmin.php');
 
 <head>
   <!-- STYLES -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../assets/css/tabla-productos.css">
 
   <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../assets/js/alerts-stock.js"></script>
 </head>
+<!-- BUTTON CHANGE NEWS -->
+<a href="" data-bs-toggle="modal" data-bs-target="#cambiarNewsModal" class="btn btn-primary">
+  <span class="glyphicon glyphicon-plus">Cambiar noticia</span>
+</a>
+<!-- MODAL CHANGE NEWS -->
+<div class="modal fade" id="cambiarNewsModal" tabindex="-1" aria-labelledby="cambiarNewsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- MODAL HEADER -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="cambiarNewsModalLabel">Cambiar la Noticia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- BODY MODAL -->
+      <div class="modal-body">
+        <div class="container-register-products d-flex justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-md-12">
+              <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+
+                <!-- SECTION MODAL -->
+                <div class="row pt-2">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nueva Noticia</label>
+                      <input type="text" class="form-control" name="lema" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FOOTER MODAL -->
+                <div class="modal-footer">
+                  <input type="submit" name="accion" class="btn btn-primary" value="Cambiar">
+                  <a href="index.php" class="btn btn-danger">Cancelar</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container-product-table">
   <div class="container-content-product-table">
     <h2 class="d-flex justify-content-center text-uppercase">Tablas de productos</h2>
     <div class="table-header">
       <!-- <a href="form_registrar.php" class="btn btn-primary"> -->
+
+      <!-- BUTTOM CREATE PRODUCT  -->
       <a href="" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus">Registrar nuevo producto</span>
+        <span class="glyphicon glyphicon-plus">Nuevo producto <i class="fa-solid fa-plus"></i></span>
       </a>
+
+      <!-- BUTTON REGISTER CATEGORIA -->
+      <a href="" data-bs-toggle="modal" data-bs-target="#registerCategoriaModal" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus">Añadir una categoria <i class="fa-solid fa-plus"></i></span>
+      </a>
+
+
     </div>
     <table class="table table-bordered table-hover">
       <thead>
@@ -56,11 +112,11 @@ include('../../templates/cabeceraAdmin.php');
               <td>
                 <?php print $item['id'] ?>
               </td>
-              
+
               <td>
                 <?php print $item['referencia'] ?>
               </td>
-              
+
               <td>
                 <?php print $item['categoria'] ?>
               </td>
@@ -72,7 +128,7 @@ include('../../templates/cabeceraAdmin.php');
               <td>
                 <?php print $item['stock'] ?>
               </td>
-              
+
               <td class="text-center">
                 <?php
                 $foto = '../../upload/' . $item['foto'];
@@ -337,6 +393,46 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                   <input type="submit" name="accion" class="btn btn-primary" value="Registrar">
                   <a href="index.php" class="btn btn-danger">Cancelar</a>
                 </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL REGISTER CATEGORIA (Ventana Emergente) -->
+<div class="modal fade" id="registerCategoriaModal" tabindex="-1" aria-labelledby="registerCategoriaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- MODAL HEADER -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerCategoriaModalLabel">Añadir Categoria</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- MODAL BODY -->
+      <div class="modal-body">
+        <div class="container-register-products d-flex justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-md-12 ">
+              <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+
+                <!-- SECTION MODAL -->
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Categoria</label>
+                      <input type="text" class="form-control" name="categoria" required>
+                    </div>
+                  </div>
+                  <!-- MODAL FOOTER -->
+                  <div class="modal-footer">
+                    <input type="submit" name="accion" class="btn btn-primary" value="Añadir">
+                    <a href="index.php" class="btn btn-danger">Cancelar</a>
+                  </div>
               </form>
             </div>
           </div>

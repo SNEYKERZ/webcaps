@@ -76,6 +76,8 @@ include('../../templates/cabeceraAdmin.php');
 
 <body>
     <h2 class="text-center pb-5 text-uppercase">Calculadora de fabrica</h2>
+    <p>La primera columna corresponde a el nombre o color del rollo <br> 
+        La segunda columna la cantidad de rollos</p>
 
     <div class="container-table">
         <table class="table table-striped table-bordered table-hover" id="data-table">
