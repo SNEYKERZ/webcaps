@@ -124,7 +124,7 @@ if ($i > 0) {
     </main>
 
     <!-- PAYMENT METHODS -->
-    <h2 class="text-center text-uppercase" style="background-color: #fafafa; margin: 0; letter-spacing: 5px;">Metodos de Pago</h2>
+    <!-- <h2 class="text-center text-uppercase" style="background-color: #fafafa; margin: 0; letter-spacing: 5px;">Metodos de Pago</h2>
     <div class="slider-payment">
       <div class="slide-track primary">
         <div class="slide-content"><img src="https://logotipoz.com/wp-content/uploads/2021/10/bancolombia-logo-png-transparente.png" alt="Bancolombia"></div>
@@ -153,7 +153,7 @@ if ($i > 0) {
         <div class="slide-content"><img src="https://laherradura.com.co/wp-content/uploads/2020/08/gane.png" alt="Gane"></div>
         <div class="slide-content"><img src="https://www.americadecali.co/wp-content/uploads/2021/09/LOGO-SUPER-GIROS.png" alt="Super Giros"></div>
       </div>
-    </div>
+    </div> -->
 
     <?php include('templates/whatsAppBottom.php'); ?>
     <?php include('templates/footer.php'); ?>

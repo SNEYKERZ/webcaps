@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include('templates/cabecera.php');
@@ -80,10 +79,9 @@ require 'vendor/autoload.php';
             </div>
             <div class="form-group pb-1">
               <label>Direccion</label>
-              <textarea name="direccion" placeholder="INGRESE SU DIRECCION LO MAS CLARA POSIBLE" class="form-control"
-                rows="1"></textarea>
+              <textarea name="direccion" placeholder="INGRESE SU DIRECCION LO MAS CLARA POSIBLE" class="form-control" rows="1"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-block" >Enviar</button>
             <input type="hidden" name="confirmacion" id="confirmacion" value="RESTAR">
             <script>
               function gracias(event) {
@@ -125,6 +123,7 @@ require 'vendor/autoload.php';
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.min.js"></script>
+<script src="js/push.min.js"></script>
 
 <?php
 include('templates/whatsAppBottom.php');

@@ -25,6 +25,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="assets/js/change_img_infoprenda.js"></script>
   <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>
+  <script src="js/push.min.js"></script>
 </head>
 
 <body>

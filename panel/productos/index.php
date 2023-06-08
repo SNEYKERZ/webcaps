@@ -6,6 +6,44 @@ if (empty($_SESSION["id"])) {
 include('../../templates/cabeceraAdmin.php');
 ?>
 
+<?php
+require '../../vendor/autoload.php';
+$producto = new capsweb\Productos;
+$info_producto = $producto->mostrar();
+
+$referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+$precio = isset($_GET['precio']) ? $_GET['precio'] : '';
+$stock = isset($_GET['stock']) ? $_GET['stock'] : '';
+
+// Filtrar los resultados basados en los parámetros de búsqueda
+$resultadosFiltrados = [];
+foreach ($info_producto as $item) {
+  // Aplicar el filtro para cada campo de búsqueda
+  if (empty($referencia) || strpos($item['referencia'], $referencia) !== false) {
+    if (empty($categoria) || $item['categoria'] == $categoria) {
+      if (empty($precio) || $item['precio'] == $precio) {
+        if (empty($stock) || $item['stock'] == $stock) {
+          $resultadosFiltrados[] = $item;
+        }
+      }
+    }
+  }
+}
+
+// Configuración del paginado
+$elementosPorPagina = 5; // Elementos mostrados por página
+$totalElementos = count($resultadosFiltrados); // Total de elementos filtrados
+$totalPaginas = ceil($totalElementos / $elementosPorPagina); // Total de páginas
+
+// Página actual
+$paginaActual = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$inicio = ($paginaActual - 1) * $elementosPorPagina;
+$fin = $inicio + $elementosPorPagina;
+
+$listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosPorPagina);
+?>
+
 <head>
   <!-- STYLES -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -18,59 +56,13 @@ include('../../templates/cabeceraAdmin.php');
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../assets/js/alerts-stock.js"></script>
 </head>
-<!-- BUTTON CHANGE NEWS -->
-<a href="" data-bs-toggle="modal" data-bs-target="#cambiarNewsModal" class="btn btn-primary">
-  <span class="glyphicon glyphicon-plus">Cambiar noticia</span>
-</a>
-<!-- MODAL CHANGE NEWS -->
-<div class="modal fade" id="cambiarNewsModal" tabindex="-1" aria-labelledby="cambiarNewsModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- MODAL HEADER -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="cambiarNewsModalLabel">Cambiar la Noticia</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- BODY MODAL -->
-      <div class="modal-body">
-        <div class="container-register-products d-flex justify-content-center align-items-center">
-          <div class="row">
-            <div class="col-md-12">
-              <form method="POST" action="../acciones.php" enctype="multipart/form-data">
-
-                <!-- SECTION MODAL -->
-                <div class="row pt-2">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Nueva Noticia</label>
-                      <input type="text" class="form-control" name="lema" required>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- FOOTER MODAL -->
-                <div class="modal-footer">
-                  <input type="submit" name="accion" class="btn btn-primary" value="Cambiar">
-                  <a href="index.php" class="btn btn-danger">Cancelar</a>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-product-table">
+<div class="container-product-table py-3">
   <div class="container-content-product-table">
     <h2 class="d-flex justify-content-center text-uppercase">Tablas de productos</h2>
     <div class="table-header">
       <!-- <a href="form_registrar.php" class="btn btn-primary"> -->
-
-      <!-- BUTTOM CREATE PRODUCT  -->
+      <!-- BUTTON CREATE PRODUCT  -->
       <a href="" data-bs-toggle="modal" data-bs-target="#registerModal" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">Nuevo producto <i class="fa-solid fa-plus"></i></span>
       </a>
@@ -80,16 +72,26 @@ include('../../templates/cabeceraAdmin.php');
         <span class="glyphicon glyphicon-plus">Añadir una categoria <i class="fa-solid fa-plus"></i></span>
       </a>
 
-
+      <!-- BUTTON CHANGE NEWS -->
+      <a href="" data-bs-toggle="modal" data-bs-target="#cambiarNewsModal" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus">Cambiar noticia <i class="fa-solid fa-plus"></i></span>
+      </a>
     </div>
+    <!-- FILTER -->
+    <form class="d-flex justify-content-center my-3">
+      <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" value="<?php echo $busqueda; ?>" aria-label="Buscar">
+      <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </form>
+
+    <!-- TABLE -->
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>#</th>
-          <th>Referencia <i class="fa-solid fa-sort"></i></th>
-          <th>Categoria <i class="fa-solid fa-sort"></i></th>
-          <th>Precio <i class="fa-solid fa-sort"></i></th>
-          <th>Stock <i class="fa-solid fa-sort"></i></th>
+          <th>Referencia</th>
+          <th>Categoria</th>
+          <th>Precio</i></th>
+          <th>Stock</th>
           <th>Foto</th>
           <th>Acciones</th>
         </tr>
@@ -101,32 +103,32 @@ include('../../templates/cabeceraAdmin.php');
         $producto = new capsweb\Productos;
         $info_producto = $producto->mostrar();
 
-        $lista_Productos = count($info_producto);
+        $lista_Productos = is_array($info_producto) ? count($info_producto) : 0;
+        $listaProductosPaginada = array_slice($info_producto, $inicio, $elementosPorPagina) ?? [];
+
         if ($lista_Productos > 0) {
-          $c = 0;
-          for ($i = 0; $i < $lista_Productos; $i++) {
-            $c++;
-            $item = $info_producto[$i];
+          $c = $inicio + 1;
+          foreach ($listaProductosPaginada as $item) {
         ?>
             <tr>
               <td>
-                <?php print $item['id'] ?>
+                <?php echo $item['id'] ?>
               </td>
 
               <td>
-                <?php print $item['referencia'] ?>
+                <?php echo $item['referencia'] ?>
               </td>
 
               <td>
-                <?php print $item['categoria'] ?>
+                <?php echo $item['categoria'] ?>
               </td>
 
               <td>
-                <?php print $item['precio'] ?>
+                <?php echo $item['precio'] ?>
               </td>
 
               <td>
-                <?php print $item['stock'] ?>
+                <?php echo $item['stock'] ?>
               </td>
 
               <td class="text-center">
@@ -134,20 +136,21 @@ include('../../templates/cabeceraAdmin.php');
                 $foto = '../../upload/' . $item['foto'];
                 if (file_exists($foto)) {
                 ?>
-                  <img src="<?php print $foto; ?>" width="90" height="120">
+                  <img src="<?php echo $foto; ?>" width="90" height="120">
                 <?php } else { ?>
                   SIN FOTO
                 <?php } ?>
               </td>
 
               <td class="icons d-flex justify-content-center align-items-center gap-2">
-                <!-- Button trigger modal -->
+                <!-- BUTTON TRIGGER MODAL -->
                 <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
                 <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></span></a>
               </td>
 
             </tr>
           <?php
+            $c++;
           }
         } else {
           ?>
@@ -157,6 +160,27 @@ include('../../templates/cabeceraAdmin.php');
         <?php } ?>
       </tbody>
     </table>
+
+    <!-- PAGINATION -->
+    <nav aria-label="Paginación">
+      <ul class="pagination justify-content-center">
+        <?php if ($paginaActual > 1) { ?>
+          <li class="page-item">
+            <a class="page-link" href="?page=<?php echo $paginaActual - 1; ?>">Anterior</a>
+          </li>
+        <?php } ?>
+        <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
+          <li class="page-item <?php echo ($i == $paginaActual) ? 'active' : ''; ?>">
+            <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+          </li>
+        <?php } ?>
+        <?php if ($paginaActual < $totalPaginas) { ?>
+          <li class="page-item">
+            <a class="page-link" href="?page=<?php echo $paginaActual + 1; ?>">Siguiente</a>
+          </li>
+        <?php } ?>
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -330,7 +354,8 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Precio</label>
-                      <input value="" class="form-control" name="precio" placeholder="$000" required>
+
+                      <input stringvalue="" class="form-control" name="precio" placeholder="$000" required>
                     </div>
                   </div>
 
@@ -392,6 +417,48 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                 <div class="modal-footer">
                   <input type="submit" name="accion" class="btn btn-primary" value="Registrar">
                   <a href="index.php" class="btn btn-danger">Cancelar</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CHANGE NEWS -->
+<div class="modal fade" id="cambiarNewsModal" tabindex="-1" aria-labelledby="cambiarNewsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- MODAL HEADER -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="cambiarNewsModalLabel">Cambiar la Noticia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- BODY MODAL -->
+      <div class="modal-body">
+        <div class="container-register-products d-flex justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-md-12">
+              <form method="POST" action="../acciones.php" enctype="multipart/form-data">
+
+                <!-- SECTION MODAL -->
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="lema">Nueva Noticia</label>
+                      <input type="text" class="form-control" id="lema" name="lema" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FOOTER MODAL -->
+                <div class="modal-footer">
+                  <input type="submit" name="accion" class="btn btn-primary" value="Cambiar">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
               </form>
             </div>

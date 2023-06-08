@@ -107,8 +107,9 @@ class Productos
         return false;
     }
 
+//MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
     public function mostrarPrueba()
-    { {
+    { 
             $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
         WHERE productos.stock >= '5' ";
 
@@ -119,6 +120,6 @@ class Productos
                 return $resultado->fetchAll();
 
             return false;
-        }
     }
+
 }
