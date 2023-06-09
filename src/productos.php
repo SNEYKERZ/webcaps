@@ -2,6 +2,7 @@
 
 namespace capsweb;
 
+use mysqli;
 use PDO;
 
 class Productos
@@ -15,6 +16,7 @@ class Productos
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
     }
+
     /**añade un producto en la base de datos */
     public function registrar($_params)
     {
@@ -36,6 +38,7 @@ class Productos
             return true;
         return false;
     }
+    
     /** Actualiza el producto en la basi de datos */
     public function actualizar($_params)
     {
@@ -107,19 +110,18 @@ class Productos
         return false;
     }
 
-//MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
+    //MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
     public function mostrarPrueba()
-    { 
-            $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
+    {
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` FROM `productos` 
         WHERE productos.stock >= '5' ";
 
-            $resultado = $this->cn->prepare($sql);
+        $resultado = $this->cn->prepare($sql);
 
-            if ($resultado->execute())
+        if ($resultado->execute())
 
-                return $resultado->fetchAll();
+            return $resultado->fetchAll();
 
-            return false;
+        return false;
     }
-
 }

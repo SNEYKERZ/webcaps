@@ -27,6 +27,14 @@
   <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>
 </head>
 
+<style>
+  .navbar-nav .nav-item:hover {
+    background-color: #414141 !important;
+    transition: all .3s linear;
+    border-radius: 4px;
+  }
+</style>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg px-5">
@@ -44,10 +52,18 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../outfits.php"><i class="fa-solid fa-shirt"></i> Outfits<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../outfits.php">
+              <i class="fa-solid fa-shirt"></i>
+              Outfits
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../conocenos.php"><i class="fa-solid fa-people-group"></i> Conocenos</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="../conocenos.php">
+              <i class="fa-solid fa-people-group"></i>
+              Conocenos
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
         </ul>
       </div>

@@ -1,9 +1,8 @@
 <?php
 //AGREGA UN PRODUCTO AL CARRITO DE COMPRAS
 function agregarProducto($resultado, $id, $cantidad = 1)
-{
-  
-    $_SESSION['carrito'][$id] = array(
+{ 
+        $_SESSION['carrito'][$id] = array(
         'id' => $resultado['id'],
         'referencia' => $resultado['referencia'],
         'categoria_id' => $resultado['categoria_id'],
@@ -20,7 +19,7 @@ function actualizarProducto($id, $cantidad = false)
 {
     if ($cantidad >= 1 ){
         $_SESSION['carrito'][$id]['cantidad'] = $cantidad;}
-    elseif($cantidad == 0) {
+    elseif($_SESSION['carrito'][$id]['cantidad'] != 1) {
         $_SESSION['carrito'][$id]['cantidad'] += 1;}
 }
 

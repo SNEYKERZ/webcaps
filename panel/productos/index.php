@@ -42,6 +42,9 @@ $inicio = ($paginaActual - 1) * $elementosPorPagina;
 $fin = $inicio + $elementosPorPagina;
 
 $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosPorPagina);
+
+$lista_Productos = count($listaProductosPaginada);
+
 ?>
 
 <head>
@@ -56,6 +59,19 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../assets/js/alerts-stock.js"></script>
 </head>
+
+
+<style>
+  .container-content-product-table form {
+    display: flex !important;
+    justify-content: end !important;
+    padding-right: 10px;
+  }
+
+  .form-control {
+    width: 40%;
+  }
+</style>
 
 <div class="container-product-table py-3">
   <div class="container-content-product-table">
@@ -77,10 +93,14 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
         <span class="glyphicon glyphicon-plus">Cambiar noticia <i class="fa-solid fa-plus"></i></span>
       </a>
     </div>
+
     <!-- FILTER -->
     <form class="d-flex justify-content-center my-3">
-      <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" value="<?php echo $busqueda; ?>" aria-label="Buscar">
-      <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      <input class="form-control me-2" type="search" placeholder="Buscar" name="referencia" value="<?php echo $referencia; ?>" aria-label="Buscar">
+      <input class="form-control me-2" type="search" placeholder="Categoría" name="categoria" value="<?php echo $categoria; ?>" aria-label="Categoría">
+      <input class="form-control me-2" type="search" placeholder="Precio" name="precio" value="<?php echo $precio; ?>" aria-label="Precio">
+      <input class="form-control me-2" type="search" placeholder="Stock" name="stock" value="<?php echo $stock; ?>" aria-label="Stock">
+      <button class="btn btn-outline-primary" type="submit">Filtrar</button>
     </form>
 
     <!-- TABLE -->
@@ -90,7 +110,7 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
           <th>#</th>
           <th>Referencia</th>
           <th>Categoria</th>
-          <th>Precio</i></th>
+          <th>Precio</th>
           <th>Stock</th>
           <th>Foto</th>
           <th>Acciones</th>
@@ -99,14 +119,7 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
 
       <tbody>
         <?php
-        require '../../vendor/autoload.php';
-        $producto = new capsweb\Productos;
-        $info_producto = $producto->mostrar();
-
-        $lista_Productos = is_array($info_producto) ? count($info_producto) : 0;
-        $listaProductosPaginada = array_slice($info_producto, $inicio, $elementosPorPagina) ?? [];
-
-        if ($lista_Productos > 0) {
+        if ($totalElementos > 0) {
           $c = $inicio + 1;
           foreach ($listaProductosPaginada as $item) {
         ?>
@@ -147,7 +160,6 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
                 <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
                 <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></span></a>
               </td>
-
             </tr>
           <?php
             $c++;
@@ -155,7 +167,7 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
         } else {
           ?>
           <tr>
-            <td colspan="4">NO HAY REGISTROS</td>
+            <td colspan="7">NO HAY REGISTROS</td>
           </tr>
         <?php } ?>
       </tbody>
@@ -166,17 +178,17 @@ $listaProductosPaginada = array_slice($resultadosFiltrados, $inicio, $elementosP
       <ul class="pagination justify-content-center">
         <?php if ($paginaActual > 1) { ?>
           <li class="page-item">
-            <a class="page-link" href="?page=<?php echo $paginaActual - 1; ?>">Anterior</a>
+            <a class="page-link" href="?page=<?php echo $paginaActual - 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>">Anterior</a>
           </li>
         <?php } ?>
         <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
           <li class="page-item <?php echo ($i == $paginaActual) ? 'active' : ''; ?>">
-            <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+            <a class="page-link" href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>"><?php echo $i; ?></a>
           </li>
         <?php } ?>
         <?php if ($paginaActual < $totalPaginas) { ?>
           <li class="page-item">
-            <a class="page-link" href="?page=<?php echo $paginaActual + 1; ?>">Siguiente</a>
+            <a class="page-link" href="?page=<?php echo $paginaActual + 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>">Siguiente</a>
           </li>
         <?php } ?>
       </ul>
@@ -387,17 +399,17 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     <div class="form-group">
                       <label>Tallas disponibles</label>
                       <div class="btn-group pt-1" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="talla_id">
-                        <label class="btn btn-outline-dark" for="btncheck1">S</label>
+                        <input type="checkbox" class="btn-check"  value="s" id="talla_s" autocomplete="off" name="tallas[]">
+                        <label class="btn btn-outline-dark" for="talla_s">S</label>
 
-                        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="talla_id">
-                        <label class="btn btn-outline-dark" for="btncheck2">M</label>
+                        <input type="checkbox" class="btn-check" value="m" id="talla_m" autocomplete="off" name="tallas[]">
+                        <label class="btn btn-outline-dark" for="talla_m">M</label>
 
-                        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="talla_id">
-                        <label class="btn btn-outline-dark" for="btncheck3">L</label>
+                        <input type="checkbox" class="btn-check" value="l" id="talla_l" autocomplete="off" name="tallas[]">
+                        <label class="btn btn-outline-dark" for="talla_l">L</label>
 
-                        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="talla_id">
-                        <label class="btn btn-outline-dark" for="btncheck4">XL</label>
+                        <input type="checkbox" class="btn-check" value="xl" id="talla_xl" autocomplete="off" name="tallas[]">
+                        <label class="btn btn-outline-dark" for="talla_xl">XL</label>
                       </div>
                     </div>
                   </div>

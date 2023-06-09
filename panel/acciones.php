@@ -21,10 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['categoria_id']))
       exit('Seleccionar una Categoria');
 
-    /**if (!is_numeric($_POST['categoria_id']))
-            exit('Seleccionar una Categoria válida');
-
-        /** if(empty($_POST['talla_id'])) exit('Seleccionar una talla'); */
+      //if(empty($_POST['talla[]'])) exit('Seleccionar una talla');
 
     if (empty($_POST['stock']))
       exit('digita una cantidad en stock válida');

@@ -35,9 +35,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <div class="container-car-shopping-content" id="main">
   <div class="table-header">
     <div class="botones">
-      <button type="button" class="btn btn-dark"> <a href="../index.php">
+      <button type="button" class="btn btn-dark">
+        <a href="../index.php">
           <i class="fa-solid fa-arrow-left"></i>
           Seguir Comprando
+        </a>
       </button>
     </div>
     <form method="POST" action="eliminar_carrito.php" enctype="multipart/form-data">
