@@ -44,7 +44,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </div>
     <form method="POST" action="eliminar_carrito.php" enctype="multipart/form-data">
       <!-- <a href="form_registrar.php" class="btn btn-primary"> -->
-      <button type="submit" class="btn btn-outline-danger btn-xs" name="accion" id="btn_limpiar" value="eliminartodo" style="width: 150px;">
+      <button type="submit" class="btn btn-outline-danger btn-xs" name="accion" id="btn_limpiar" value="eliminartodo" style="width: 200px;">
         Eliminar Carrito
         <i class="fa-solid fa-trash"></i>
       </button>
@@ -60,6 +60,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <th>Categoria</th>
         <th>Precio</th>
         <th>Cantidad</th>
+        <th>Talla</th>
         <th>Total</th>
         <th>Acciones</th>
       </tr>
@@ -100,6 +101,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <input type="hidden" name="id" value="<?php print $value['id'] ?>">
                 <input type="number" name="cantidad" class="form-control u-size-100" value="<?php print $value['cantidad'] ?>">
               </td>
+              <td><!--Aqui comienza el dropdown que muestra las tallas del producto-->
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="tallasDropdown_<?php echo $value['id']; ?>" data-bs-toggle="dropdown" aria-expanded="false">
+                    Talla
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="tallasDropdown_<?php echo $value['tallas']; ?>">
+                    <?php
+                    $tallas = $value['tallas']; // Obtener el arreglo de tallas directamente
+                    foreach ($tallas as $talla) :
+                    ?>
+                      <li><a class="dropdown-item" href="#"><?php echo $talla; ?></a></li>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
+              </td>
               <td data-label="Valor">
                 <?php echo $subTotal ?> COP
               </td>
@@ -116,13 +132,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <?php }
       } else { ?>
         <tr>
-          <td colspan="7">NO HAY PRODUCTOS EN EL CARRITO</td>
+          <td colspan="8">NO HAY PRODUCTOS EN EL CARRITO</td>
         </tr>
       <?php } ?>
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5" class="text-right">Total</td>
+        <td colspan="6" class="text-right">Total</td>
         <td>
           <?php print calcularTotal(); ?> COP
         </td>

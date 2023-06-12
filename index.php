@@ -81,7 +81,7 @@ if ($i > 0) {
               $item = $info_productos[$x];
           ?>
               <!-- Tarjeta de producto -->
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="card">
                   <?php
                   $foto = 'upload/' . $item['foto'];

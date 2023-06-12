@@ -92,7 +92,7 @@ $lista_Productos = count($listaProductosPaginada);
       <a href="" data-bs-toggle="modal" data-bs-target="#cambiarNewsModal" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">Cambiar noticia <i class="fa-solid fa-plus"></i></span>
       </a>
-    </div>
+    </div> 
 
     <!-- FILTER -->
     <form class="d-flex justify-content-center my-3">
@@ -396,24 +396,26 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                 <!--CHECKBOX DE TALLAS-->
                 <div class="row">
                   <div class="col-md-6 pt-3">
-                    <div class="form-group">
+                    <div class="form-group"> 
                       <label>Tallas disponibles</label>
                       <div class="btn-group pt-1" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check"  value="s" id="talla_s" autocomplete="off" name="tallas[]">
-                        <label class="btn btn-outline-dark" for="talla_s">S</label>
+                        
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="S" id="talla_s" ">
+                        <label class=" btn btn-outline-dark" for="talla_s">S</label>
 
-                        <input type="checkbox" class="btn-check" value="m" id="talla_m" autocomplete="off" name="tallas[]">
-                        <label class="btn btn-outline-dark" for="talla_m">M</label>
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="M" id="talla_m" ">
+                        <label class=" btn btn-outline-dark" for="talla_m">M</label>
 
-                        <input type="checkbox" class="btn-check" value="l" id="talla_l" autocomplete="off" name="tallas[]">
-                        <label class="btn btn-outline-dark" for="talla_l">L</label>
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="L" id="talla_l" ">
+                        <label class=" btn btn-outline-dark" for="talla_l">L</label>
 
-                        <input type="checkbox" class="btn-check" value="xl" id="talla_xl" autocomplete="off" name="tallas[]">
-                        <label class="btn btn-outline-dark" for="talla_xl">XL</label>
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xl" ">
+                        <label class=" btn btn-outline-dark" for="talla_xl">XL</label>
                       </div>
                     </div>
                   </div>
                 </div>
+                
                 <!-- END CHECKBOX DE TALLAS-->
 
                 <div class="row pt-2">

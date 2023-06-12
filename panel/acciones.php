@@ -21,7 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['categoria_id']))
       exit('Seleccionar una Categoria');
 
-      //if(empty($_POST['talla[]'])) exit('Seleccionar una talla');
+    if (empty($_POST['tallas']))
+      exit('Seleccionar una talla al menos');
+    else {
+      $tallasSeleccionadas = implode(',', $_POST['tallas']);
+    }
 
     if (empty($_POST['stock']))
       exit('digita una cantidad en stock válida');
@@ -31,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'categoria_id' => $_POST['categoria_id'],
       'foto' => subirFoto(),
       'precio' => $_POST['precio'],
-      /*'talla_id'=>$_POST['talla_id'],*/
+      'tallas' => $tallasSeleccionadas,
       'stock' => $_POST['stock'],
       'fecha' => date('y-m-d')
     );
@@ -107,15 +111,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['categoria']))
       exit('Completar categoria');
 
-      $_params = array(
-        'categoria' => $_POST['categoria'] );
+    $_params = array(
+      'categoria' => $_POST['categoria']
+    );
 
-        $rpt = $categoria->registrar($_params);
+    $rpt = $categoria->registrar($_params);
 
-        if ($rpt)
-          header('Location: productos/index.php');
-        else
-          print 'Error al añadir la categoria';
+    if ($rpt)
+      header('Location: productos/index.php');
+    else
+      print 'Error al añadir la categoria';
   }
 }
 
@@ -127,15 +132,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['lema']))
       exit('Completar la noticia');
 
-      $_params = array(
-        'lema' => $_POST['lema'] );
+    $_params = array(
+      'lema' => $_POST['lema']
+    );
 
-        $rpt = $noticia->actualizarNoticias($_params);
+    $rpt = $noticia->actualizarNoticias($_params);
 
-        if ($rpt)
-          header('Location: productos/index.php');
-        else
-          print 'Error al cambiar la noticia';
+    if ($rpt)
+      header('Location: productos/index.php');
+    else
+      print 'Error al cambiar la noticia';
   }
 }
 

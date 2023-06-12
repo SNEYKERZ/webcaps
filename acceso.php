@@ -114,7 +114,7 @@ if (!empty($_SESSION["id"])) {
           <!--<button type="submi" class="btn btn-primary btn-block mb-4" >Sign in</button>-->
           <input class="btn btn-primary btn-block mb-4" type="submit" name="accion" value="Conectar">
 
-          <p class="text-center mb-3">O</p>
+          <!-- <p class="text-center mb-3">O</p>
 
           <div class="text-center mb-3">
             <p>Inicia sesión con:</p>
@@ -124,7 +124,7 @@ if (!empty($_SESSION["id"])) {
             <button type="button" class="btn btn-secudary btn-floating mx-1">
               <i class="fa-brands fa-facebook fa-xl"></i>
             </button>
-          </div>
+          </div> -->
         </form>
       </div>
 
@@ -158,7 +158,7 @@ if (!empty($_SESSION["id"])) {
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary btn-block mb-2">Registrar</button>
 
-          <p class="text-center">O</p>
+          <!-- <p class="text-center">O</p>
 
           <div class="text-center mb-3">
             <p>Inicia sesión con:</p>
@@ -169,7 +169,7 @@ if (!empty($_SESSION["id"])) {
               <i class="fab fa-facebook fa-xl"></i>
             </button>
           </div>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>
