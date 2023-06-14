@@ -62,18 +62,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['stock']))
       exit('digita una Cantidad válida');
 
-    if (empty($_POST['tallasNuevas']))
+    /**if (empty($_POST['tallasNuevas']))
       exit('Seleccionar una talla al menos');
     else {
       $tallasNuevas = implode(',', $_POST['tallasNuevas']);
-    }
+    }**/
     $_params = array(
       'id' => $_POST['id'],
       'referencia' => $_POST['referencia'],
       'categoria_id' => $_POST['categoria_id'],
       'precio' => $_POST['precio'],
       'stock' => $_POST['stock'],
-      'tallas' => $tallasNuevas,
+      //'tallas' => $tallasNuevas,
       'fecha' => date('Y-m-d')
     );
 

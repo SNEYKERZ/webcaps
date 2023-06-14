@@ -21,10 +21,6 @@
     padding: 0px 100px;
 }
 
-.form-control {
-    width: 40%;
-}
-
 .container-content-product-table h2 {
     padding-top: 20px;
     padding-bottom: 2px;
@@ -113,29 +109,26 @@ tbody th td {
     }
 
     .container-content-product-table form input {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .table-header {
         gap: 5px;
-        display: grid;
         justify-content: center;
         padding: 0px;
     }
 
     form .form-control {
-        width: 100%;
         display: block;
     }
 
     .container-content-product-table form {
         display: block !important;
-        margin-bottom: 10px;
         padding: 0px !important;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .table {
         display: block;
         overflow-x: auto;
