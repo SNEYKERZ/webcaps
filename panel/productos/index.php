@@ -60,19 +60,6 @@ $lista_Productos = count($listaProductosPaginada);
   <script src="../../assets/js/alerts-stock.js"></script>
 </head>
 
-
-<style>
-  .container-content-product-table form {
-    display: flex !important;
-    justify-content: end !important;
-    padding-right: 10px;
-  }
-
-  .form-control {
-    width: 40%;
-  }
-</style>
-
 <div class="container-product-table py-3">
   <div class="container-content-product-table">
     <h2 class="d-flex justify-content-center text-uppercase">Tablas de productos</h2>
@@ -92,7 +79,7 @@ $lista_Productos = count($listaProductosPaginada);
       <a href="" data-bs-toggle="modal" data-bs-target="#cambiarNewsModal" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">Cambiar noticia <i class="fa-solid fa-plus"></i></span>
       </a>
-    </div> 
+    </div>
 
     <!-- FILTER -->
     <form class="d-flex justify-content-center my-3">
@@ -109,6 +96,7 @@ $lista_Productos = count($listaProductosPaginada);
         <tr>
           <th>#</th>
           <th>Referencia</th>
+          <th>Tallas</th>
           <th>Categoria</th>
           <th>Precio</th>
           <th>Stock</th>
@@ -131,7 +119,9 @@ $lista_Productos = count($listaProductosPaginada);
               <td>
                 <?php echo $item['referencia'] ?>
               </td>
-
+              <td>
+                <?php echo $item['tallas'] ?>
+              </td>
               <td>
                 <?php echo $item['categoria'] ?>
               </td>
@@ -396,10 +386,10 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                 <!--CHECKBOX DE TALLAS-->
                 <div class="row">
                   <div class="col-md-6 pt-3">
-                    <div class="form-group"> 
+                    <div class="form-group">
                       <label>Tallas disponibles</label>
                       <div class="btn-group pt-1" role="group" aria-label="Basic checkbox toggle button group">
-                        
+
                         <input type="checkbox" class="btn-check" name="tallas[]" value="S" id="talla_s" ">
                         <label class=" btn btn-outline-dark" for="talla_s">S</label>
 
@@ -415,7 +405,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- END CHECKBOX DE TALLAS-->
 
                 <div class="row pt-2">

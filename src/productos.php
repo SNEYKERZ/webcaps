@@ -43,7 +43,8 @@ class Productos
     /** Actualiza el producto en la basi de datos */
     public function actualizar($_params)
     {
-        $sql = "UPDATE `productos` SET `referencia`=:referencia,`categoria_id` =:categoria_id,`foto`=:foto,`precio`=:precio,`fecha`=:fecha,`stock`=:stock
+        $sql = "UPDATE `productos` SET `referencia`=:referencia,`categoria_id`=:categoria_id,`foto`=:foto,`tallas`=:tallas,
+        `precio`=:precio,`fecha`=:fecha,`stock`=:stock
          WHERE `id`=:id";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
@@ -51,14 +52,14 @@ class Productos
             ":referencia" => $_params['referencia'],
             ":categoria_id" => $_params['categoria_id'],
             ":foto" => $_params['foto'],
-            /*":talla_id"=> $_params['talla_id'],*/
+            ":tallas" => $_params['tallas'],
             ":precio" => $_params['precio'],
             ":fecha" => $_params['fecha'],
             ":stock" => $_params['stock']
         );
-        if ($resultado->execute($_array))
+        if ($resultado->execute($_array)) {
             return true;
-
+        }
         return false;
     }
     /**elimina el producto de la base de datos mediante su ID */
@@ -110,6 +111,23 @@ class Productos
         }
         return false;
     }
+    public function mostrarTallas($id)
+    {
+        $sql = " SELECT `tallas` FROM `productos` 
+         WHERE productos.id =:id ";
+
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(
+            ":id" =>  $id
+        );
+        if ($resultado->execute($_array)) {
+            $producto = $resultado->fetch();
+            $tallas = explode(",", $producto['tallas']);
+            return $tallas;
+        }
+        return false;
+    }
+
 
     //MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
     public function mostrarPrueba()

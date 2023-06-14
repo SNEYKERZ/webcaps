@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "producto_id" => $value['id'],
                 "precio" => $value['precio'],
                 "cantidad" => $value['cantidad'],
+                "tallas" => $value['tallas'],
             );
             $pedido->registrarDetalle($_params);
         }

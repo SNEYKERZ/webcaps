@@ -3,14 +3,15 @@
 session_start();
 include('../templates/carroCabecera.php');
 require 'funcionesCarrito.php';
+require '../src/productos.php';
 require '../vendor/autoload.php';
+
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $id = $_GET['id'];
   require '../vendor/autoload.php';
   $producto = new capsweb\Productos;
-  $resultado = $producto->mostrarPorId($id);
-
+  $resultado = $producto->mostrarPorId($id); //busca el producto por medio de su id
   if (!$resultado)
     header('Location: ../index.php');
 
@@ -58,22 +59,41 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <th>Foto</th>
         <th>Referencia</th>
         <th>Categoria</th>
-        <th>Precio</th>
+        <th>Precio c/u</th>
         <th>Cantidad</th>
         <th>Talla</th>
-        <th>Total</th>
+        <th>subtotal</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <?php
+      <?php $subTotal = 0;
       if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         $c = 0;
-
+        
         foreach ($_SESSION['carrito'] as $indice => $value) {
-          $c++;
 
-          $subTotal = $value['precio'] * $value['cantidad'];
+          $c++;
+          $idProducto = $value['id'];
+          $producto = new capsweb\Productos;
+          $tallasProducto = $producto->mostrarTallas($idProducto);
+
+          // calcula el precio de las prendas por sus cantidades
+          if ($value['cantidad'] == 5  && $value['categoria']== 'CAMISETA') {
+            $parcial = $value['precio']= 22000;
+            $subTotal +=  $parcial * $value['cantidad'];
+          } if ($value['cantidad'] == 4  && $value['categoria']== 'CAMISETA') { 
+            $parcial = $value['precio']= 23750;
+            $subTotal +=  $parcial * $value['cantidad'] ;
+          } if ($value['cantidad'] == 3  && $value['categoria']== 'CAMISETA' ) {
+            $parcial = $value['precio']= 25000;
+            $subTotal += $parcial * $value['cantidad'] ;
+          } if ($value['cantidad'] == 2 && $value['categoria']== 'CAMISETA') {
+            $parcial = $value['precio']= 27500;
+            $subTotal += $parcial * $value['cantidad'];
+          } if ($value['cantidad'] >= 5 || $value['cantidad'] <=1 ) {
+            $subTotal =  $value['precio'] * $value['cantidad'];
+          } else{$subTotal =  $value['precio'] * $value['cantidad'];}
       ?>
           <tr>
             <form action="actualizar_carrito.php" method="post">
@@ -101,20 +121,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <input type="hidden" name="id" value="<?php print $value['id'] ?>">
                 <input type="number" name="cantidad" class="form-control u-size-100" value="<?php print $value['cantidad'] ?>">
               </td>
-              <td><!--Aqui comienza el dropdown que muestra las tallas del producto-->
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="tallasDropdown_<?php echo $value['id']; ?>" data-bs-toggle="dropdown" aria-expanded="false">
-                    Talla
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="tallasDropdown_<?php echo $value['tallas']; ?>">
-                    <?php
-                    $tallas = $value['tallas']; // Obtener el arreglo de tallas directamente
-                    foreach ($tallas as $talla) :
-                    ?>
-                      <li><a class="dropdown-item" href="#"><?php echo $talla; ?></a></li>
-                    <?php endforeach; ?>
-                  </ul>
-                </div>
+              <td data-label="tallas">
+
+                <?php if ($tallasProducto !== false) {
+                  echo '<select name="talla" id="talla">';
+                  foreach ($tallasProducto as $talla) {
+                    $selected = '';
+                    if ($talla == $tallaSeleccionada) {
+                      $selected = 'selected';
+                    }
+                    echo '<option value="' . $talla . '" ' . $selected . '>' . $talla . '</option>';
+                  }
+                  echo '</select>';
+                } else {
+                  echo 'No se encontraron tallas';
+                }
+                ?>
               </td>
               <td data-label="Valor">
                 <?php echo $subTotal ?> COP
@@ -129,7 +151,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
             </form>
           </tr>
-        <?php }
+        <?php
+        }
       } else { ?>
         <tr>
           <td colspan="8">NO HAY PRODUCTOS EN EL CARRITO</td>

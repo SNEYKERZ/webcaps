@@ -12,6 +12,17 @@
     width: 90%;
     background-color: #fff;
     border-radius: 4px;
+    padding: 50px;
+}
+
+.container-content-product-table form {
+    display: flex;
+    justify-content: end;
+    padding: 0px 100px;
+}
+
+.form-control {
+    width: 40%;
 }
 
 .container-content-product-table h2 {
@@ -94,4 +105,45 @@ tbody th td {
 
 .icons .btn-outline-danger i {
     color: #fff !important;
+}
+
+@media screen and (max-width: 900px) {
+    .container-content-product-table form {
+        display: block !important;
+    }
+
+    .container-content-product-table form input {
+        margin-bottom: 30px;
+    }
+
+    .table-header {
+        gap: 5px;
+        display: grid;
+        justify-content: center;
+        padding: 0px;
+    }
+
+    form .form-control {
+        width: 100%;
+        display: block;
+    }
+
+    .container-content-product-table form {
+        display: block !important;
+        margin-bottom: 10px;
+        padding: 0px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table th,
+    .table td {
+        white-space: normal;
+    }
 }

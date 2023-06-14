@@ -40,8 +40,8 @@ class pedidos
 //aqui se enviara a la base de datos todos los detalles del pedidio hecho por un cliente
     public function registrarDetalle($_params)
     {
-        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`) 
-        VALUES (:pedido_id,:producto_id,:precio,:cantidad)";
+        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`, `tallas`) 
+        VALUES (:pedido_id,:producto_id,:precio,:cantidad,:tallas)";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -50,6 +50,7 @@ class pedidos
             ":producto_id" => $_params['producto_id'],
             ":precio" => $_params['precio'],
             ":cantidad" => $_params['cantidad'],
+            ":tallas" => $_params['tallas'],
         );
 
         if ($resultado->execute($_array))

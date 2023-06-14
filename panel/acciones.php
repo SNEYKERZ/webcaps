@@ -56,27 +56,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['categoria_id']))
       exit('Seleccionar una Categoria');
 
-    /**if (!is_numeric($_POST['categoria_id']))
-            exit('Seleccionar una Categoria válida');*/
-
     if (empty($_POST['precio']))
       exit('Completar precio');
 
     if (empty($_POST['stock']))
       exit('digita una Cantidad válida');
 
-    /*if(empty($_POST['talla_id']))
-        exit('Seleccionar una talla');
-
-         if(!is_numeric($_POST['talla_id']))
-        exit('Seleccionar una talla válida');*/
+    if (empty($_POST['tallasNuevas']))
+      exit('Seleccionar una talla al menos');
+    else {
+      $tallasNuevas = implode(',', $_POST['tallasNuevas']);
+    }
     $_params = array(
       'id' => $_POST['id'],
       'referencia' => $_POST['referencia'],
       'categoria_id' => $_POST['categoria_id'],
       'precio' => $_POST['precio'],
-      /*'talla_id'=>$_POST['talla_id'],*/
       'stock' => $_POST['stock'],
+      'tallas' => $tallasNuevas,
       'fecha' => date('Y-m-d')
     );
 
