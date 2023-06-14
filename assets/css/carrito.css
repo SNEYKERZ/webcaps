@@ -77,10 +77,6 @@
   text-transform: uppercase;
   background-color: #ffffff;
 }
-/* 
-.container-car-shopping-content .table tbody tr:hover {
-  background-color: rgba(158, 158, 158, 0.2);
-} */
 
 .container-car-shopping-content .table tbody td:hover {
   background-color: rgb(219, 219, 219);
