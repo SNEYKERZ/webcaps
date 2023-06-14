@@ -76,7 +76,7 @@ include('../../templates/cabeceraAdmin.php');
                     SIN FOTO
                   <?php } ?>
                 </td>
-                <td><?php print $item['precio'] ?> COP</td>
+                <td>$ <?php print number_format($item['precio'],2,",",".") ?> COP</td>
                 <td><?php print $item['cantidad'] ?></td>
                 <td>
                   <?php print $total ?>
@@ -97,7 +97,7 @@ include('../../templates/cabeceraAdmin.php');
       <div class="col-md-3">
         <div class="form-group">
           <label>Total Compra</label>
-          <input value="<?php print $info_pedido['total'] ?>" type="text" class="form-control" readonly>
+          <input value="<?php print number_format($info_pedido['total'],2,",",".") ?>" type="text" class="form-control" readonly>
         </div>
       </div>
       </fieldset>

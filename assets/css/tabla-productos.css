@@ -118,8 +118,13 @@ tbody th td {
         padding: 0px;
     }
 
+    .table-header .glyphicon {
+        font-size: 10px;
+    }
+
     form .form-control {
         display: block;
+        margin: 0 auto;
     }
 
     .container-content-product-table form {
@@ -138,5 +143,9 @@ tbody th td {
     .table th,
     .table td {
         white-space: normal;
+    }
+
+    .table-header {
+        padding: none;
     }
 }

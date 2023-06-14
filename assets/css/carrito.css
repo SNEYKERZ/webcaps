@@ -75,15 +75,15 @@
 
 .container-car-shopping-content .table thead th {
   text-transform: uppercase;
-  background-color: #ddd;
+  background-color: #ffffff;
 }
-
+/* 
 .container-car-shopping-content .table tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
+  background-color: rgba(158, 158, 158, 0.2);
+} */
 
 .container-car-shopping-content .table tbody td:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(219, 219, 219);
 }
 
 .table-hover>tbody>tr:hover>* {
@@ -160,5 +160,9 @@
   .container-car-shopping-content .botones {
     padding: 0;
     justify-content: center;
+  }
+
+  .form-control {
+    width: 50%;
   }
 }

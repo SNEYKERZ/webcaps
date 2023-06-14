@@ -115,7 +115,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
 
               <td data-label="Precio">
-                <?php print $value['precio'] ?> COP
+                $<?php print  number_format($value['precio'] ,2,",",".") ?> COP
               </td>
               <td data-label="Cantidad" class="d-flex justify-content-between ">
                 <input type="hidden" name="id" value="<?php print $value['id'] ?>">
@@ -139,7 +139,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 ?>
               </td>
               <td data-label="Valor">
-                <?php echo $subTotal ?> COP
+                $<?php echo number_format($subTotal ,2,",",".") ?> COP
               </td>
               <td data-label="Acciones">
                 <button type="submit" class="btn btn-dark">
@@ -163,7 +163,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       <tr>
         <td colspan="6" class="text-right">Total</td>
         <td>
-          <?php print calcularTotal(); ?> COP
+          $<?php print number_format(calcularTotal(),2,",","." ); ?> COP
         </td>
         <td></td>
       </tr>

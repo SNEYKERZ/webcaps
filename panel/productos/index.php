@@ -127,7 +127,7 @@ $lista_Productos = count($listaProductosPaginada);
               </td>
 
               <td>
-                <?php echo $item['precio'] ?>
+                $<?php echo number_format($item['precio'],2,",",".") ?>
               </td>
 
               <td>
