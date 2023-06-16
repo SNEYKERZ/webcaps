@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2023 a las 22:34:07
+-- Tiempo de generación: 16-06-2023 a las 05:40:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -65,12 +65,11 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 (2, 'HOODIE'),
 (3, 'GORRA'),
 (4, 'JEAN'),
-(5, 'JOGER'),
+(5, 'JOGGER'),
 (6, 'CHAQUETA'),
 (7, 'BASICA'),
-(8, 'Tenis'),
-(9, 'CHAQUETAdz'),
-(10, 'PANTALONETAS');
+(10, 'PANTALONETAS'),
+(12, 'SUDADERA');
 
 -- --------------------------------------------------------
 
@@ -93,11 +92,18 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nombre`, `apellidos`, `email`, `telefono`, `direccion`, `pedido_id`) VALUES
-(14, 'alejo', 'arenas', 'alejoarenasdev@gmail.com', 312, '1', 0),
-(15, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'a', 0),
-(16, 'alejo', 'arenas', 'alejoarenasdev@gmail.com', 312, 'a', 0),
-(17, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'calle 1 456', 0),
-(18, 'alejo', 'arenas', 'alejoarenasdev@gmail.com', 312, 'caps', 0);
+(85, 'alejo', 'a', 'sneykerz22@gmail.com', 312, '4', 0),
+(86, 'alejo', 'arenas', 'alejoarenasdev@gmail.com', 5, '5', 0),
+(87, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'f', 0),
+(88, 'juan', 'arenas', 'sneykerz22@gmail.com', 312, 'aaa', 0),
+(89, 'alejo', 'arenas', 'alejoarenasdev@gmail.com', 312, 'asdasd', 0),
+(90, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'a', 0),
+(91, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'a', 0),
+(92, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, 'a', 0),
+(93, 'alejo', 'a', 'sneykerz22@gmail.com', 312, 'a', 0),
+(94, 'alejo', 'a', 'sneykerz22@gmail.com', 312, '654', 0),
+(95, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, '5', 0),
+(96, 'alejo', 'arenas', 'sneykerz22@gmail.com', 312, '5', 0);
 
 -- --------------------------------------------------------
 
@@ -110,6 +116,7 @@ CREATE TABLE `detalle_pedidos` (
   `pedido_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
   `precio` float NOT NULL,
+  `talla` varchar(5) NOT NULL,
   `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -117,12 +124,35 @@ CREATE TABLE `detalle_pedidos` (
 -- Volcado de datos para la tabla `detalle_pedidos`
 --
 
-INSERT INTO `detalle_pedidos` (`id`, `pedido_id`, `producto_id`, `precio`, `cantidad`) VALUES
-(17, 14, 28, 15555, 1),
-(18, 15, 27, 15555, 1),
-(19, 16, 28, 15555, 1),
-(20, 17, 26, 20000, 2),
-(21, 18, 25, 30000, 3);
+INSERT INTO `detalle_pedidos` (`id`, `pedido_id`, `producto_id`, `precio`, `talla`, `cantidad`) VALUES
+(62, 89, 58, 13000, 'M', 1),
+(63, 90, 58, 13000, 'L', 1),
+(64, 91, 58, 13000, 'M', 1),
+(65, 92, 58, 13000, 'M', 1),
+(66, 93, 58, 13000, 'M', 1),
+(67, 94, 58, 13000, 'L', 1),
+(68, 95, 58, 13000, 'S', 1),
+(69, 95, 63, 20000, 'M', 1),
+(70, 96, 58, 13000, 'S', 1),
+(71, 96, 63, 20000, 'M', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fotos`
+--
+
+CREATE TABLE `fotos` (
+  `id` int(11) NOT NULL,
+  `ruta` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `fotos`
+--
+
+INSERT INTO `fotos` (`id`, `ruta`) VALUES
+(2, 'Camiseta/WhatsApp Image 2023-06-13 at 10.54.01 AM (4).jpg');
 
 -- --------------------------------------------------------
 
@@ -140,7 +170,7 @@ CREATE TABLE `noticias` (
 --
 
 INSERT INTO `noticias` (`id`, `lema`) VALUES
-(1, 'NUEVA COLECCION');
+(1, 'Rocha');
 
 -- --------------------------------------------------------
 
@@ -161,11 +191,14 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id`, `cliente_id`, `total`, `fecha`, `estado`) VALUES
-(14, 14, 15555, '2023-06-08', 0),
-(15, 15, 15555, '2023-06-08', 0),
-(16, 16, 15555, '2023-06-08', 0),
-(17, 17, 40000, '2023-06-09', 0),
-(18, 18, 90000, '2023-06-10', 0);
+(89, 89, 13000, '2023-06-15', 0),
+(90, 90, 13000, '2023-06-15', 0),
+(91, 91, 13000, '2023-06-15', 0),
+(92, 92, 13000, '2023-06-15', 0),
+(93, 93, 13000, '2023-06-15', 0),
+(94, 94, 13000, '2023-06-15', 0),
+(95, 95, 163000, '2023-06-15', 0),
+(96, 96, 163000, '2023-06-15', 0);
 
 -- --------------------------------------------------------
 
@@ -191,9 +224,12 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `referencia`, `categoria_id`, `foto`, `tallas`, `precio`, `stock`, `estado`, `fecha`, `descripcion`) VALUES
-(48, 'lil peep negra', '1', '1.jpg', 'S,M,L,XL', 30000, 20, 0, '2023-06-12', ''),
-(49, 'lil peep negra', '2', '3.jpg', 'S,M', 30000, 50, 0, '2023-06-12', ''),
-(50, 'CAMISETA X', '4', '5.jpg', 'S,M', 30000, 50, 0, '2023-06-12', '');
+(58, 'Chaqueta de Dama', '6', 'WhatsApp Image 2023-06-13 at 10.54.04 AM (3).jpeg', 'S,M,L,XL', 13000, 10, 0, '2023-06-14', ''),
+(63, 'Jean Ancho Negro', '4', 'WhatsApp Image 2023-06-13 at 10.54.01 AM (1).jpeg', 'S,M,L', 20000, 23, 0, '2023-06-15', ''),
+(65, 'Camiseta Feid', '1', 'WhatsApp Image 2023-06-13 at 10.54.21 AM (2).jpeg', 'S,M,L,XL', 130000, 23, 0, '2023-06-15', ''),
+(67, 'Chaqueta NASA unisex', '6', 'WhatsApp Image 2023-06-13 at 10.54.04 AM (4).jpeg', 'M,L,XL,XL', 90000, 10, 0, '2023-06-15', ''),
+(68, 'Sudadera NASA', '12', 'WhatsApp Image 2023-06-13 at 10.54.04 AM.jpeg', '30,32,34', 80000, 10, 0, '2023-06-15', ''),
+(69, 'Chaqueta Nasa EDICIÓN REFLECTIVA ', '6', 'WhatsApp Image 2023-06-13 at 10.54.05 AM.jpeg', 'M,L,XL,XL', 100000, 10, 0, '2023-06-15', '');
 
 --
 -- Índices para tablas volcadas
@@ -221,6 +257,12 @@ ALTER TABLE `clientes`
 -- Indices de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `fotos`
+--
+ALTER TABLE `fotos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -255,19 +297,25 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT de la tabla `fotos`
+--
+ALTER TABLE `fotos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`
@@ -279,13 +327,13 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
