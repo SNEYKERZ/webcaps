@@ -4,6 +4,6 @@ function img(anything) {
 }
 
 function change(change) {
-  const line = document.querySelector('.home');
-  line.style.background = change;
+  const homeElement = document.querySelector('.home');
+  homeElement.style.background = change;
 }

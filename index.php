@@ -47,7 +47,6 @@ if ($i > 0) {
         <span class="mx-3"> 3 CAMISETAS EN $75.000 </span>
         <span class="mx-3"> 4 CAMISETAS EN $95.000 </span>
         <span class="mx-3"> 5 CAMISETAS EN $110.000 </span>
-        <span class="mx-3"> 6 CAMISETAS EN $120.000 </span>
       </div>
 
       <div class="sliders block-2">
@@ -58,8 +57,7 @@ if ($i > 0) {
         <span class="mx-3"> 3 CAMISETAS EN $75.000 </span>
         <span class="mx-3"> 4 CAMISETAS EN $95.000 </span>
         <span class="mx-3"> 5 CAMISETAS EN $110.000 </span>
-        <span class="mx-3"> 6 CAMISETAS EN $120.000 </span>
-      </div>
+              </div>
     </div>
 
     <!-- MAIN SECTION -->
@@ -69,7 +67,6 @@ if ($i > 0) {
       </div>
       <div class="products-container justify-content-center mt-50 mb-50">
         <div class="row gap-10">
-
           <?php
           require 'vendor/autoload.php';
           $productos = new capsweb\Productos;

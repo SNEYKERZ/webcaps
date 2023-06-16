@@ -68,7 +68,6 @@
         </ul>
       </div>
       <!-- END Navigation buttons -->
-
     </nav>
   </header>
 </body>

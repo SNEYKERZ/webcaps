@@ -1,4 +1,5 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
 
 session_start();
 
@@ -36,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "producto_id" => $value['id'],
                 "precio" => $value['precio'],
                 "cantidad" => $value['cantidad'],
-                "tallas" => $value['tallas'],
-            );
+                "talla" => $value['talla'],
+                
+            ); $indice++;
             $pedido->registrarDetalle($_params);
         }
         $_SESSION['carrito'] = array();

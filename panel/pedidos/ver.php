@@ -47,6 +47,7 @@ include('../../templates/cabeceraAdmin.php');
             <th>Titulo</th>
             <th>Foto</th>
             <th>Precio</th>
+            <th>Talla</th>
             <th>Cantidad</th>
             <th>
               Total
@@ -77,9 +78,10 @@ include('../../templates/cabeceraAdmin.php');
                   <?php } ?>
                 </td>
                 <td>$ <?php print number_format($item['precio'],2,",",".") ?> COP</td>
+                <td><?php print $item['talla']?></td>
                 <td><?php print $item['cantidad'] ?></td>
                 <td>
-                  <?php print $total ?>
+                  $ <?php print  print  number_format($total ,1,",",".") ?> COP
                 </td>
               </tr>
 
@@ -97,7 +99,7 @@ include('../../templates/cabeceraAdmin.php');
       <div class="col-md-3">
         <div class="form-group">
           <label>Total Compra</label>
-          <input value="<?php print number_format($info_pedido['total'],2,",",".") ?>" type="text" class="form-control" readonly>
+          <input value="<?php print '$ '; print number_format($info_pedido['total'],2,",",".") ?> COP" type="text" class="form-control" readonly>
         </div>
       </div>
       </fieldset>

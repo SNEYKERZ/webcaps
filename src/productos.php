@@ -111,6 +111,7 @@ class Productos
         }
         return false;
     }
+    
     public function mostrarTallas($id)
     {
         $sql = " SELECT `tallas` FROM `productos` 

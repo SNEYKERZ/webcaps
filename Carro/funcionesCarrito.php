@@ -1,5 +1,4 @@
 <?php
-require '../vendor/autoload.php';
 //AGREGA UN PRODUCTO AL CARRITO DE COMPRAS
 function agregarProducto($resultado, $id, $cantidad = 1)
 {

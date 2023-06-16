@@ -1,6 +1,9 @@
 <?php
 
 namespace capsweb;
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 use PDO;
 
 class pedidos
@@ -37,27 +40,6 @@ class pedidos
         return false;
     }
 
-//aqui se enviara a la base de datos todos los detalles del pedidio hecho por un cliente
-    public function registrarDetalle($_params)
-    {
-        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`, `tallas`) 
-        VALUES (:pedido_id,:producto_id,:precio,:cantidad,:tallas)";
-
-        $resultado = $this->cn->prepare($sql);
-
-        $_array = array(
-            ":pedido_id" => $_params['pedido_id'],
-            ":producto_id" => $_params['producto_id'],
-            ":precio" => $_params['precio'],
-            ":cantidad" => $_params['cantidad'],
-            ":tallas" => $_params['tallas'],
-        );
-
-        if ($resultado->execute($_array))
-            return  true;
-
-        return false;
-    }
 
     //esta funcion muestra los datos del cliente y el producto
     public function mostrar()
@@ -77,7 +59,7 @@ class pedidos
     public function mostrarUltimos()
     {
         $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 
-        INNER JOIN clientes c ON p.cliente_id = c.id ORDER BY p.id DESC LIMIT 10";
+        INNER JOIN clientes c ON p.cliente_id = c.id ORDER BY p.id DESC LIMIT 20";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -105,8 +87,6 @@ class pedidos
         return false;
     }
 
-
-
     public function mostrarDetallePorIdPedido($id)
     {
         $sql = "SELECT 
@@ -114,7 +94,8 @@ class pedidos
                 pe.referencia,
                 dp.precio,
                 dp.cantidad,
-                pe.foto
+                pe.foto,
+                dp.talla               
                 FROM detalle_pedidos dp
                 INNER JOIN productos pe ON pe.id= dp.producto_id
                 WHERE dp.pedido_id = :id";
@@ -127,6 +108,35 @@ class pedidos
 
         if ($resultado->execute($_array))
             return  $resultado->fetchAll();
+
+        return false;
+    }
+    //aqui se enviara a la base de datos todos los detalles del pedidio hecho por un cliente
+    public function registrarDetalle($_params)
+    {
+        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`,`talla`) 
+          VALUES (:pedido_id,:producto_id,:precio,:cantidad,:talla)";
+
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":pedido_id" => $_params['pedido_id'],
+            ":producto_id" => $_params['producto_id'],
+            ":precio" => $_params['precio'],
+            ":cantidad" => $_params['cantidad'],
+            ":talla" => $_params['talla'],
+        );
+
+        if ($resultado->execute($_array)) {
+
+            $id = $_params['pedido_id'];
+
+            require 'enviar_correo.php';
+
+            sendEmailPedido($id);
+
+            return  true;
+        }
 
         return false;
     }

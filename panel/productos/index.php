@@ -127,7 +127,7 @@ $lista_Productos = count($listaProductosPaginada);
               </td>
 
               <td>
-                $<?php echo number_format($item['precio'],2,",",".") ?>
+                $<?php echo number_format($item['precio'], 2, ",", ".") ?>
               </td>
 
               <td>
@@ -147,8 +147,8 @@ $lista_Productos = count($listaProductosPaginada);
 
               <td class="icons d-flex justify-content-center align-items-center gap-2">
                 <!-- BUTTON TRIGGER MODAL -->
-                <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></span></a>
-                <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></span></a>
+                <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
               </td>
             </tr>
           <?php
@@ -401,6 +401,27 @@ for ($i = 0; $i < $lista_Productos; $i++) {
 
                         <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xl" ">
                         <label class=" btn btn-outline-dark" for="talla_xl">XL</label>
+
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xxl" ">
+                        <label class=" btn btn-outline-dark" for="talla_xxl">XXL</label>
+                      </div><br>
+
+                      <div class="btn-group pt-2" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="28" id="talla_28" ">
+                        <label class=" btn btn-outline-dark" for="talla_28">28</label>
+
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="30" id="talla_30" ">
+                        <label class=" btn btn-outline-dark" for="talla_30">30</label>
+
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="32" id="talla_32" ">
+                        <label class=" btn btn-outline-dark" for="talla_32">32</label>
+
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="34" id="talla_34" ">
+                        <label class=" btn btn-outline-dark" for="talla_34">34</label>
+
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="36" id="talla_36" ">
+                        <label class=" btn btn-outline-dark" for="talla_36">36</label>
+
                       </div>
                     </div>
                   </div>
