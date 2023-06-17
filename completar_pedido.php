@@ -1,10 +1,10 @@
-<?php
+<?php 
 use PHPMailer\PHPMailer\PHPMailer;
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+    require 'src/enviar_correo.php';
     require 'carro/funcionesCarrito.php';
     require 'vendor/autoload.php';
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $pedido_id =  $pedido->registrar($_params);
 
-        foreach ($_SESSION['carrito'] as $indice => $value) {
+        foreach ($_SESSION['carrito'] as $value) {
             $_params = array(
                 "pedido_id" => $pedido_id,
                 "producto_id" => $value['id'],
@@ -39,8 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "cantidad" => $value['cantidad'],
                 "talla" => $value['talla'],
                 
-            ); $indice++;
+            ); 
             $pedido->registrarDetalle($_params);
+           
+
+            sendEmailPedido( $pedido_id);
         }
         $_SESSION['carrito'] = array();
         header('Location: index.php');

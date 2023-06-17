@@ -33,6 +33,10 @@ include('../../templates/cabeceraAdmin.php');
           <label>Fecha</label>
           <input value="<?php print $info_pedido['fecha'] ?>" type="text" class="form-control" readonly>
         </div>
+        <div class="form-group">
+          <label>Dirección</label>
+          <input value="<?php print $info_pedido['direccion'] ?>" type="text" class="form-control" readonly>
+        </div>
     </div>
     <div class="col-md-12">
       <h2 class="d-flex justify-content-center py-3">

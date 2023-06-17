@@ -72,7 +72,7 @@ class pedidos
     //muestra los datos del pedido y del respectivo cliente segun el id del pedido
     public function mostrarPorId($id)
     {
-        $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 
+        $sql = "SELECT p.id, nombre, apellidos, email, total, fecha, direccion FROM pedidos p 
         INNER JOIN clientes c ON p.cliente_id = c.id WHERE p.id = :id";
 
         $resultado = $this->cn->prepare($sql);
@@ -130,10 +130,6 @@ class pedidos
         if ($resultado->execute($_array)) {
 
             $id = $_params['pedido_id'];
-
-            require 'enviar_correo.php';
-
-            sendEmailPedido($id);
 
             return  true;
         }
