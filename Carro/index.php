@@ -139,8 +139,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                   echo '<option disabled selected>Seleccione</option>'; // Opción inicial no seleccionable
 
                   foreach ($tallasProducto as $talla) {
-                      $selected = ($talla == $value['talla']) ? 'selected' : '';
-                      echo '<option value="' . $talla . '" ' . $selected . '>' . $talla . '</option>';
+                    $selected = ($talla == $value['talla']) ? 'selected' : '';
+                    echo '<option value="' . $talla . '" ' . $selected . '>' . $talla . '</option>';
                   }
                   ?>
                 </select>

@@ -1,9 +1,11 @@
-<?php 
+<?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     require 'src/enviar_correo.php';
     require 'carro/funcionesCarrito.php';
     require 'vendor/autoload.php';
@@ -20,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         $cliente_id = $cliente->registrar($_params);
-
         $pedido = new capsweb\pedidos;
 
         $_params = array(
@@ -38,12 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "precio" => $value['precio'],
                 "cantidad" => $value['cantidad'],
                 "talla" => $value['talla'],
-                
-            ); 
-            $pedido->registrarDetalle($_params);
-           
 
-            sendEmailPedido( $pedido_id);
+            );
+            $pedido->registrarDetalle($_params);
+            sendEmailPedido($pedido_id);
         }
         $_SESSION['carrito'] = array();
         header('Location: index.php');

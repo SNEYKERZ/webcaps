@@ -278,18 +278,6 @@ header {
 }
 
 /* STYLE PRODUCTS */
-.titulo_index {
-  text-align: center;
-  justify-content: center;
-  letter-spacing: 5px;
-  font-family: 'Roboto';
-  padding-top: 50px;
-}
-
-.products-container {
-  padding: 30px 70px 70px 70px;
-}
-
 .card {
   position: relative;
   display: inline-block;
@@ -297,6 +285,7 @@ header {
   padding: 0 !important;
   border: none !important;
   height: 500px !important;
+  object-fit: cover;
 }
 
 .card img {
@@ -373,23 +362,6 @@ header {
 
 .products-container .card-price {
   font-size: 14px;
-}
-
-/* Falta hacer el responsive de las cards */
-@media screen and (max-width:800px) {
-  .products-container {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width:560px) { 
-  .card {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-  }
 }
 
 /* STYLES PAYMENT METHODS */

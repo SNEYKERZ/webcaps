@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'categoria_id' => $_POST['categoria_id'],
       'precio' => $_POST['precio'],
       'stock' => $_POST['stock'],
-      //'tallas' => $tallasNuevas,
+      'tallas' => isset($_POST['tallasNuevas']) ? implode(',', explode(',', $_POST['tallasNuevas'])) : '',
       'fecha' => date('Y-m-d')
     );
 
@@ -121,16 +121,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-//CAMBIAR LAS NOTICIAS
+// CAMBIAR LAS NOTICIAS
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($_POST['accion'] === 'Cambiar') {
 
-    if (empty($_POST['lema']))
+    if (empty($_POST['campos_adicionales']))
       exit('Completar la noticia');
 
     $_params = array(
-      'lema' => $_POST['lema']
+      'campos_adicionales' => $_POST['campos_adicionales']
     );
 
     $rpt = $noticia->actualizarNoticias($_params);
@@ -141,7 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       print 'Error al cambiar la noticia';
   }
 }
-
 
 //SUBIR UNA FOTO
 function subirFoto()

@@ -2,7 +2,6 @@
 
 namespace capsweb;
 
-use mysqli;
 use PDO;
 
 class Productos
@@ -111,7 +110,7 @@ class Productos
         }
         return false;
     }
-    
+
     public function mostrarTallas($id)
     {
         $sql = " SELECT `tallas` FROM `productos` 
@@ -129,12 +128,42 @@ class Productos
         return false;
     }
 
+    public function obtenerTallasDisponibles($idProducto)
+    {
+        $sql = " SELECT `tallas` FROM `productos` 
+        WHERE productos.id =:id ";
+
+        $resultado = $this->cn->prepare($sql);
+        $_array = array(
+            ":id" =>  $idProducto
+        );
+        if ($resultado->execute($_array)) {
+            $producto = $resultado->fetch();
+            $tallas = explode(",", $producto['tallas']);
+            return $tallas;
+        }
+        return false;
+    }
 
     //MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
-    public function mostrarPrueba()
+    public function mostrarProductos()
     {
         $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas` FROM `productos` 
         WHERE productos.stock >= '5' ";
+
+        $resultado = $this->cn->prepare($sql);
+
+        if ($resultado->execute())
+
+            return $resultado->fetchAll();
+
+        return false;
+    }
+    //FUNCION QUE TRAE LAS PRENDAS BASICAS
+    public function mostrarPrendasBasicas()
+    {
+        $sql = "SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas`,`categoria` 
+        FROM `productos` INNER JOIN `categorias` ON productos.categoria_id = categorias.id WHERE categorias.categoria = 'BASICA' and productos.stock >= '5' ";
 
         $resultado = $this->cn->prepare($sql);
 

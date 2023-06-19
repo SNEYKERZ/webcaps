@@ -1,9 +1,11 @@
 <?php
+
 namespace capsweb;
 
 use PDO;
 
-class noticias {
+class noticias
+{
     private $config;
     private $cn = null;
     public function __construct()
@@ -14,13 +16,13 @@ class noticias {
         ));
     }
 
-//funcion que recibe y actualiza las noticias
+    // Función para actualizar las noticias
     public function actualizarNoticias($_params)
     {
-        $sql = "UPDATE `noticias` SET `lema` =:lema WHERE `noticias`.`id` = 1;" ;
+        $sql = "UPDATE `noticias` SET `campos_adicionales` = :campos_adicionales WHERE `id` = 1;";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
-            ":lema" => $_params['lema'],
+            ":campos_adicionales" => $_params['campos_adicionales']
         );
         if ($resultado->execute($_array))
             return true;
@@ -30,13 +32,11 @@ class noticias {
 
     public function mostrar()
     {
-        $sql = " SELECT `lema` FROM `noticias` ";
-
+        $sql = "SELECT `id`, `campos_adicionales` FROM `noticias`";
         $resultado = $this->cn->prepare($sql);
 
         if ($resultado->execute())
-
-            return $resultado->fetchAll();
+            return $resultado->fetchAll(PDO::FETCH_ASSOC);
 
         return false;
     }

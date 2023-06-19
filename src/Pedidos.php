@@ -31,7 +31,6 @@ class pedidos
             ":cliente_id" => $_params['cliente_id'],
             ":total" => $_params['total'],
             ":fecha" => $_params['fecha'],
-
         );
 
         if ($resultado->execute($_array))
@@ -39,7 +38,6 @@ class pedidos
 
         return false;
     }
-
 
     //esta funcion muestra los datos del cliente y el producto
     public function mostrar()
@@ -111,11 +109,12 @@ class pedidos
 
         return false;
     }
+
     //aqui se enviara a la base de datos todos los detalles del pedidio hecho por un cliente
     public function registrarDetalle($_params)
     {
-        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`,`talla`) 
-          VALUES (:pedido_id,:producto_id,:precio,:cantidad,:talla)";
+        $sql = "INSERT INTO `detalle_pedidos`(`pedido_id`, `producto_id`, `precio`, `cantidad`, `talla`) 
+            VALUES (:pedido_id, :producto_id, :precio, :cantidad, :talla)";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -124,16 +123,13 @@ class pedidos
             ":producto_id" => $_params['producto_id'],
             ":precio" => $_params['precio'],
             ":cantidad" => $_params['cantidad'],
-            ":talla" => $_params['talla'],
+            ":talla" => isset($_params['talla']) ? $_params['talla'] : null,
         );
 
         if ($resultado->execute($_array)) {
-
             $id = $_params['pedido_id'];
-
-            return  true;
+            return true;
         }
-
         return false;
     }
 }

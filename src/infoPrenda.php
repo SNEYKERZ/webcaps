@@ -44,7 +44,7 @@ class InfoPrenda
 
     public function mostrarFotos()
     {
-        $sql = "SELECT ruta FROM fotos";
+        $sql = "SELECT `ruta` FROM fotos";
         $resultado = $this->cn->prepare($sql);
 
         if ($resultado->execute()) {

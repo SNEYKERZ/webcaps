@@ -97,7 +97,7 @@ $lista_Productos = count($listaProductosPaginada);
           <th>#</th>
           <th>Referencia</th>
           <th>Tallas</th>
-          <th>Categoria</th>
+          <th>Categoría</th>
           <th>Precio</th>
           <th>Stock</th>
           <th>Foto</th>
@@ -112,28 +112,12 @@ $lista_Productos = count($listaProductosPaginada);
           foreach ($listaProductosPaginada as $item) {
         ?>
             <tr>
-              <td>
-                <?php echo $item['id'] ?>
-              </td>
-
-              <td>
-                <?php echo $item['referencia'] ?>
-              </td>
-              <td>
-                <?php echo $item['tallas'] ?>
-              </td>
-              <td>
-                <?php echo $item['categoria'] ?>
-              </td>
-
-              <td>
-                $<?php echo number_format($item['precio'], 2, ",", ".") ?>
-              </td>
-
-              <td>
-                <?php echo $item['stock'] ?>
-              </td>
-
+              <td><?php echo $item['id'] ?></td>
+              <td><?php echo $item['referencia'] ?></td>
+              <td><?php echo $item['tallas'] ?></td>
+              <td><?php echo $item['categoria'] ?></td>
+              <td>$<?php echo number_format($item['precio'], 2, ",", ".") ?></td>
+              <td><?php echo $item['stock'] ?></td>
               <td class="text-center">
                 <?php
                 $foto = '../../upload/' . $item['foto'];
@@ -144,7 +128,6 @@ $lista_Productos = count($listaProductosPaginada);
                   SIN FOTO
                 <?php } ?>
               </td>
-
               <td class="icons d-flex justify-content-center align-items-center gap-2">
                 <!-- BUTTON TRIGGER MODAL -->
                 <a href="" data-bs-toggle="modal" data-bs-target="#editModal-<?php echo $item['id']; ?>" type="button" class="btn btn-outline-success btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
@@ -157,7 +140,7 @@ $lista_Productos = count($listaProductosPaginada);
         } else {
           ?>
           <tr>
-            <td colspan="7">NO HAY REGISTROS</td>
+            <td colspan="8">NO HAY REGISTROS</td>
           </tr>
         <?php } ?>
       </tbody>
@@ -247,7 +230,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                           for ($x = 0; $x < $cantidad; $x++) {
                             $item = $info_categoria[$x];
                           ?>
-                            <option value="<?php print $item['id'] ?>" <?php print $info['categoria'] == $item['id'] ? 'selected' : '' ?>>
+                            <option value="<?php print $item['id'] ?>" <?php print $info['categoria_id'] == $item['id'] ? 'selected' : '' ?>>
                               <?php print $item['categoria'] ?>
                             </option>
                           <?php
@@ -262,12 +245,23 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Foto</label>
-                        <!-- Necesario hacer el llamado al item para que se efectue el cambio-->
+                        <!-- Necesario hacer el llamado al item para que se efectúe el cambio-->
                         <input type="file" class="form-control" name="foto">
                         <input type="hidden" name="foto_temp" value="<?php print $info['foto'] ?>">
                       </div>
                     </div>
                   </div>
+
+                  <!-- Tallas -->
+                  <div class="row pt-2">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Tallas</label>
+                        <input value="<?php print $info['tallas'] ?>" class="form-control" name="tallasNuevas" placeholder="Ingrese las tallas" required>
+                      </div>
+                    </div>
+                  </div>
+
                   <!-- FOOTER MODAL -->
                   <div class="modal-footer">
                     <input type="submit" name="accion" class="btn btn-primary" value="Actualizar">
@@ -402,7 +396,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                         <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xl" ">
                         <label class=" btn btn-outline-dark" for="talla_xl">XL</label>
 
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xxl" ">
+                        <input type="checkbox" class="btn-check" name="tallas[]" value="XXL" id="talla_xxl" ">
                         <label class=" btn btn-outline-dark" for="talla_xxl">XXL</label>
                       </div><br>
 
@@ -428,7 +422,6 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                 </div>
 
                 <!-- END CHECKBOX DE TALLAS-->
-
                 <div class="row pt-2">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -474,8 +467,8 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                 <div class="row pt-2">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="lema">Nueva Noticia</label>
-                      <input type="text" class="form-control" id="lema" name="lema" required>
+                      <label for="campos_adicionales">Nuevas Noticias (Separar por coma)</label>
+                      <input type="text" class="form-control" id="campos_adicionales" name="campos_adicionales" required placeholder="Ejemplo: Hola, Caps, Admin, etc" style="width: 300px;">
                     </div>
                   </div>
                 </div>
@@ -517,7 +510,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Categoria</label>
-                      <input type="text" class="form-control" name="categoria" required>
+                      <input type="text" class="form-control text-uppercase" name="categoria" required>
                     </div>
                   </div>
                   <!-- MODAL FOOTER -->
