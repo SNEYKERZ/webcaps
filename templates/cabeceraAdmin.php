@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CAPS Culture</title>
-
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=882c701e"></script>
   <!-- Fuentes -->
   <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
   <!-- Estilos -->
@@ -62,3 +62,14 @@
   </header>
 </body>
 </html>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEK2PM06TQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEK2PM06TQ');
+</script>

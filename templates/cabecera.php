@@ -29,6 +29,7 @@
 
 <body> 
   <header>
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=882c701e"></script>
     <nav class="navbar navbar-expand-lg px-5">
       <nav class="navbar">
         <a class="navbar-brand" href="index.php">
@@ -67,3 +68,12 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=3ea9358f"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEK2PM06TQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEK2PM06TQ');
+</script>

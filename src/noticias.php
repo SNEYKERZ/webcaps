@@ -10,12 +10,13 @@ class noticias
     private $cn = null;
     public function __construct()
     {
+
         $this->config = parse_ini_file(__DIR__ . '/../config/config.ini');
-        $this->cn = new PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+
+        $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
+            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
     }
-
     // Función para actualizar las noticias
     public function actualizarNoticias($_params)
     {

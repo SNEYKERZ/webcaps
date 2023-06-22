@@ -64,19 +64,11 @@ function sendEmailPedido($id)
             $phpmailer->addAddress('sneykerz22@gmail.com', 'Alejo arenas');
             $phpmailer->Subject = 'NUEVO PEDIDO/COMPRA!';
             $phpmailer->isHTML(true);
-            $phpmailer->Body =  "Informacion de la Compra \n " ."\n".
-                "Nombre: " . $info_pedido['nombre'] . " " . $info_pedido['apellidos'] ."\n".
-                "Correo: " . $info_pedido['email'] . "\n" .
-                "Fecha: " . $info_pedido['fecha'] . "\n" .
-                "Referencia: " . $item['referencia'] . "\n" .
-                "talla: " . $item['talla'] . "\n" .
-                "cantidad: " . $item['cantidad'] . "\n" ."\n".
-
-                number_format($item['precio'], 2, ",", ".") . "\n" .
-                number_format($total, 1, ",", ".") . "\n" .
-                number_format($info_pedido['total'], 2, ",", ".");
-
-
+            $phpmailer->Body =  "Informacion de la Compra \n ". $info_pedido['id'] ."\n"."El cliente ".
+                "Nombre: " . $info_pedido['nombre'] . " " . $info_pedido['apellidos'] ."\n". "con correo".
+                "Correo: " . $info_pedido['email'] . "\n" ."realizo un nuevo pedido en la ".
+                "Fecha: " . $info_pedido['fecha'] . "\n" ;
+                
             if ($phpmailer->send() == false) {
                 echo "No se envio  ";
                 echo $phpmailer->ErrorInfo;
