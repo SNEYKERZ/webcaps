@@ -152,7 +152,8 @@ CREATE TABLE `fotos` (
 --
 
 INSERT INTO `fotos` (`id`, `ruta`) VALUES
-(2, 'Camiseta/WhatsApp Image 2023-06-13 at 10.54.01 AM (4).jpg');
+(65, 'Camiseta/WhatsApp Image 2023-06-13 at 10.54.01 AM (4).jpg');
+
 
 -- --------------------------------------------------------
 

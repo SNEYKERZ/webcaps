@@ -15,15 +15,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 } else {
   header('Location: index.php');
 }
-?>
-
-<?php
-require 'vendor/autoload.php';
 
 $infoPrenda = new capsweb\InfoPrenda();
-$rutas = $infoPrenda->mostrarFotos();
+$fotos = $infoPrenda->mostrarFotos();
 ?>
-
 
 <!-- PRODUCT DETAILS CONTAINER -->
 <div class="container-product d-flex justify-content-between pb-10">
@@ -31,31 +26,63 @@ $rutas = $infoPrenda->mostrarFotos();
   <!-- IMAGE CONTAINER -->
   <div class="left">
     <div class="main_image" id="main-img" style="width: auto; height: auto;">
-      <?php if (!empty($rutas)) { ?>
-        <img src="assets/images/productos/<?php echo $prendaEscogida['id'] ?>.jpg" class="slide">
+      <?php
+      require 'vendor/autoload.php';
+      $producto = new capsweb\Productos;
+      $fotoPrincipal = 'upload/' . $prendaEscogida['foto'];
+      if (file_exists($fotoPrincipal)) {
+      ?>
+        <!-- Fotografía principal del producto -->
+        <img src="<?php print $fotoPrincipal; ?>" class="product-img slide">
       <?php } else { ?>
-        <img src="assets/images/productos/<?php echo $prendaEscogida['id'] ?>.jpg">
+        <!-- Imagen sin fotografía -->
+        <img src="assets/images/sinfoto.jpg" class="product-img">
       <?php } ?>
+
+      <!-- PHOTO GALLERY -->
+      <!-- <div class="option d-flex justify-content-center">
+      <?php
+      $infoPrenda = new capsweb\InfoPrenda();
+      $fotos = $infoPrenda->mostrarFotos();
+      foreach ($fotos as $foto) {
+        $rutaFoto = 'upload/' . $foto['ruta'];
+        if (file_exists($rutaFoto)) {
+      ?>
+          <img src="<?php print $rutaFoto; ?>" class="product-img slide">
+        <?php } else { ?>
+          <img src="assets/images/sinfoto.jpg" class="product-img">
+        <?php } ?>
+      <?php } ?>
+      </div> -->
     </div>
 
     <!-- PHOTO GALLERY -->
     <div class="option d-flex justify-content-center">
-      <?php foreach ($rutas as $ruta) { ?>
-        <img src="assets/images/productos/<?php echo $prendaEscogida['id'] ?>.jpg" onclick="img('assets/images/productos/<?php echo $prendaEscogida['id'] ?>.jpg')" class="slide">
-        <img src="assets/images/sinfoto.jpg" onclick="img('assets/images/sinfoto.jpg')">
-        <img src="assets/images/productos/1.jpg" onclick="img('assets/images/productos/1.jpg')">
-      <?php } ?>
+      <?php
+      require 'vendor/autoload.php';
+
+      use capsweb\InfoPrenda;
+
+      $infoPrenda = new InfoPrenda();
+
+      // Obtener las rutas de las fotos desde la base de datos
+      $fotos = $infoPrenda->mostrarFotos();
+
+      foreach ($fotos as $foto) {
+        $rutaFoto = 'upload/' . $foto['ruta'];
+
+        if (file_exists($rutaFoto)) {
+          // Fotografía del producto
+          echo '<img src="' . $rutaFoto . '" class="product-img slide">';
+        } else {
+          // Imagen sin fotografía
+          echo '<img src="assets/images/sinfoto.jpg" class="product-img">';
+        }
+      }
+      ?>
     </div>
-
-    <!-- FALTA LAS RUTAS PARA PROBAR -->
-    <!-- PHOTO GALLERY -->
-    <!-- <div class="option d-flex justify-content-center">
-      <?php foreach ($rutas as $ruta) { ?>
-        <img src="<?php echo $ruta; ?>" alt="" onclick="img('<?php echo $ruta; ?>')" class="slide">
-      <?php } ?>
-    </div> -->
-
   </div>
+
 
   <!-- PRODUCT DESCRIPTION CONTAINER   -->
   <div class="right">
@@ -88,86 +115,6 @@ $rutas = $infoPrenda->mostrarFotos();
     </div>
 
     <!-- Agrega el producto al carrito de compra  -->
-    <button onclick="window.location.href='carro/index.php?id=<?php echo $prendaEscogida['id']; ?>'">Agrega al carrito</button>
+    <button onclick="window.location.href=' carro/index.php?id=<?php echo $prendaEscogida['id']; ?>'">Agrega al carrito</button>
   </div>
 </div>
-
-
-<section>
-  <!-- PRODUCT DETAILS CONTAINER -->
-  <div class="container-product d-flex justify-content-between pb-10">
-
-    <!-- IMAGE CONTAINER -->
-    <div class="left">
-      <div class="main_image" id="main-img" style="width: auto; height: auto;">
-        <?php
-        $fotos = $rutas;
-
-        if (!empty($fotos)) {
-          $foto = $fotos[0];
-          if (file_exists($foto)) {
-        ?>
-            <img src="<?php echo $ruta ?>" class="slide">
-          <?php } else { ?>
-            <img src="assets/images/sinfoto.jpg">
-          <?php }
-        } else { ?>
-          <img src="assets/images/sinfoto.jpg">
-        <?php } ?>
-      </div>
-
-      <!-- PHOTO GALLERY -->
-      <div class="option d-flex justify-content-center">
-        <?php
-        foreach ($fotos as $foto) {
-        ?>
-          <img src="<?php echo $foto; ?>" alt="" onclick="img('<?php echo $foto; ?>')">
-        <?php } ?>
-      </div>
-    </div>
-
-    <!-- PRODUCT DESCRIPTION CONTAINER -->
-    <div class="right">
-      <h3 class="referencia"><?php echo $prendaEscogida['referencia']; ?></h3>
-      <h4 class="categoria"><?php echo $prendaEscogida['categoria']; ?></h4>
-      <h4 class="precio"><small>$</small><?php echo $prendaEscogida['precio']; ?></h4>
-      <p></p>
-
-      <h5>Colores</h5>
-      <div class="color d-flex">
-        <span onclick="change('#ff0000')"></span>
-        <span onclick="change('#00ff00')"></span>
-        <span onclick="change('#0000ff')"></span>
-        <span onclick="change('#ffff00')"></span>
-        <span onclick="change('#ff00ff')"></span>
-      </div>
-
-      <div class="size">
-        <h5>Tallas disponibles</h5>
-        <ul>
-          <?php if (isset($prendaEscogida['talla'])) { ?>
-            <li><?php echo $prendaEscogida['talla']; ?></li>
-          <?php } ?>
-          <li>M</li>
-          <li>L</li>
-          <li>XL</li>
-        </ul>
-      </div>
-
-
-      <!-- Agrega el producto al carrito de compra -->
-      <button onclick="window.location.href='carro/index.php?id=<?php echo $prendaEscogida['id']; ?>'">Agrega al carrito</button>
-    </div>
-  </div>
-</section>
-
-<script>
-  function img(anything) {
-    document.querySelector('.slide').src = anything;
-  }
-
-  function change(color) {
-    const homeElement = document.querySelector('.home');
-    homeElement.style.background = color;
-  }
-</script>

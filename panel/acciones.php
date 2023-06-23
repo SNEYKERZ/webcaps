@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-//SUBIR UNA FOTO
+// //SUBIR UNA FOTO
 function subirFoto()
 {
   $carpeta = __DIR__ . '/../upload/';

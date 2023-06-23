@@ -107,7 +107,7 @@ if ($i > 0) {
     <!-- Pestaña "General" -->
     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="tab-general">
       <div class="products-container justify-content-center my-50">
-        <div class="row d-flex justify-content-center aling-items-center">
+        <div class="row d-flex justify-content-around aling-items-center" style="padding-right: 10px;">
           <?php
           require 'vendor/autoload.php';
           $productos = new capsweb\Productos;
@@ -125,7 +125,7 @@ if ($i > 0) {
                   $foto = 'upload/' . $item['foto'];
                   if (file_exists($foto)) {
                   ?>
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fas fa-heart"></i>
                     <!-- Fotografia de la imagen -->
                     <a href="infoPrenda.php?id=<?php print $item['id']  ?>">
                       <img src="<?php print $foto; ?>" class="card-img product-img" style="border-bottom-right-radius: unset;   border-bottom-left-radius: unset;">
@@ -163,7 +163,7 @@ if ($i > 0) {
     <!-- Pestaña "Camisetas Básicas" -->
     <div class="tab-pane fade" id="camisetas-basicas" role="tabpanel" aria-labelledby="tab-camisetas-basicas">
       <div class="products-container justify-content-center mt-50 mb-50">
-        <div class="row gap-10">
+        <div class="row d-flex justify-content-around aling-items-center" style="padding-right: 10px;">
           <!-- Codigo que muestras las camisetas basicas -->
           <?php
           require 'vendor/autoload.php';
@@ -176,47 +176,49 @@ if ($i > 0) {
               $item = $info_producto[$x];
           ?>
               <!-- Tarjeta de producto -->
-              <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="card">
-                  <?php
-                  $foto = 'upload/' . $item['foto'];
-                  if (file_exists($foto)) {
-                  ?>
-                    <!-- Fotografia de la imagen -->
-                    <a href="infoPrenda.php?id=<?php print $item['id']  ?>">
-                      <img src="<?php print $foto; ?>" class="card-img product-img" style="border-bottom-right-radius: unset;   border-bottom-left-radius: unset;">
-                    </a>
-                  <?php } else { ?>
-                    <!-- Imagen sin fotografia -->
-                    <a href="carrito.php?id=<?php print $item['id'] ?>">
-                      <img src="assets/images/sinfoto.jpg" class="card-img product-img" style="border-radius: none;">
-                    </a>
-                  <?php } ?>
+              <div class=" col-xl-3 col-lg-3 col-md-6 col-sm-6">
+          <div class="card">
+            <?php
+              $foto = 'upload/' . $item['foto'];
+              if (file_exists($foto)) {
+            ?>
+              <i class="fas fa-heart"></i>
+              <!-- Fotografia de la imagen -->
+              <a href="infoPrenda.php?id=<?php print $item['id']  ?>">
+                <img src="<?php print $foto; ?>" class="card-img product-img" style="border-bottom-right-radius: unset;   border-bottom-left-radius: unset;">
+              </a>
+            <?php } else { ?>
+              <!-- Imagen sin fotografia -->
+              <a href="carrito.php?id=<?php print $item['id'] ?>">
+                <img src="assets/images/sinfoto.jpg" class="card-img product-img" style="border-radius: none;">
+              </a>
+            <?php } ?>
 
-                  <div class="card-body text-center">
-                    <h5 class="card-title text-uppercase">
-                      <?php print $item['referencia'] ?>
-                    </h5>
-                    <a href="carro/index.php?id=<?php print $item['id'] ?>" class="bottom-shop d-flex">
-                      <span class="card-text card-price">$ <?php print number_format($item['precio'], 2, ",", ".") ?>
-                        <b> COP</b> <i class="fa-solid fa-cart-shopping"></i>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            <?php }
-          } else { ?>
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <h4 class="text-center"> ACTUALMENTE NO HAY PRODUCTOS DISPONIBLES </h4>
-              <h6>Estate pendiente de nuestras proximas colecciones!</h6>
+            <div class="card-body text-center">
+              <h5 class="card-title text-uppercase">
+                <?php print $item['referencia'] ?>
+              </h5>
+              <a href="carro/index.php?id=<?php print $item['id'] ?>" class="bottom-shop d-flex">
+                <span class="card-text card-price">$ <?php print number_format($item['precio'], 2, ",", ".") ?>
+                  <b> COP</b> <i class="fa-solid fa-cart-shopping"></i>
+                </span>
+              </a>
             </div>
-          <?php } ?>
+          </div>
         </div>
+      <?php }
+          } else { ?>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h4 class="text-center"> ACTUALMENTE NO HAY PRODUCTOS DISPONIBLES </h4>
+        <h6>Estate pendiente de nuestras proximas colecciones!</h6>
+      </div>
+    <?php } ?>
       </div>
     </div>
   </div>
+  </div>
 </main>
+
 
 <!-- PAYMENT METHODS -->
 <!-- <h2 class="text-center text-uppercase" style="background-color: #fafafa; margin: 0; letter-spacing: 5px;">Metodos de Pago</h2>

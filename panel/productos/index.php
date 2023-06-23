@@ -420,13 +420,13 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     </div>
                   </div>
                 </div>
-
                 <!-- END CHECKBOX DE TALLAS-->
+
                 <div class="row pt-2">
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Foto</label>
-                      <input type="file" class="form-control" name="foto" required>
+                      <input type="file" class="form-control" name="foto[]" required multiple>
                     </div>
                   </div>
                 </div>
@@ -440,7 +440,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
             </div>
           </div>
         </div>
-      </div>
+      </div>    
     </div>
   </div>
 </div>

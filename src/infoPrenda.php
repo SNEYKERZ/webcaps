@@ -27,30 +27,25 @@ class InfoPrenda
 
     public function mostrarPorId($id)
     {
-        $sql = " SELECT `id`, `ruta` FROM `fotos` 
-        INNER JOIN `fotos`
-        ON productos.id = foto.id WHERE foto.id =:id ";
-
+        $sql = "SELECT `id`, `ruta` FROM `fotos` WHERE id = :id";
         $resultado = $this->cn->prepare($sql);
-        $_array = array(
-            ":id" =>  $id
-        );
+        $resultado->bindParam(":id", $id, PDO::PARAM_INT);
 
-        if ($resultado->execute($_array)) {
-            return $resultado->fetch();
+        if ($resultado->execute()) {
+            return $resultado->fetch(PDO::FETCH_ASSOC);
         }
+
         return false;
     }
 
     public function mostrarFotos()
     {
-        $sql = "SELECT `ruta` FROM fotos";
-        $resultado = $this->cn->prepare($sql);
+        $sql = "SELECT ruta FROM fotos";
+        $stmt = $this->cn->prepare($sql);
+        $stmt->execute();
 
-        if ($resultado->execute()) {
-            return $resultado->fetchAll(PDO::FETCH_COLUMN);
-        }
+        $fotos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return array();
+        return $fotos;
     }
 }

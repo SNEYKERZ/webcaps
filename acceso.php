@@ -37,7 +37,12 @@ require 'vendor/autoload.php';
   // La cabecera X-XSS-Protection Se trata de una capa de seguridad adicional que bloquea ataques XSS
   header('X-XSS-Protection: 1;mode=block');
 ?>
-
+<?php
+session_start();
+if (!empty($_SESSION["id"])) {
+    header("location: panel/productos/");
+}
+?>
 <head>
   <link rel="stylesheet" href="assets/css/login.css">
   <!-- Bootstrap -->
@@ -50,12 +55,7 @@ require 'vendor/autoload.php';
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="assets/js/change_img_infoprenda.js"></script>
-<?php
-session_start();
-if (!empty($_SESSION["id"])) {
-    header("location: panel/productos/");
-}
-?>
+
 </head>
 
 <!--FORMULARIO INICIO DE SESIÓSN-->

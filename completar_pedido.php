@@ -42,6 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             );
             $pedido->registrarDetalle($_params);
+            
+            //restar stock
+
             sendEmailPedido($pedido_id);
         }
         $_SESSION['carrito'] = array();
