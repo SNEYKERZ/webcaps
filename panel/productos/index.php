@@ -145,7 +145,7 @@ $lista_Productos = count($listaProductosPaginada);
         <?php } ?>
       </tbody>
     </table>
-
+          
     <!-- PAGINATION -->
     <nav aria-label="Paginación">
       <ul class="pagination justify-content-center">
@@ -440,7 +440,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
             </div>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
 </div>

@@ -33,7 +33,7 @@
 <nav class="navbar navbar-expand-lg px-5">
       <nav class="navbar">
         <a class="navbar-brand" href="../../index.php">
-          <img src="../../assets/images/logo caps circulo.png" alt="logo" width="45" height="45" class="d-inline-block"> CAPS CULTURE
+          <img src="../../assets/images/logo_caps_circulo.png" alt="logo" width="45" height="45" class="d-inline-block"> CAPS CULTURE
         </a>
       </nav>
       <!-- RESPONSIVE MOBILE BUTTON -->
