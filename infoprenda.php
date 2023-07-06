@@ -57,7 +57,7 @@ $fotos = $infoPrenda->mostrarFotos();
     </div>
 
     <!-- PHOTO GALLERY -->
-    <div class="option d-flex justify-content-center">
+    <!-- <div class="option d-flex justify-content-center">
       <?php
       require 'vendor/autoload.php';
 
@@ -80,7 +80,7 @@ $fotos = $infoPrenda->mostrarFotos();
         }
       }
       ?>
-    </div>
+    </div> -->
   </div>
 
 
@@ -91,7 +91,7 @@ $fotos = $infoPrenda->mostrarFotos();
     <h4 class="precio"><small>$</small><?php echo $prendaEscogida['precio']; ?></h4>
     <p></p>
 
-    <?php
+    <!-- <?php
     $colores = array("Rojo", "Azul", "Verde", "Amarillo", "Negro");
     ?>
 
@@ -99,7 +99,7 @@ $fotos = $infoPrenda->mostrarFotos();
       <?php foreach ($colores as $color) { ?>
         <span class="color-option <?php echo strtolower($color); ?>"></span>
       <?php } ?>
-    </div>
+    </div> -->
 
     <!-- Tallas  -->
     <div class="size">

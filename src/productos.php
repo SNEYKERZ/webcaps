@@ -148,8 +148,12 @@ class Productos
     //MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
     public function mostrarProductos()
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas` FROM `productos` 
-        WHERE productos.stock >= '5' ";
+        // $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas` FROM `productos` 
+        //WHERE productos.stock >= '5' ";
+
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`categoria`,`tallas` 
+        FROM `productos` INNER JOIN `categorias` ON productos.categoria_id = categorias.id 
+        and categorias.categoria != 'BASICA' WHERE productos.stock >= '5' ORDER BY productos.id DESC";
 
         $resultado = $this->cn->prepare($sql);
 

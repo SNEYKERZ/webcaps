@@ -17,8 +17,8 @@ include('../../templates/cabeceraAdmin.php');
             $('#add-row').click(function() {
                 rowIndex++;
                 var newRow = '<tr id="row' + rowIndex + '">' +
-                    '<td><input type="text" name="rollo[]" class="rollo"></td>' +
-                    '<td><input type="number" name="cantidad[]" class="cantidad"></td>' +
+                    '<td><input type="text" name="rollo[]" class="rollo" placeholder="Nombre/Color del rollo"></td>' +
+                    '<td><input type="number" name="cantidad[]" class="cantidad" placeholder="Cantidad de rollos"></td>' +
                     '<td><span class="camisetas"></span></td>' +
                     '<td><span class="precio-camisas"></span></td>' +
                     '<td><span class="precio-rollos"></span></td>' +
@@ -76,16 +76,14 @@ include('../../templates/cabeceraAdmin.php');
 
 <body>
     <h2 class="text-center pb-5 text-uppercase">Calculadora de fabrica</h2>
-    <p>La primera columna corresponde a el nombre o color del rollo <br> 
-        La segunda columna la cantidad de rollos</p>
-
+    
     <div class="container-table">
         <table class="table table-striped table-bordered table-hover" id="data-table">
             <thead>
                 <tr>
                     <th>Rollo</th>
                     <th>Cantidad</th>
-                    <th>Camisetas</th>
+                    <th>Camisetas resultantes</th>
                     <th>Precio de camisas</th>
                     <th>Precio de rollos</th>
                     <th>Acciones</th>

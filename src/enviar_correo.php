@@ -65,7 +65,7 @@ function sendEmailPedido($id)
             $phpmailer->Subject = 'NUEVO PEDIDO/COMPRA!';
             $phpmailer->isHTML(true);
             $phpmailer->Body =  "Informacion de la Compra \n ". $info_pedido['id'] ."\n"."El cliente ".
-                "Nombre: " . $info_pedido['nombre'] . " " . $info_pedido['apellidos'] ."\n". "con correo".
+                "Nombre: " . $info_pedido['nombre'] . " " . $info_pedido['apellidos'] ."\n". "con".
                 "Correo: " . $info_pedido['email'] . "\n" ."realizo un nuevo pedido en la ".
                 "Fecha: " . $info_pedido['fecha'] . "\n" ;
                 

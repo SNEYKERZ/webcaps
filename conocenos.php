@@ -29,13 +29,13 @@ include('templates/cabecera.php');
           </p>
         </div>
         <div class="container-content col-md-4">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipO6A1Tm5GVp_ih06-8K_Zf18BrPDZgkg8zgbbbl=s680-w680-h510" alt="">
+          <img src="https://scontent.fclo7-1.fna.fbcdn.net/v/t1.6435-9/81169918_1423643854504820_8441502008308924416_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_ohc=gUrUo6NRFTQAX-itcY4&_nc_ht=scontent.fclo7-1.fna&oh=00_AfAYr7MssfVMihol-PV0eCyGm2WMivUKNAHdjjqZ1b8vdw&oe=64CE46DC" alt="">
         </div>
       </div>
 
       <div class="row row-container">
         <div class="container-content col-md-4">
-          <img src="https://lh3.googleusercontent.com/p/AF1QipO6A1Tm5GVp_ih06-8K_Zf18BrPDZgkg8zgbbbl=s680-w680-h510" alt="">
+          <img src="https://scontent.fclo7-1.fna.fbcdn.net/v/t1.6435-9/89260738_1486327194903152_5665659611202453504_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=XC49uQpTP4gAX_Qzoe2&_nc_ht=scontent.fclo7-1.fna&oh=00_AfAMx9-dMrKaYoavIoZoDEdaVDgqOg0NP-pKu_mxgHhNag&oe=64CE4C34" alt="">
         </div>
         <div class="content-text col-md-6">
           <h2 class="text-uppercase">Visión</h2>
@@ -57,9 +57,9 @@ include('templates/cabecera.php');
   <div class="container-card">
 
     <div class="card">
-      <img src="https://th.bing.com/th/id/OIP.ORrrSIMue2BJCegJasODkwHaNL?pid=ImgDet&rs=1">
+      <img src="https://th.bing.com/th/id/R.bf4a8a165a434d397be7c9d9e579341b?rik=axxP93NJURehQw&pid=ImgRaw&r=0">
       <div class="card-content">
-        <h2 class="text-uppercase">Dueño</h2>
+        <h2 class="text-uppercase">(nombre/area)</h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
         </p>
@@ -67,9 +67,9 @@ include('templates/cabecera.php');
     </div>
 
     <div class="card">
-      <img src="https://th.bing.com/th/id/OIP.ORrrSIMue2BJCegJasODkwHaNL?pid=ImgDet&rs=1">
+      <img src="https://th.bing.com/th/id/R.bf4a8a165a434d397be7c9d9e579341b?rik=axxP93NJURehQw&pid=ImgRaw&r=0">
       <div class="card-content">
-        <h2 class="text-uppercase">Dueño</h2>
+        <h2 class="text-uppercase">(nombre/area)</h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
         </p>
@@ -77,9 +77,9 @@ include('templates/cabecera.php');
     </div>
 
     <div class="card">
-      <img src="https://th.bing.com/th/id/OIP.ORrrSIMue2BJCegJasODkwHaNL?pid=ImgDet&rs=1">
+      <img src="https://th.bing.com/th/id/R.bf4a8a165a434d397be7c9d9e579341b?rik=axxP93NJURehQw&pid=ImgRaw&r=0">
       <div class="card-content">
-        <h2 class="text-uppercase">Dueño</h2>
+        <h2 class="text-uppercase">(nombre/area)</h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
         </p>

@@ -9,6 +9,14 @@
   margin: 8px 0px;
 }
 
+.text-center-info {
+  text-align: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 8px 0px;
+}
+
 .container-car-shopping-content {
   width: 100%;
   max-width: 1000px;

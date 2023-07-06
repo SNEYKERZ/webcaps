@@ -1,7 +1,8 @@
 <?php
+include('../templates/carroCabecera.php');
 //ACTIVAR LAS SESSIONES EN PHP
 session_start();
-include('../templates/carroCabecera.php');
+
 require 'funcionesCarrito.php';
 require '../src/productos.php';
 require '../vendor/autoload.php';
@@ -38,6 +39,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 </head>
 <h2 class="text-center text-uppercase pt-5">Carrito de compras</h2>
+<h5 class="text-center-info text-uppercase pt-5">Recuerda confirmar cada vez que cambies una talla o la cantidad que deseas comprar precionando en el boton ✅</h5>
 <div class="container-car-shopping-content" id="main">
   <div class="table-header">
     <div class="botones">
@@ -150,8 +152,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 $<?php echo number_format($subTotal, 2, ",", ".") ?> COP
               </td>
               <td data-label="Acciones">
-                <button type="submit" class="btn btn-dark">
-                  <i class="fa-solid fa-rotate-right"></i>
+                <button type="submit" class="btn" style="background-color: #0c6e09;">
+                  <i class="fa-solid fa-check" style="color: #fff;"></i>
                 </button>
                 <a href="eliminar_carrito.php?id=<?php print $value['id'] ?>" class="btn btn-outline-danger btn-xs">
                   <i class="fa-solid fa-trash"></i>
