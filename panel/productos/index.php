@@ -14,7 +14,7 @@ $info_producto = $producto->mostrar();
 $referencia = isset($_GET['referencia']) ? $_GET['referencia'] : '';
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 $precio = isset($_GET['precio']) ? $_GET['precio'] : '';
-$stock = isset($_GET['stock']) ? $_GET['stock'] : '';
+$estado = isset($_GET['estado']) ? $_GET['estado'] : '';
 
 // Filtrar los resultados basados en los parámetros de búsqueda
 $resultadosFiltrados = [];
@@ -23,7 +23,7 @@ foreach ($info_producto as $item) {
   if (empty($referencia) || strpos($item['referencia'], $referencia) !== false) {
     if (empty($categoria) || $item['categoria'] == $categoria) {
       if (empty($precio) || $item['precio'] == $precio) {
-        if (empty($stock) || $item['stock'] == $stock) {
+        if (empty($estado) || $item['estado'] == $estado) {
           $resultadosFiltrados[] = $item;
         }
       }
@@ -85,8 +85,8 @@ $lista_Productos = count($listaProductosPaginada);
     <form class="d-flex justify-content-center my-3">
       <input class="form-control me-2" type="search" placeholder="Buscar" name="referencia" value="<?php echo $referencia; ?>" aria-label="Buscar">
       <input class="form-control me-2" type="search" placeholder="Categoría" name="categoria" value="<?php echo $categoria; ?>" aria-label="Categoría">
-      <input class="form-control me-2" type="search" placeholder="Precio" name="precio" value="<?php echo $precio; ?>" aria-label="Precio">
-      <input class="form-control me-2" type="search" placeholder="Stock" name="stock" value="<?php echo $stock; ?>" aria-label="Stock">
+      <input class="form-control me-2" type="search" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Precio" name="precio" value="<?php echo $precio; ?>" aria-label="Precio">
+      <input class="form-control me-2" type="search" placeholder="Estado" name="estado" value="<?php echo $estado; ?>" aria-label="Estado">
       <button class="btn btn-outline-primary" type="submit">Filtrar</button>
     </form>
 
@@ -99,7 +99,7 @@ $lista_Productos = count($listaProductosPaginada);
           <th>Tallas</th>
           <th>Categoría</th>
           <th>Precio</th>
-          <th>Stock</th>
+          <th>Estado</th>
           <th>Foto</th>
           <th>Acciones</th>
         </tr>
@@ -117,7 +117,7 @@ $lista_Productos = count($listaProductosPaginada);
               <td><?php echo $item['tallas'] ?></td>
               <td><?php echo $item['categoria'] ?></td>
               <td>$<?php echo number_format($item['precio'], 2, ",", ".") ?></td>
-              <td><?php echo $item['stock'] ?></td>
+              <td><?php echo $item['estado'] ?></td>
               <td class="text-center">
                 <?php
                 $foto = '../../upload/' . $item['foto'];
@@ -145,23 +145,23 @@ $lista_Productos = count($listaProductosPaginada);
         <?php } ?>
       </tbody>
     </table>
-          
+
     <!-- PAGINATION -->
     <nav aria-label="Paginación">
       <ul class="pagination justify-content-center">
         <?php if ($paginaActual > 1) { ?>
           <li class="page-item">
-            <a class="page-link" href="?page=<?php echo $paginaActual - 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>">Anterior</a>
+            <a class="page-link" href="?page=<?php echo $paginaActual - 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&estado=<?php echo $estado; ?>">Anterior</a>
           </li>
         <?php } ?>
         <?php for ($i = 1; $i <= $totalPaginas; $i++) { ?>
           <li class="page-item <?php echo ($i == $paginaActual) ? 'active' : ''; ?>">
-            <a class="page-link" href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>"><?php echo $i; ?></a>
+            <a class="page-link" href="?page=<?php echo $i; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&estado=<?php echo $estado; ?>"><?php echo $i; ?></a>
           </li>
         <?php } ?>
         <?php if ($paginaActual < $totalPaginas) { ?>
           <li class="page-item">
-            <a class="page-link" href="?page=<?php echo $paginaActual + 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&stock=<?php echo $stock; ?>">Siguiente</a>
+            <a class="page-link" href="?page=<?php echo $paginaActual + 1; ?>&referencia=<?php echo $referencia; ?>&categoria=<?php echo $categoria; ?>&precio=<?php echo $precio; ?>&estado=<?php echo $estado; ?>">Siguiente</a>
           </li>
         <?php } ?>
       </ul>
@@ -169,11 +169,11 @@ $lista_Productos = count($listaProductosPaginada);
   </div>
 </div>
 
-<!-- MODAL EDITION (Ventana Emergente) -->
 <?php
 for ($i = 0; $i < $lista_Productos; $i++) {
-  $info = $info_producto[$i];
+  $info = $listaProductosPaginada[$i];
 ?>
+  <!-- MODAL EDITION (Ventana Emergente) -->
   <div class="modal fade" id="editModal-<?php echo $info['id']; ?>" tabindex="-1" aria-labelledby="editModal-<?php echo $info['id']; ?>" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -201,90 +201,98 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                       </div>
                     </div>
 
+                    <!-- Agrega la lista desplegable para "estado" -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Cantidad</label>
-                        <input value="<?php print $info['stock'] ?>" class="form-control" name="stock" placeholder="0" required>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row pt-2">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Precio</label>
-                        <input value="<?php print $info['precio'] ?>" class="form-control" name="precio" placeholder="$0" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Categorías</label>
-                        <select class="form-control" name="categoria_id" required>
-                          <option value="">SELECCIONE</option>
-                          <?php
-                          require '../../vendor/autoload.php';
-                          $categoria = new capsweb\Categorias;
-                          $info_categoria = $categoria->mostrar();
-                          $cantidad = count($info_categoria);
-                          for ($x = 0; $x < $cantidad; $x++) {
-                            $item = $info_categoria[$x];
-                          ?>
-                            <option value="<?php print $item['id'] ?>" <?php print $info['categoria_id'] == $item['id'] ? 'selected' : '' ?>>
-                              <?php print $item['categoria'] ?>
-                            </option>
-                          <?php
-                          }
-                          ?>
+                        <label>Estado</label>
+                        <select class="form-control" name="estado" required>
+                          <option value="DISPONIBLE">DISPONIBLE</option>
+                          <option value="NO DISPONIBLE">NO DISPONIBLE</option>
                         </select>
                       </div>
                     </div>
                   </div>
-
+                  <!-- Fin de la lista desplegable "estado" -->
+                  <!-- manejo stock
                   <div class="row pt-2">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label>Foto</label>
-                        <!-- Necesario hacer el llamado al item para que se efectúe el cambio-->
-                        <input type="file" class="form-control" name="foto">
-                        <input type="hidden" name="foto_temp" value="<?php print $info['foto'] ?>">
+                        <label>Cantidad</label>
+                        <input value="<?php //print $info['stock'] 
+                                      ?>" class="form-control" name="stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="0" required>
                       </div>
+                    </div>-->
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Precio</label>
+                      <input value="<?php print $info['precio'] ?>" class="form-control" name="precio" placeholder="$0" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                     </div>
                   </div>
-
-                  <!-- Tallas -->
-                  <div class="row pt-2">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Tallas</label>
-                        <input value="<?php print $info['tallas'] ?>" class="form-control" name="tallasNuevas" placeholder="Ingrese las tallas" required>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- FOOTER MODAL -->
-                  <div class="modal-footer">
-                    <input type="submit" name="accion" class="btn btn-primary" value="Actualizar">
-                    <a href="index.php" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</a>
-                  </div>
-                </form>
               </div>
+
+              <div class="row pt-2">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Categorías</label>
+                    <select class="form-control" name="categoria_id" required>
+                      <option value="">SELECCIONE</option>
+                      <?php
+                      require '../../vendor/autoload.php';
+                      $categoria = new capsweb\Categorias;
+                      $info_categoria = $categoria->mostrar();
+                      $cantidad = count($info_categoria);
+                      for ($x = 0; $x < $cantidad; $x++) {
+                        $item = $info_categoria[$x];
+                      ?>
+                        <option value="<?php print $item['id'] ?>" <?php print $info['categoria_id'] == $item['id'] ? 'selected' : '' ?>>
+                          <?php print $item['categoria'] ?>
+                        </option>
+                      <?php
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row pt-2">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Foto</label>
+                    <!-- Necesario hacer el llamado al item para que se efectúe el cambio -->
+                    <input type="file" class="form-control" name="foto">
+                    <input type="hidden" name="foto_temp" value="<?php print $info['foto'] ?>">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tallas -->
+              <div class="row pt-2">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Tallas</label>
+                    <input value="<?php print $info['tallas'] ?>" class="form-control" name="tallasNuevas" placeholder="Ingrese las tallas" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FOOTER MODAL -->
+              <div class="modal-footer">
+                <input type="submit" name="accion" class="btn btn-primary" value="Actualizar">
+                <a href="index.php" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</a>
+              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-<?php
-}
-?>
+  </div>
 
-<!-- MODAL DELETE (Ventana Emergente) -->
-<?php
-for ($i = 0; $i < $lista_Productos; $i++) {
-  $item = $info_producto[$i];
-?>
-  <div class="modal fade" id="deleteModal-<?php echo $item['id']; ?>" tabindex="-1" aria-labelledby="deleteModal-<?php echo $item['id']; ?>" aria-hidden="true">
+  <!-- MODAL DELETE (Ventana Emergente) -->
+  <div class="modal fade" id="deleteModal-<?php echo $info['id']; ?>" tabindex="-1" aria-labelledby="deleteModal-<?php echo $info['id']; ?>" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- HEADER MODAL -->
@@ -299,7 +307,7 @@ for ($i = 0; $i < $lista_Productos; $i++) {
         <!-- FOOTER MODAL -->
         <div class="modal-footer">
           <form action="../acciones.php" method="GET">
-            <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
             <input type="submit" name="accion" class="btn btn-danger" value="Eliminar">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           </form>
@@ -338,22 +346,6 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     </div>
                   </div>
 
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Cantidad</label>
-                      <input type="text" class="form-control" name="stock" placeholder="0" required>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row pt-2">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Precio</label>
-
-                      <input stringvalue="" class="form-control" name="precio" placeholder="$000" required>
-                    </div>
-                  </div>
 
                   <div class="col-md-6">
                     <div class="form-group">
@@ -376,73 +368,106 @@ for ($i = 0; $i < $lista_Productos; $i++) {
                     </div>
                   </div>
                 </div>
-
-                <!--CHECKBOX DE TALLAS-->
-                <div class="row">
-                  <div class="col-md-6 pt-3">
-                    <div class="form-group">
-                      <label>Tallas disponibles</label>
-                      <div class="btn-group pt-1" role="group" aria-label="Basic checkbox toggle button group">
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="S" id="talla_s" ">
-                        <label class=" btn btn-outline-dark" for="talla_s">S</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="M" id="talla_m" ">
-                        <label class=" btn btn-outline-dark" for="talla_m">M</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="L" id="talla_l" ">
-                        <label class=" btn btn-outline-dark" for="talla_l">L</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xl" ">
-                        <label class=" btn btn-outline-dark" for="talla_xl">XL</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="XXL" id="talla_xxl" ">
-                        <label class=" btn btn-outline-dark" for="talla_xxl">XXL</label>
-                      </div><br>
-
-                      <div class="btn-group pt-2" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="28" id="talla_28" ">
-                        <label class=" btn btn-outline-dark" for="talla_28">28</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="30" id="talla_30" ">
-                        <label class=" btn btn-outline-dark" for="talla_30">30</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="32" id="talla_32" ">
-                        <label class=" btn btn-outline-dark" for="talla_32">32</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="34" id="talla_34" ">
-                        <label class=" btn btn-outline-dark" for="talla_34">34</label>
-
-                        <input type="checkbox" class="btn-check" name="tallas[]" value="36" id="talla_36" ">
-                        <label class=" btn btn-outline-dark" for="talla_36">36</label>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- END CHECKBOX DE TALLAS-->
-
+                <!--
                 <div class="row pt-2">
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
-                      <label>Foto</label>
-                      <input type="file" class="form-control" name="foto[]" required multiple>
+                      <label>Cantidad</label>
+                      <input type="text" class="form-control" name="stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="0" required>
                     </div>
+                  </div>-->
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Precio</label>
+                    <input stringvalue="" class="form-control" name="precio" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="$0" required>
                   </div>
                 </div>
-
-                <!-- MODAL FOOTER -->
-                <div class="modal-footer">
-                  <input type="submit" name="accion" class="btn btn-primary" value="Registrar">
-                  <a href="index.php" class="btn btn-danger">Cancelar</a>
-                </div>
-              </form>
             </div>
+
+            <!-- Agrega la lista desplegable para "estado" -->
+            <div class="row pt-2">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Estado</label>
+                  <select class="form-control" name="estado" required>
+                    <option value="DISPONIBLE">DISPONIBLE</option>
+                    <option value="NO DISPONIBLE">NO DISPONIBLE</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- Fin de la lista desplegable "estado" -->
+
+            <!--CHECKBOX DE TALLAS-->
+            <div class="row pt-2">
+              <label>Tallas disponibles</label>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="S" id="talla_s">
+                    <label class=" btn btn-outline-dark" for="talla_s">S</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="M" id="talla_m">
+                    <label class=" btn btn-outline-dark" for="talla_m">M</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="L" id="talla_l">
+                    <label class=" btn btn-outline-dark" for="talla_l">L</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="XL" id="talla_xl">
+                    <label class=" btn btn-outline-dark" for="talla_xl">XL</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="XXL" id="talla_xxl">
+                    <label class=" btn btn-outline-dark" for="talla_xxl">XXL</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="28" id="talla_28">
+                    <label class=" btn btn-outline-dark" for="talla_28">28</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="30" id="talla_30">
+                    <label class=" btn btn-outline-dark" for="talla_30">30</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="32" id="talla_32">
+                    <label class=" btn btn-outline-dark" for="talla_32">32</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="34" id="talla_34">
+                    <label class=" btn btn-outline-dark" for="talla_34">34</label>
+
+                    <input type="checkbox" class="btn-check" name="tallas[]" value="36" id="talla_36">
+                    <label class=" btn btn-outline-dark" for="talla_36">36</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END CHECKBOX DE TALLAS-->
+
+            <div class="row pt-2">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Foto</label>
+                  <input type="file" class="form-control" name="foto" required multiple>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+              <input type="submit" name="accion" class="btn btn-primary" value="Registrar">
+              <a href="index.php" class="btn btn-danger">Cancelar</a>
+            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- MODAL CHANGE NEWS -->

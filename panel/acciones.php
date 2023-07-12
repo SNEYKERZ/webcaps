@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else {
       $tallasSeleccionadas = implode(',', $_POST['tallas']);
     }
-
-    if (empty($_POST['stock']))
-      exit('digita una cantidad en stock válida');
+    
+    if (empty($_POST['estado']))
+      exit('selecciona la disponibilidad');
 
     $_params = array(
       'referencia' => $_POST['referencia'],
@@ -36,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'foto' => subirFoto(),
       'precio' => $_POST['precio'],
       'tallas' => $tallasSeleccionadas,
-      'stock' => $_POST['stock'],
+      //'stock' => $_POST['stock'],
+      'estado' => $_POST['estado'],
       'fecha' => date('y-m-d')
     );
 
@@ -59,20 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['precio']))
       exit('Completar precio');
 
-    if (empty($_POST['stock']))
-      exit('digita una Cantidad válida');
+    if (empty($_POST['estado']))
+      exit('selecciona la disponibilidad');
 
-    /**if (empty($_POST['tallasNuevas']))
-      exit('Seleccionar una talla al menos');
-    else {
-      $tallasNuevas = implode(',', $_POST['tallasNuevas']);
-    }**/
     $_params = array(
       'id' => $_POST['id'],
       'referencia' => $_POST['referencia'],
       'categoria_id' => $_POST['categoria_id'],
       'precio' => $_POST['precio'],
-      'stock' => $_POST['stock'],
+      //'stock' => $_POST['stock'],
+      'estado' => $_POST['estado'],
       'tallas' => isset($_POST['tallasNuevas']) ? implode(',', explode(',', $_POST['tallasNuevas'])) : '',
       'fecha' => date('Y-m-d')
     );
@@ -143,11 +140,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // //SUBIR UNA FOTO
+
 function subirFoto()
 {
+
   $carpeta = __DIR__ . '/../upload/';
+
   $archivo = $carpeta . $_FILES['foto']['name'];
+
   move_uploaded_file($_FILES['foto']['tmp_name'], $archivo);
+
   return $_FILES['foto']['name'];
 }
 

@@ -7,7 +7,6 @@ require 'funcionesCarrito.php';
 require '../src/productos.php';
 require '../vendor/autoload.php';
 
-
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $id = $_GET['id'];
   require '../vendor/autoload.php';
@@ -29,6 +28,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     agregarProducto($resultado, $id);
   }
 }
+
 ?>
 
 <head>
@@ -36,7 +36,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
   <!-- JavaScript de Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-
+ 
 </head>
 <h2 class="text-center text-uppercase pt-5">Carrito de compras</h2>
 <h5 class="text-center-info text-uppercase pt-5">Recuerda confirmar cada vez que cambies una talla o la cantidad que deseas comprar precionando en el boton ✅</h5>
@@ -74,7 +74,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       </tr>
     </thead>
     <tbody>
-      <?php $subTotal = 0;
+      <?php
+      $contadorCamisetas = 0; // Variable para contar camisetas en el carrito
+      $subtotalConDescuento = 0; // Variable para almacenar el subtotal con descuento
+
       if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         $c = 0;
 
@@ -85,29 +88,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
           $producto = new capsweb\Productos;
           $tallasProducto = $producto->mostrarTallas($idProducto);
 
-          // calcula el precio de las prendas por sus cantidades
-          if ($value['cantidad'] == 5  && $value['categoria'] == 'CAMISETA') {
-            $parcial = $value['precio'] = 22000;
-            $subTotal +=  $parcial * $value['cantidad'];
+          // Verificar si el producto actual es una camiseta
+          if ($value['categoria'] == 'CAMISETA') {
+            $contadorCamisetas += $value['cantidad']; // Incrementar el contador de camisetas
           }
-          if ($value['cantidad'] == 4  && $value['categoria'] == 'CAMISETA') {
-            $parcial = $value['precio'] = 23750;
-            $subTotal +=  $parcial * $value['cantidad'];
-          }
-          if ($value['cantidad'] == 3  && $value['categoria'] == 'CAMISETA') {
-            $parcial = $value['precio'] = 25000;
-            $subTotal += $parcial * $value['cantidad'];
-          }
-          if ($value['cantidad'] == 2 && $value['categoria'] == 'CAMISETA') {
-            $parcial = $value['precio'] = 27500;
-            $subTotal += $parcial * $value['cantidad'];
-          }
-          if ($value['cantidad'] >= 5 || $value['cantidad'] <= 1) {
-            $subTotal =  $value['precio'] * $value['cantidad'];
-          } else {
-            $subTotal =  $value['precio'] * $value['cantidad'];
-          }
-      ?>
+
+          // Actualizar el subtotal del producto en el carrito
+          $_SESSION['carrito'][$indice]['subtotal'] = $value['precio'] * $value['cantidad'];
+
+          // Actualizar el subtotal con descuento acumulado
+          $subtotalConDescuento += $_SESSION['carrito'][$indice]['subtotal'];
+
+          ?>
           <tr>
             <form id="form1" action="actualizar_carrito.php" method="post">
               <td data-label="Foto">
@@ -136,7 +128,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
 
               <td data-label="Talla">
-                <select name="tallaTomada">
+                <select name="tallaTomada" id="talla_<?php echo $c; ?>" required>
                   <?php
                   echo '<option disabled selected>Seleccione</option>'; // Opción inicial no seleccionable
 
@@ -149,7 +141,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
 
               <td data-label="Valor">
-                $<?php echo number_format($subTotal, 2, ",", ".") ?> COP
+                $<?php echo number_format($_SESSION['carrito'][$indice]['subtotal'], 2, ",", ".") ?> COP
               </td>
               <td data-label="Acciones">
                 <button type="submit" class="btn" style="background-color: #0c6e09;">
@@ -161,7 +153,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
             </form>
           </tr>
-        <?php
+      <?php
         }
       } else { ?>
         <tr>
@@ -173,7 +165,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       <tr>
         <td colspan="6" class="text-right">Total</td>
         <td>
-          $<?php print number_format(calcularTotal(), 2, ",", "."); ?> COP
+          $<?php print number_format(calcularTotal($contadorCamisetas), 2, ",", "."); ?> COP
         </td>
         <td></td>
       </tr>
@@ -183,7 +175,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   <?php
   if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
   ?>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formDataModal">
+    <button type="button" class="btn btn-success" id="btnFinalizarCompra" data-bs-toggle="modal" data-bs-target="#formDataModal">
       Finalizar Compra <i class="fa-solid fa-dollar-sign"></i>
     </button>
 </div>
@@ -251,7 +243,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     </div>
                   </div>
                 </div>
-
                 <script>
                   function gracias(event) {
                     event.preventDefault();

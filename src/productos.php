@@ -19,8 +19,8 @@ class Productos
     /**añade un producto en la base de datos */
     public function registrar($_params)
     {
-        $sql = "INSERT INTO `productos`(`referencia`,`precio`,`foto`,`tallas`,`categoria_id`,`stock`,`fecha`) 
-        VALUES (:referencia,:precio,:foto,:tallas,:categoria_id,:stock,:fecha)";
+        $sql = "INSERT INTO `productos`(`referencia`,`precio`,`foto`,`tallas`,`categoria_id`,`fecha`,`estado`) 
+        VALUES (:referencia,:precio,:foto,:tallas,:categoria_id,:fecha,:estado)";
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
@@ -29,7 +29,8 @@ class Productos
             ":categoria_id" => $_params['categoria_id'],
             ":foto" => $_params['foto'],
             ":tallas" => $_params['tallas'],
-            ":stock" => $_params['stock'],
+            //":stock" => $_params['stock'],
+            ":estado" => $_params['estado'],
             ":fecha" => $_params['fecha']
         );
 
@@ -43,7 +44,7 @@ class Productos
     public function actualizar($_params)
     {
         $sql = "UPDATE `productos` SET `referencia`=:referencia,`categoria_id`=:categoria_id,`foto`=:foto,`tallas`=:tallas,
-        `precio`=:precio,`fecha`=:fecha,`stock`=:stock
+        `precio`=:precio,`fecha`=:fecha, `estado`=:estado
          WHERE `id`=:id";
         $resultado = $this->cn->prepare($sql);
         $_array = array(
@@ -54,7 +55,8 @@ class Productos
             ":tallas" => $_params['tallas'],
             ":precio" => $_params['precio'],
             ":fecha" => $_params['fecha'],
-            ":stock" => $_params['stock']
+            ":estado" => $_params['estado'],
+            //":stock" => $_params['stock']
         );
         if ($resultado->execute($_array)) {
             return true;
@@ -80,7 +82,7 @@ class Productos
     /** selecciona y muestra los  items de la tabla productos*/
     public function mostrar()
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`categoria`,`tallas` FROM `productos` 
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio` ,`categoria`,`tallas`,`estado` FROM `productos` 
         INNER JOIN `categorias`
         ON productos.categoria_id = categorias.id ORDER BY productos.id DESC ";
 
@@ -96,7 +98,7 @@ class Productos
     /** con el ID dado busca en la base de datos la prenda con ese ID */
     public function mostrarPorId($id)
     {
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id`,`precio`,`stock`,`categoria`,`tallas` FROM `productos` 
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id`,`precio`,`categoria`,`tallas`,`estado` FROM `productos` 
         INNER JOIN `categorias`
         ON productos.categoria_id = categorias.id WHERE productos.id =:id ";
 
@@ -148,12 +150,10 @@ class Productos
     //MOSTRARA TODOS LOS PRODUCTOS CON US STOCK MAYOR A 5 
     public function mostrarProductos()
     {
-        // $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas` FROM `productos` 
-        //WHERE productos.stock >= '5' ";
-
-        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`categoria`,`tallas` 
+       
+        $sql = " SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio` ,`categoria`,`tallas` ,`estado`
         FROM `productos` INNER JOIN `categorias` ON productos.categoria_id = categorias.id 
-        and categorias.categoria != 'BASICA' WHERE productos.stock >= '5' ORDER BY productos.id DESC";
+        and categorias.categoria != 'BASICA' WHERE productos.estado = 'DISPONIBLE' ORDER BY productos.id DESC";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -166,8 +166,8 @@ class Productos
     //FUNCION QUE TRAE LAS PRENDAS BASICAS
     public function mostrarPrendasBasicas()
     {
-        $sql = "SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio`,`stock` ,`tallas`,`categoria` 
-        FROM `productos` INNER JOIN `categorias` ON productos.categoria_id = categorias.id WHERE categorias.categoria = 'BASICA' and productos.stock >= '5' ";
+        $sql = "SELECT productos.id, `referencia`,`foto`,`categoria_id` ,`precio` ,`tallas`,`categoria`,`estado`
+        FROM `productos` INNER JOIN `categorias` ON productos.categoria_id = categorias.id WHERE categorias.categoria = 'BASICA' and productos.estado = 'DISPONIBLE' ";
 
         $resultado = $this->cn->prepare($sql);
 

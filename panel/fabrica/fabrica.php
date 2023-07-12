@@ -18,7 +18,7 @@ include('../../templates/cabeceraAdmin.php');
                 rowIndex++;
                 var newRow = '<tr id="row' + rowIndex + '">' +
                     '<td><input type="text" name="rollo[]" class="rollo" placeholder="Nombre/Color del rollo"></td>' +
-                    '<td><input type="number" name="cantidad[]" class="cantidad" placeholder="Cantidad de rollos"></td>' +
+                    '<td><input type="number" name="cantidad[]" class="cantidad" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Cantidad de rollos"></td>' +
                     '<td><span class="camisetas"></span></td>' +
                     '<td><span class="precio-camisas"></span></td>' +
                     '<td><span class="precio-rollos"></span></td>' +
