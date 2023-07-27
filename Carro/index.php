@@ -36,10 +36,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
   <!-- JavaScript de Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
- 
+
 </head>
 <h2 class="text-center text-uppercase pt-5">Carrito de compras</h2>
-<h5 class="text-center-info text-uppercase pt-5">Recuerda confirmar cada vez que cambies una talla o la cantidad que deseas comprar precionando en el boton ✅</h5>
+<h5 class="text-center-info text-uppercase pt-5">Recuerda confirmar cada vez que cambies una talla o la cantidad que deseas comprar precionando en el boton ✅</h5><br>
 <div class="container-car-shopping-content" id="main">
   <div class="table-header">
     <div class="botones">
@@ -99,7 +99,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
           // Actualizar el subtotal con descuento acumulado
           $subtotalConDescuento += $_SESSION['carrito'][$indice]['subtotal'];
 
-          ?>
+      ?>
           <tr>
             <form id="form1" action="actualizar_carrito.php" method="post">
               <td data-label="Foto">
@@ -153,7 +153,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
               </td>
             </form>
           </tr>
-      <?php
+        <?php
         }
       } else { ?>
         <tr>
@@ -174,11 +174,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
   <?php
   if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-  ?>
+  ?><br>
     <button type="button" class="btn btn-success" id="btnFinalizarCompra" data-bs-toggle="modal" data-bs-target="#formDataModal">
       Finalizar Compra <i class="fa-solid fa-dollar-sign"></i>
     </button>
-</div>
+</div><br>
 <?php } ?>
 </div>
 
@@ -189,7 +189,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
       <!-- MODAL HEADER -->
       <div class="modal-header">
-        <h5 class="modal-title" id="formDataModalLabel">Confirmar Compra</h5>
+        <h5 class="modal-title" id="formDataModalLabel">Datos para envios</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -238,7 +238,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="row pt-2">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Direccion</label>
+                      <label>Departamento, ciudad y direccion</label>
                       <textarea name="direccion" placeholder="Ingrese su dirreción (Sea muy especifico)" class="form-control" rows="1"></textarea>
                     </div>
                   </div>
