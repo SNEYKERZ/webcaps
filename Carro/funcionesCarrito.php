@@ -11,7 +11,6 @@ function agregarProducto($resultado, $id, $cantidad = 1)
         'precio' => $resultado['precio'],
         'cantidad' => $cantidad,
         'tallas' =>  $resultado['tallas']
-
     );
 }
 
