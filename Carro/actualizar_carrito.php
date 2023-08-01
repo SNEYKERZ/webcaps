@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 require 'funcionesCarrito.php';
 require '../vendor/autoload.php';
 
