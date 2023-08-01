@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 if (empty($_SESSION["id"])) {
   header("location: ../../acceso.php");
 }

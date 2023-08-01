@@ -1,6 +1,31 @@
-<?php
+<?php session_start();//ACTIVAR LAS SESSIONES EN PHP
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+  $id = $_GET['id'];
+  require '../vendor/autoload.php';
+  $producto = new capsweb\Productos;
+  $resultado = $producto->mostrarPorId($id); //busca el producto por medio de su id
+  if (!$resultado)
+    header('Location: ../index.php');
+
+  if (isset($_SESSION['carrito'])) { //SI EL CARRITO EXISTE
+    //SI PRODUCTO EXISTE EN EL CARRITO
+    if (array_key_exists($id, $_SESSION['carrito'])) {
+      actualizarProducto($id);
+    } else {
+      //  SI EL CARRITO NO EXISTE EN EL CARRITO
+      agregarProducto($resultado, $id);
+    }
+  } else {
+    //  SI EL CARRITO NO EXISTE
+    agregarProducto($resultado, $id);
+  }
+}
+
 include('../templates/carroCabecera.php');
-//ACTIVAR LAS SESSIONES EN PHP
+require 'funcionesCarrito.php';
+require '../src/productos.php';
+require '../vendor/autoload.php';
+
 // CONFIGURACIÓN EN TIEMPO DE EJECUCIÓN //
 
 // Especifica si el módulo sólo usará cookies para almacenar el id de sesión en la parte del cliente. 
@@ -37,33 +62,9 @@ header('X-XSS-Protection: 1;mode=block');
 ?>
 
 <?php
-session_start();
 
-require 'funcionesCarrito.php';
-require '../src/productos.php';
-require '../vendor/autoload.php';
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-  $id = $_GET['id'];
-  require '../vendor/autoload.php';
-  $producto = new capsweb\Productos;
-  $resultado = $producto->mostrarPorId($id); //busca el producto por medio de su id
-  if (!$resultado)
-    header('Location: ../index.php');
 
-  if (isset($_SESSION['carrito'])) { //SI EL CARRITO EXISTE
-    //SI PRODUCTO EXISTE EN EL CARRITO
-    if (array_key_exists($id, $_SESSION['carrito'])) {
-      actualizarProducto($id);
-    } else {
-      //  SI EL CARRITO NO EXISTE EN EL CARRITO
-      agregarProducto($resultado, $id);
-    }
-  } else {
-    //  SI EL CARRITO NO EXISTE
-    agregarProducto($resultado, $id);
-  }
-}
 
 ?>
 
